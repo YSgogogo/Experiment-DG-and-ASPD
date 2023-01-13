@@ -1,0 +1,141 @@
+{{ block title }}Instruction{{ endblock }}
+{{ block content }}
+
+    <p>
+        During this block, you will be asked to make decisions in 5 different situations.
+        You will be randomly paired with another anonymous participant.
+        Your decisions in one decision situation have no influence on other decision situations.
+    </p>
+
+    <p>
+        In each decision situation, one of you and your paired participant is the DICTATOR who can decide the final payoffs of both of you,
+        another is the RECEIVER who can only receive the payoffs unconditionally.
+    </p>
+
+    <p>
+        At the end of the experiment, the ROLE of you and your randomly paired participant will be RANDOMLY ASSIGNED.
+    </p>
+
+    <p>
+        Once a decision situation ends, you can move to another new decision situation.
+    </p>
+
+    <p>
+        ONE EXAMPLE: The choices and the Points in the following decision situation:
+    </p>
+
+    <table>
+        <tr>
+            <td rowspan="3"> Other (receiver)</td>
+            <td colspan="3"> You (dictator) </td>
+        </tr>
+        <tr>
+            <td style="..."> Left </td>
+            <td style="..."> Right </td>
+        </tr>
+        <tr>
+            <td>{{ C.payoff_1L1 }} , {{ C.payoff_1L2 }}</td>
+            <td>{{ C.payoff_1R1 }} , {{ C.payoff_1R2 }}</td>
+        </tr>
+    </table>
+
+    <p>
+        The right hand side (with green color) in each cell represents your payoff,
+        while the left hand side (with purple color) represents the payoff of another participant you are randomly paired with (Other in the table).
+    </p>
+
+    <p>
+        This table shows the payoff associated with each choice.
+        In this decision situation, you CAN directly decide the payoffs of you and Other.
+    </p>
+
+    <p>
+        That is, if:
+    </p>
+
+    <p>
+        You select Left, you earn 40 Points while Other earn 40 Points.
+    </p>
+
+    <p>
+        You select Right, you earn 50 Points while Other earn 20 Points.
+    </p>
+
+    <p>
+        ANOTHER EXAMPLE: The choices and the Points in the following decision situation:
+    </p>
+
+    <table>
+        <tr>
+            <td rowspan="3"> You (receiver) </td>
+            <td colspan="3"> Other (dictator) </td>
+        </tr>
+        <tr>
+            <td style="..."> Left </td>
+            <td style="..."> Right </td>
+        </tr>
+        <tr>
+            <td>{{ C.payoff_1L1 }} , {{ C.payoff_1L2 }}</td>
+            <td>{{ C.payoff_1R1 }} , {{ C.payoff_1R2 }}</td>
+        </tr>
+    </table>
+
+    <p>
+        The right hand side (with green color) in each cell represents the payoff of another participant you are randomly paired with (Other in the table), while the left hand side (with purple color) represents your payoff.
+    </p>
+
+    <p>
+        This table shows the payoff associated with each choice.
+        In this decision situation, you CANNOT decide the payoffs of you and Other.
+    </p>
+
+    <p>
+        That is, if:
+    </p>
+
+    <p>
+        The Other select Left, you earn 40 Points while Other earn 40 Points.
+    </p>
+
+    <p>
+        The Other select Right, you earn 20 Points while Other earn 50 Points.
+    </p>
+
+    <p>
+        Please read the instructions carefully, we will test your understanding in the next page.
+    </p>
+
+    <p>
+        Please click ``Next'' to start.
+    </p>
+
+
+
+    <script>
+        window.onload = function(){
+            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
+        }
+    </script>
+
+    <button class ="o-tree-btn-next btn btn-primary" id="Next" style="visibility:hidden;"> Next </button>
+
+{{ endblock }}
+
+
+{{ block app_styles }}
+    <style>
+        table {
+            border: 1px solid black;
+        }
+
+        td {
+           border: 1px solid white;
+           background-color: rgb(0, 33, 71);
+           color: white;
+           font-weight: bold;
+           font-size: 19px;
+           padding: 3px 10px 3px 10px;
+           text-align: center;
+        }
+    </style>
+{{ endblock }}

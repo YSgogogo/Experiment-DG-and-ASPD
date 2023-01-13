@@ -1,0 +1,46 @@
+
+{{ block title }}Welcome!{{ endblock }}
+{{ block content }}
+    <p>
+        Thank you for participating in our experiment. You are about to participate in a session on decision-making.
+        During the experiment, no one would know your identity (anonymously). You will be paid privately at the end of the session by cash.
+    </p>
+
+    <p>
+        During the session, Please SILENCE or TURN OFF your cellular phones and do not make noise during the experiment.
+        The entire session will take place through computers in front of you. Please do not talk or in any way try to discuss with other participants during the experiment.
+        If you have any questions during the session, please raise your hand and we will come and help you.
+    </p>
+
+    <p>
+        Our experiment contains THREE blocks. In each block, we will start with a brief instruction where you will be given a description of the main features of the block.
+        After the instruction, you can move to the next page where you will be asked to answer several questions to test your understanding the task of this block.
+        Only when you answer all questions correctly, you are allowed to move to the formal session.
+    </p>
+
+    <p>
+        N.B. At the end of the experiment, we will randomly select one of your decision situations.
+        Depending on the decisions by you and your randomly paired participant, you could earn a considerable amount of money.
+        Your earnings from this decision situation will be converted from Points to Pounds at a rate of 10 Points = £1.00！
+    </p>
+
+    <p>
+        You are able to make up to 10.00 additional pounds depending on your decisions.
+        This will be added to your participation fee of £5.00.
+        During the session, you should stay on each page for at least a specific time, otherwise, you can not see the ``Next'' button and move to the next page.
+    </p>
+
+    <p>
+        Please click ``Next'' to start the experiment.
+    </p>
+
+
+
+    <script>
+        window.onload = function(){
+            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
+        }
+    </script>
+
+    <button class ="o-tree-btn-next btn btn-primary" id="Next" style="visibility:hidden;"> Next </button>
+{{ endblock }}

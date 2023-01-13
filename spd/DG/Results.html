@@ -1,0 +1,16 @@
+{{ block title }}
+    You and your randomly paired participant finished this block! Now you can click ''next'' and start the new block.
+{{ endblock }}
+
+{{ block content }}
+
+    <script>
+        window.onload = function(){
+            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 10000);
+        }
+    </script>
+
+    <button class ="o-tree-btn-next btn btn-primary" id="Next" style="visibility:hidden;"> Next </button>
+{{ endblock }}
+
+
