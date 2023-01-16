@@ -12,31 +12,14 @@ class C(BaseConstants):
     PLAYERS_PER_GROUP = 2
     TASKS = ['A', 'B', 'C', 'D', 'E']
     NUM_ROUNDS = len(TASKS)
+    
+    # colliding all variables into 4 arrays:
+    payoff_L1 = [40, 50, 50, 50, 50]
+    payoff_L2 = [40, 20, 20, 20, 20]
+    payoff_R1 = [20, 25, 30, 30, 30]
+    payoff_R2 = [50, 30, 30, 25, 35]
+    # end of arrays definitions
 
-    payoff_1L1 = cu(40)
-    payoff_1L2 = cu(40)
-    payoff_1R1 = cu(20)
-    payoff_1R2 = cu(50)
-
-    payoff_2L1 = cu(50)
-    payoff_2L2 = cu(20)
-    payoff_2R1 = cu(25)
-    payoff_2R2 = cu(30)
-
-    payoff_3L1 = cu(50)
-    payoff_3L2 = cu(20)
-    payoff_3R1 = cu(30)
-    payoff_3R2 = cu(30)
-
-    payoff_4L1 = cu(50)
-    payoff_4L2 = cu(20)
-    payoff_4R1 = cu(30)
-    payoff_4R2 = cu(25)
-
-    payoff_5L1 = cu(50)
-    payoff_5L2 = cu(20)
-    payoff_5R1 = cu(30)
-    payoff_5R2 = cu(35)
 
 class Subsession(BaseSubsession):
     pass
@@ -61,101 +44,46 @@ class Player(BasePlayer):
     quiz10 = models.BooleanField(label="Can the dictator decide the the final Points?")
 
 
-    payoff_one = models.CurrencyField()
-    payoff_two = models.CurrencyField()
-    payoff_three = models.CurrencyField()
-    payoff_four = models.CurrencyField()
-    payoff_five = models.CurrencyField()
+    # choice of the dictator game
+    choice = models.IntegerField(initial = 0)
+    # choice is coded as:
+    # -1 == left (first)
+    # 1 == right (second)
 
-    one = models.BooleanField(
-        label='Which of the following allocation you will choose',
-        choices=[
-           [True, 'Left'],
-           [False, 'Right'],
-        ]
-    )
-    two = models.BooleanField(
-        label='Which of the following allocation you will choose',
-        choices=[
-           [True, 'Left'],
-           [False, 'Right'],
-        ]
-    )
-    three = models.BooleanField(
-        label='Which of the following allocation you will choose',
-        choices=[
-           [True, 'Left'],
-           [False, 'Right'],
-        ]
-    )
-    four = models.BooleanField(
-        label='Which of the following allocation you will choose',
-        choices=[
-           [True, 'Left'],
-           [False, 'Right'],
-        ]
-    )
-    five = models.BooleanField(
-        label='Which of the following allocation you will choose',
-        choices=[
-           [True, 'Left'],
-           [False, 'Right'],
-        ]
-    )
+    # getting the game numbers stored:
+    task_number = models.IntegerField()
 
 def creating_session(subsession: Subsession):
     if subsession.round_number == 1:
         for p in subsession.get_players():
-            round_numbers = list(range(1, C.NUM_ROUNDS + 1))
-            random.shuffle(round_numbers)
-            task_rounds = dict(zip(C.TASKS, round_numbers))
-            p.participant.task_rounds = task_rounds
+            game_numbers = [0, 1, 2, 3, 4]
+            random.shuffle(game_numbers)
+            k=0
+            for i in range(C.NUM_ROUNDS): 
+                p.in_round(i+1).task_number = game_numbers[i]
+                k=k+1
+#            round_numbers = list(range(1, C.NUM_ROUNDS + 1))
+#            random.shuffle(round_numbers)
+#            task_rounds = dict(zip(C.TASKS, round_numbers))
+#            p.participant.task_rounds = task_rounds
 
-
-class game_1(Page):
+class GamePage(Page):
     form_model = 'player'
-    form_fields = ['one']
+    form_fields = ['choice']
 
     @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return player.round_number == participant.task_rounds['A']
+    def vars_for_template(player):
+        task_number = player.task_number
+        return dict(
+            L1 = C.payoff_L1[task_number],
+            L2 = C.payoff_L2[task_number],
+            R1 = C.payoff_R1[task_number],
+            R2 = C.payoff_R2[task_number]
+            )
 
-class game_2(Page):
-    form_model = 'player'
-    form_fields = ['two']
 
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return player.round_number == participant.task_rounds['B']
 
-class game_3(Page):
-    form_model = 'player'
-    form_fields = ['three']
 
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return player.round_number == participant.task_rounds['C']
-
-class game_4(Page):
-    form_model = 'player'
-    form_fields = ['four']
-
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return player.round_number == participant.task_rounds['D']
-
-class game_5(Page):
-    form_model = 'player'
-    form_fields = ['five']
-
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return player.round_number == participant.task_rounds['E']
 
 class Welcome(Page):
     @staticmethod
@@ -246,4 +174,5 @@ class Results(Page):
 
 
 
-page_sequence = [Welcome, Instruction, test, game_1, game_2, game_3, game_4, game_5, ResultsWaitPage, Results]
+page_sequence = [GamePage]
+#[Welcome, Instruction, test, game_1, game_2, game_3, game_4, game_5, ResultsWaitPage, Results]
