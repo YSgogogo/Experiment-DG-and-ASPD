@@ -12,7 +12,7 @@ SESSION_CONFIGS = [
         name='game2',
         display_name="DG",
         app_sequence=['DG'],
-        num_demo_participants=4,
+        num_demo_participants=2,
     ),
 
 
