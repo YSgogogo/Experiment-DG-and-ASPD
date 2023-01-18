@@ -66,13 +66,20 @@ class Player(BasePlayer):
 
 def creating_session(subsession: Subsession):
     if subsession.round_number == 1:
-        for p in subsession.get_players():
-            game_numbers = [0, 1, 2, 3, 4]
+        for g in subsession.get_groups():
+            game_numbers = [0, 1, 2, 3]
             random.shuffle(game_numbers)
             k=0
             for i in range(C.NUM_ROUNDS):
-                p.in_round(i+1).task_number = game_numbers[i]
+                g.in_round(i+1).task_number = game_numbers[i]
                 k=k+1
+                for p in g.get_players():
+                    p.in_round(i+1).task_number = g.in_round(i+1).task_number
+
+
+
+
+
 
 
 class ASPD_GamePage_1st(Page):
@@ -243,4 +250,4 @@ class Results(Page):
 
 
 
-page_sequence = [ASPD_Instructions, ASPD_Comprehension_Test, ASPD_GamePage_1st, ASPD_GamePage_2nd_Top, ASPD_GamePage_2nd_Down]
+page_sequence = [ASPD_GamePage_1st, ASPD_GamePage_2nd_Top, ASPD_GamePage_2nd_Down]

@@ -25,7 +25,7 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    pass
+    task_number = models.IntegerField()
 
 
 class Player(BasePlayer):
@@ -63,13 +63,15 @@ class Player(BasePlayer):
 
 def creating_session(subsession: Subsession):
     if subsession.round_number == 1:
-        for p in subsession.get_players():
+        for g in subsession.get_groups():
             game_numbers = [0, 1, 2, 3, 4]
             random.shuffle(game_numbers)
             k=0
             for i in range(C.NUM_ROUNDS): 
-                p.in_round(i+1).task_number = game_numbers[i]
+                g.in_round(i+1).task_number = game_numbers[i]
                 k=k+1
+                for p in g.get_players():
+                    p.in_round(i+1).task_number = g.in_round(i+1).task_number
 #            round_numbers = list(range(1, C.NUM_ROUNDS + 1))
 #            random.shuffle(round_numbers)
 #            task_rounds = dict(zip(C.TASKS, round_numbers))
