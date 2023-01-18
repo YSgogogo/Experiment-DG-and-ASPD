@@ -100,42 +100,33 @@ class ASPD_GamePage_1st(Page):
             D2 = C.payoff_D2[task_number]
             )
 
-
-class ASPD_GamePage_2nd_Top(Page):
+class ASPD_GamePage_2nd(Page):
     form_model = 'player'
-    form_fields = ['choice_2nd_Top']
+    form_fields = ['choice_2nd_Down', 'choice_2nd_Top']
 
     @staticmethod
     def vars_for_template(player):
         task_number = player.task_number
         return dict(
-            R1 = C.payoff_R1[task_number],
-            S1 = C.payoff_S1[task_number],
-            T1 = C.payoff_T1[task_number],
-            D1 = C.payoff_D1[task_number],
-            R2 = C.payoff_R2[task_number],
-            S2 = C.payoff_S2[task_number],
-            T2 = C.payoff_T2[task_number],
-            D2 = C.payoff_D2[task_number]
+            R1=C.payoff_R1[task_number],
+            S1=C.payoff_S1[task_number],
+            T1=C.payoff_T1[task_number],
+            D1=C.payoff_D1[task_number],
+            R2=C.payoff_R2[task_number],
+            S2=C.payoff_S2[task_number],
+            T2=C.payoff_T2[task_number],
+            D2=C.payoff_D2[task_number]
             )
-
-class ASPD_GamePage_2nd_Down(Page):
-    form_model = 'player'
-    form_fields = ['choice_2nd_Down']
 
     @staticmethod
-    def vars_for_template(player):
-        task_number = player.task_number
-        return dict(
-            R1 = C.payoff_R1[task_number],
-            S1 = C.payoff_S1[task_number],
-            T1 = C.payoff_T1[task_number],
-            D1 = C.payoff_D1[task_number],
-            R2 = C.payoff_R2[task_number],
-            S2 = C.payoff_S2[task_number],
-            T2 = C.payoff_T2[task_number],
-            D2 = C.payoff_D2[task_number]
-            )
+    def before_next_page(player: Player, timeout_happened):
+        participant = player.participant
+        if player.round_number == C.NUM_ROUNDS:
+            random_round = random.randint(1, C.NUM_ROUNDS)
+            participant.selected_round = random_round
+            player_in_selected_round = player.in_round(random_round)
+            player.payoff = player_in_selected_round.ASPD_outcome
+#   randomly choose one round as payoff
 
 class ASPD_Instructions(Page):
     @staticmethod
@@ -193,10 +184,10 @@ class ResultsWaitPage(WaitPage):
                 player_1.ASPD_outcome = C.payoff_D1[task_number]
                 player_2.ASPD_outcome = C.payoff_D2[task_number]
 
+class ASPD_Results(Page):
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.round_number == C.NUM_ROUNDS
 
-class Results(Page):
-    pass
 
-
-
-page_sequence = [ASPD_GamePage_1st, ASPD_GamePage_2nd_Top, ASPD_GamePage_2nd_Down, ResultsWaitPage]
+page_sequence = [ASPD_Instructions, ASPD_Comprehension_Test, ASPD_GamePage_1st, ASPD_GamePage_2nd, ResultsWaitPage, ASPD_Results]

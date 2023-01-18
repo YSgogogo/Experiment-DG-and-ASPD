@@ -22,18 +22,50 @@
         </tr>
         <tr>
             <td class="hide_top & hide_left & hide_bottom", rowspan="2"> Row's choice </td>
-            <td style="background-color:MediumSeaGreen;"> <input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
+            <td style="background-color:MediumSeaGreen;"> A </td>
             <td style="background-color:MediumSeaGreen;"> {{R1}} tokens </td>
             <td style="background-color:MediumSeaGreen;"> {{R2}} tokens </td>
             <td style="background-color:MediumSeaGreen;"> {{S1}} tokens </td>
             <td style="background-color:MediumSeaGreen;"> {{T2}} tokens </td>
         </tr>
         <tr>
-            <td> <input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
+            <td>  B </td>
             <td> {{T1}} tokens </td>
             <td> {{S2}} tokens </td>
             <td> {{D1}} tokens </td>
             <td> {{D2}} tokens </td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <td class="hide_top & hide_left", colspan="2", rowspan="3"> </td>
+            <td class="hide_top & hide_left & hide_right", colspan="4"> Your choice (Column) </td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="radio" name="choice_2nd_Down" value="{{ True }}" class="btn btn-primary btn-large"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
+            <td colspan="2"><input type="radio" name="choice_2nd_Down" value="{{ False }}" class="btn btn-primary btn-large"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
+        </tr>
+        <tr>
+            <td> Column payment </td>
+            <td>Your payment</td>
+            <td> Column payment </td>
+            <td>Your payment</td>
+        </tr>
+        <tr>
+            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> Row's choice </td>
+            <td> A </td>
+            <td> {{R1}} tokens </td>
+            <td> {{R2}} tokens </td>
+            <td> {{S1}} tokens </td>
+            <td> {{T2}} tokens </td>
+        </tr>
+        <tr>
+            <td style="background-color:MediumSeaGreen;"> B </td>
+            <td style="background-color:MediumSeaGreen;"> {{T1}} tokens </td>
+            <td style="background-color:MediumSeaGreen;"> {{S2}} tokens </td>
+            <td style="background-color:MediumSeaGreen;"> {{D1}} tokens </td>
+            <td style="background-color:MediumSeaGreen;"> {{D2}} tokens </td>
         </tr>
     </table>
 

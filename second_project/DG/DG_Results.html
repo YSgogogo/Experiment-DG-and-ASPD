@@ -1,7 +1,14 @@
 {{ block title }}
-    You and your randomly paired participant finished this block! Now you can click ''next'' and start the new block.
-{{ endblock }}
+    {{ if subsession.round_number == C.NUM_ROUNDS }}
+    <p>
+        Round {{ participant.selected_round }} was randomly selected for payment.
+        Your final payoff is therefore {{ player.payoff }}.
 
+
+    </p>
+    {{ endif }}
+
+{{ endblock }}
 {{ block content }}
 
     <script>

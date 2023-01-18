@@ -92,7 +92,15 @@ class DG_GamePage(Page):
             R1 = C.payoff_R1[task_number],
             R2 = C.payoff_R2[task_number]
             )
-
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        participant = player.participant
+        if player.round_number == C.NUM_ROUNDS:
+            random_round = random.randint(1, C.NUM_ROUNDS)
+            participant.selected_round = random_round
+            player_in_selected_round = player.in_round(random_round)
+            player.payoff = player_in_selected_round.DG_outcome
+#   randomly choose one round as payoff
 class Main_Instructions(Page):
     @staticmethod
     def is_displayed(player: Player):
@@ -146,7 +154,10 @@ class ResultsWaitPage(WaitPage):
             player_1.DG_outcome = C.payoff_R1[task_number]
             player_2.DG_outcome = C.payoff_R2[task_number]
 class DG_Results(Page):
-    pass
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.round_number == C.NUM_ROUNDS
 
-page_sequence = [Main_Instructions, DG_Instructions, DG_Comprehension_Test, DG_GamePage, ResultsWaitPage]
+
+page_sequence = [Main_Instructions, DG_Instructions, DG_Comprehension_Test, DG_GamePage, ResultsWaitPage, DG_Results]
 
