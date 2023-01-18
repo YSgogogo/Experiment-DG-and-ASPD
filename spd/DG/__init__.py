@@ -10,8 +10,7 @@ DG
 class C(BaseConstants):
     NAME_IN_URL = 'DG'
     PLAYERS_PER_GROUP = 2
-    TASKS = ['A', 'B', 'C', 'D', 'E']
-    NUM_ROUNDS = len(TASKS)
+    NUM_ROUNDS = 5
     
     # colliding all variables into 4 arrays:
     payoff_L1 = [40, 50, 50, 50, 50]
@@ -43,9 +42,18 @@ class Player(BasePlayer):
     quiz9 = models.BooleanField(label="Can the receiver decide the the final Points?")
     quiz10 = models.BooleanField(label="Can the dictator decide the the final Points?")
 
-
     # choice of the dictator game
-    choice = models.IntegerField(initial = 0)
+    #choice = models.IntegerField(initial = 0)
+    choice =  models.BooleanField(
+        choices=[
+           [True, 'Left'],
+           [False, 'Right'],
+        ]
+    )
+    # I changed to the Booleanfield as integerfield leads one choice 'left' can not be chosen
+
+
+
     # choice is coded as:
     # -1 == left (first)
     # 1 == right (second)
@@ -67,7 +75,7 @@ def creating_session(subsession: Subsession):
 #            task_rounds = dict(zip(C.TASKS, round_numbers))
 #            p.participant.task_rounds = task_rounds
 
-class GamePage(Page):
+class DG_GamePage(Page):
     form_model = 'player'
     form_fields = ['choice']
 
@@ -85,18 +93,19 @@ class GamePage(Page):
 
 
 
-class Welcome(Page):
-    @staticmethod
-    def is_displayed(player: Player):
-        return player.round_number == 1
-
-class Instruction(Page):
+class Main_Instructions(Page):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1
 
 
-class test(Page):
+class DG_Instructions(Page):
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.round_number == 1
+
+
+class DG_Comprehension_Test(Page):
     form_model = 'player'
     form_fields = ['quiz1', 'quiz2', 'quiz3', 'quiz4', 'quiz5', 'quiz6', 'quiz7', 'quiz8', 'quiz9', 'quiz10']
 
@@ -113,7 +122,6 @@ class test(Page):
                 player.failed_too_many = True
             else:
                 return errors
-
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1
@@ -127,11 +135,7 @@ class Failed(Page):
 class ResultsWaitPage(WaitPage):
     wait_for_all_groups = True
 
-class Results(Page):
-    @staticmethod
-    def is_displayed(player: Player):
-        return player.round_number == 5
-
+class DG_Results(Page):
     @staticmethod
     def after_all_players_arrive(group: Group):
         player_lists = group.get_players()
@@ -174,5 +178,5 @@ class Results(Page):
 
 
 
-page_sequence = [GamePage]
-#[Welcome, Instruction, test, game_1, game_2, game_3, game_4, game_5, ResultsWaitPage, Results]
+page_sequence = [Main_Instructions, DG_Instructions, DG_Comprehension_Test, DG_GamePage, ResultsWaitPage]
+

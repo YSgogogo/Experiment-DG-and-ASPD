@@ -1,0 +1,119 @@
+{{ block title }}
+<p style="font-size:35px;text-align:center">BLOCK 1: Instructions </p>
+{{ endblock }}
+
+{{ block content }}
+<h2> Structure of the block. </h2>
+<ul>
+  <li> You will face 5 rounds of the game in this block. </li>
+  <li> Each round is equally likely to be selected for payment. </li>
+  <li> Thus, it is important for you to take each round seriously. </li>
+
+</ul>
+
+<h2> Structure of the round: </h2>
+<ul>
+    <li> In each round you assume a role of Column or Row. </li>
+    <li> Column is the only active player in the round. </li>
+    <li> Column decides on what action to take: A or B. </li>
+    <li> Column’s decision determines the payment for both Column and Row. </li>
+    <li> An example below illustrates the payment structure: </li>
+</ul>
+
+    <table>
+        <tr>
+            <td colspan="3"> </td>
+            <td> Your payment </td>
+            <td> Other payment </td>
+        </tr>
+        <tr>
+            <td rowspan="2"> Your choice </td>
+            <td><input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"></td>
+            <td class="hide_left"> A </td>
+            <td> 40 tokens </td>
+            <td> 40 tokens </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"></td>
+            <td class="hide_left"> B </td>
+            <td> 20 tokens </td>
+            <td> 50 tokens </td>
+        </tr>
+    </table>
+
+
+    <li>If Column decides:
+        <ul>
+            <li> A, then COLUMN receives 40 tokens and ROW receives 40 tokens </li>
+            <li> B, then COLUMN receives 50 tokens and ROW receives 20 tokens. </li>
+        </ul>
+    </li>
+    <li> Once you have made a decision assuming the role of the COLUMN you can proceed to the next round. </li>
+
+    <li> In each round you will be presented with the new payment structure within the same decision problem:
+        <ul>
+            <li> The only decision is done by the COLUMN picking A or B. </li>
+            <li> Payments corresponding to each of actions vary. </li>
+        </ul>
+    </li>
+
+<h2> Payments: </h2>
+
+<ul>
+    <li> The payments for each round are determined as follows. </li>
+    <li> You are randomly matched with another player in the room. </li>
+    <li> You are randomly assigned a role (ROW or COLUM). </li>
+    <li> The decision of the COLUMN is implemented in the group. </li>
+    <li> One of the rounds will be selected for payment. </li>
+    <li> You will only see outcomes in the end of the experiment. </li>
+</ul>
+
+
+    <script>
+        window.onload = function(){
+            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
+        }
+    </script>
+
+    <button class ="o-tree-btn-next btn btn-primary" id="Next" style="visibility:hidden;"> Next </button>
+
+{{ endblock }}
+
+
+{{ block app_styles }}
+    <style>
+        table {
+            border: 1px solid black;
+        }
+        td {
+           border: 1px solid black;
+           background-color: white;
+           color: black;
+           font-weight: solid;
+           font-size: 19px;
+           padding: 10px 10px 10px 10px;
+           text-align: center;
+        }
+        tr.hide_all > td, td.hide_all{
+           border-style:hidden;
+        }
+        tr.hide_right > td, td.hide_right{
+           border-right-style:hidden;
+        }
+        tr.hide_left > td, td.hide_left{
+           border-left-style:hidden;
+        }
+        tr.hide_top > td, td.hide_top{
+           border-top-style:hidden;
+        }
+        tr.hide_bottom > td, td.hide_bottom{
+           border-bottom-style:hidden;
+        }
+        tr.width_bottom > td, td.width_bottom{
+           border-bottom-width:4px;
+        }
+        tr:nth-child(5){
+           background-color: red;
+        }
+    </style>
+{{ endblock }}

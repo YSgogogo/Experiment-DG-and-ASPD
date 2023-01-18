@@ -1,0 +1,42 @@
+{{ block title }}
+<p style="font-size:35px;text-align:center"> Instructions </p>
+{{ endblock }}
+
+{{ block content }}
+<h2> Welcome to ESSEXLab </h2>
+<ul>
+  <li> Welcome to ESSEXLab and thank you for participating in today’s experiment. </li>
+  <li> Please place all of your personal belongings away so that we can have your complete attention. </li>
+  <li> Please use the computer only as instructed. In particular, do not attempt to browse the web or use programs unrelated to the experiment. </li>
+</ul>
+
+
+
+<h2> Guidelines </h2>
+<ul>
+    <li> You will be paid in private and in cash at the end of the experiment. </li>
+    <li> The amount of money that you ultimately earn in the experiment depends on your decisions, the decisions of others and random chance. </li>
+    <li> You have each earned a £5 payment for showing up on time. </li>
+    <li> Please DO NOT socialize or talk during the experiment. </li>
+    <li> The experiment consists of two blocks. Each block will be precluded by the set of instructions as well as the comprehension check. </li>
+</ul>
+
+<h2> How final earnings are computed </h2>
+   <li> You will receive the GBP5 for showing up on time (as the show up payment).</li>
+   <li> In the end of the experiment 1 decision making problem from each block would be selected for payment.</li>
+   <li> All decision making problems are equally likely to be selected.</li>
+   <li>You will be paid privately and in cash at the end of the experiment. </li>
+
+
+    <script>
+        window.onload = function(){
+            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
+        }
+    </script>
+
+    <button class ="o-tree-btn-next btn btn-primary" id="Next" style="visibility:hidden;"> Next </button>
+
+{{ endblock }}
+
+
+

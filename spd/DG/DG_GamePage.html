@@ -1,0 +1,75 @@
+{{ block title }}
+    <div style="float: center; text-align: center;">
+    Please take a decision
+</div>
+{{ endblock }}
+{{ block content }}
+    Below you find your role, related points, and choices of one decision situation:
+    <table class="center">
+        <tr>
+            <td colspan="3"> </td>
+            <td> Your payment </td>
+            <td> Other payment </td>
+        </tr>
+        <tr>
+            <td rowspan="2"> Your choice </td>
+            <td><input type="radio" name="choice" value="{{ True }}" class="btn btn-primary btn-large"></td>
+            <td class="hide_left"> A </td>
+            <td> {{ L1 }} tokens </td>
+            <td> {{ L2 }} tokens </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="choice" value="{{ False }}" class="btn btn-primary btn-large"></td>
+            <td class="hide_left"> B </td>
+            <td> {{ R1 }} tokens </td>
+            <td> {{ R2 }} tokens </td>
+        </tr>
+    </table>
+
+
+    <script>
+        window.onload = function(){
+            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
+        }
+    </script>
+
+    <button class ="o-tree-btn-next btn btn-primary" id="Next" style="visibility:hidden;"> Next </button>
+
+
+{{ endblock }}
+
+{{ block app_styles }}
+    <style>
+        table {
+            border: 1px solid black;
+        }
+        td {
+           border: 1px solid black;
+           background-color: white;
+           color: black;
+           font-weight: solid;
+           font-size: 19px;
+           padding: 10px 10px 10px 10px;
+           text-align: center;
+        }
+        tr.hide_all > td, td.hide_all{
+           border-style:hidden;
+        }
+        tr.hide_right > td, td.hide_right{
+           border-right-style:hidden;
+        }
+        tr.hide_left > td, td.hide_left{
+           border-left-style:hidden;
+        }
+        tr.hide_top > td, td.hide_top{
+           border-top-style:hidden;
+        }
+        tr.hide_bottom > td, td.hide_bottom{
+           border-bottom-style:hidden;
+        }
+        tr.width_bottom > td, td.width_bottom{
+           border-bottom-width:4px;
+        }
+
+    </style>
+{{ endblock }}

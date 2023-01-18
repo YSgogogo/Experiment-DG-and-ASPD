@@ -1,0 +1,95 @@
+{{ block title }}
+<p style="font-size:35px;text-align:center">Comprehensive test </p>
+{{ endblock }}
+
+
+{{ block content }}
+<ul>
+  <li> Before proceeding with the formal session, you need to answer the following questions correctly. </li>
+  <li> The following table contains roles, choices, and tokens. </li>
+</ul>
+
+    <table>
+        <tr>
+            <td class="hide_top & hide_left", colspan="3", rowspan="3"> </td>
+            <td class="hide_top & hide_left & hide_right", colspan="4"> Column choice  </td>
+        </tr>
+        <tr>
+            <td colspan="2"> <input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
+            <td colspan="2"> <input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
+        </tr>
+        <tr>
+            <td>Your payment</td>
+            <td> Column payment </td>
+            <td>Your payment</td>
+            <td> Column payment </td>
+        </tr>
+        <tr>
+            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> Row choice </td>
+            <td><input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"></td>
+            <td class="hide_left"> A </td>
+            <td> 35 tokens </td>
+            <td> 40 tokens </td>
+            <td> 20 tokens </td>
+            <td> 50 tokens </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"></td>
+            <td class="hide_left"> B </td>
+            <td> 60 tokens </td>
+            <td> 20 tokens </td>
+            <td> 30 tokens </td>
+            <td> 25 tokens </td>
+        </tr>
+    </table>
+
+    {{ formfields }}
+    <script>
+        window.onload = function(){
+            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 90000);
+        }
+    </script>
+
+    <button class ="o-tree-btn-next btn btn-primary" id="Next" style="visibility:hidden;"> Next </button>
+
+{{ endblock }}
+
+
+
+{{ block app_styles }}
+    <style>
+        table {
+            border: 1px solid black;
+        }
+        td {
+           border: 1px solid black;
+           background-color: white;
+           color: black;
+           font-weight: solid;
+           font-size: 19px;
+           padding: 10px 10px 10px 10px;
+           text-align: center;
+        }
+        tr.hide_all > td, td.hide_all{
+           border-style:hidden;
+        }
+        tr.hide_right > td, td.hide_right{
+           border-right-style:hidden;
+        }
+        tr.hide_left > td, td.hide_left{
+           border-left-style:hidden;
+        }
+        tr.hide_top > td, td.hide_top{
+           border-top-style:hidden;
+        }
+        tr.hide_bottom > td, td.hide_bottom{
+           border-bottom-style:hidden;
+        }
+        tr.width_bottom > td, td.width_bottom{
+           border-bottom-width:4px;
+        }
+        tr:nth-child(5){
+           background-color: red;
+        }
+    </style>
+{{ endblock }}

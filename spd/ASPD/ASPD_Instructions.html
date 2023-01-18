@@ -1,0 +1,272 @@
+{{ block title }}
+<p style="font-size:35px;text-align:center">BLOCK 2: Instructions </p>
+{{ endblock }}
+
+{{ block content }}
+<h2> Structure of the block. </h2>
+<ul>
+  <li> In this block there are 2 active players ROW and COLUMN. </li>
+  <li> You will participate in 5 decision problems. </li>
+  <li> Each decision problem is equally likely to be selected for payment. </li>
+  <li> Thus, you will face 10 rounds:
+      <ul>
+          <li> assuming role of the ROW player, and </li>
+          <li> assuming role of the COLUMN player. </li>
+      </ul>
+  </li>
+</ul>
+
+<h2> Structure of the round: </h2>
+<ul>
+    <li>There are two players in each game in this block. </li>
+    <li>ROW player:
+        <ul>
+            <li>moves first </li>
+            <li>chooses A or B </li>
+        </ul>
+    </li>
+    <li>COLUMN player:
+        <ul>
+            <li>observes the choice of ROW player, then </li>
+            <li>decides whether to choose A or B </li>
+        </ul>
+    </li>
+    <li> The table below provides an example of the payoff structure depending on the decisions of ROW and COLUMN players </li>
+</ul>
+    <table>
+        <tr>
+            <td class="hide_top & hide_left", colspan="2", rowspan="3"> </td>
+            <td class="hide_top & hide_left & hide_right", colspan="4"> Column choice (The other) </td>
+        </tr>
+        <tr>
+            <td colspan="2"> A </td>
+            <td colspan="2"> B </td>
+        </tr>
+        <tr>
+            <td>Your payment</td>
+            <td> Column payment </td>
+            <td>Your payment</td>
+            <td> Column payment </td>
+        </tr>
+        <tr>
+            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> Your choice (Row)</td>
+            <td> A </td>
+            <td> 35 tokens </td>
+            <td> 40 tokens </td>
+            <td> 20 tokens </td>
+            <td> 50 tokens </td>
+        </tr>
+        <tr>
+            <td> B </td>
+            <td> 60 tokens </td>
+            <td> 20 tokens </td>
+            <td> 30 tokens </td>
+            <td> 25 tokens </td>
+        </tr>
+    </table>
+
+<h2> </h2>
+<ul>
+    <li>That is, if ROW player chooses:
+        <ul>
+            <li>A, then if COLUMN player chooses:
+                <ul>
+                    <li>A, then ROW player would receive 35 tokens and COLUMN player would receive 40 tokens </li>
+                    <li>B, then ROW player would receive 20 tokens and COLUMN player would receive 50 tokens </li>
+                </ul>
+            </li>
+            <li>B, then if COLUMN player chooses:
+                <ul>
+                    <li>A, then ROW player would receive 60 tokens and COLUMN player would receive 20 tokens </li>
+                    <li>B, then ROW player would receive 30 tokens and COLUMN player would receive 25 tokens </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<h2> Decision of the ROW player: </h2>
+
+<ur>
+    <li> As the ROW player you would see the following interface: </li>
+</ur>
+
+    <table>
+        <tr>
+            <td class="hide_top & hide_left", colspan="3", rowspan="3"> </td>
+            <td class="hide_top & hide_left & hide_right", colspan="4"> Column choice (The other) </td>
+        </tr>
+        <tr>
+            <td colspan="2"> <input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
+            <td colspan="2"> <input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
+        </tr>
+        <tr>
+            <td>Your payment</td>
+            <td> Column payment </td>
+            <td>Your payment</td>
+            <td> Column payment </td>
+        </tr>
+        <tr>
+            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> Your choice (Row)</td>
+            <td><input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"></td>
+            <td class="hide_left"> A </td>
+            <td> 35 tokens </td>
+            <td> 40 tokens </td>
+            <td> 20 tokens </td>
+            <td> 50 tokens </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"></td>
+            <td class="hide_left"> B </td>
+            <td> 60 tokens </td>
+            <td> 20 tokens </td>
+            <td> 30 tokens </td>
+            <td> 25 tokens </td>
+        </tr>
+    </table>
+
+<ur>
+    <li> Once you take the decision you can proceed to the next decision problem. </li>
+</ur>
+
+<h2> Decision of the COLUMN player: </h2>
+<ur>
+    <li> As the COLUMN player you need to take decision of A or B </li>
+    <li> Given that the decision can be conditioned on the action of the ROW player, you would be presented with the following interface: </li>
+</ur>
+
+        <table>
+        <tr>
+            <td class="hide_top & hide_left", colspan="2", rowspan="3"> </td>
+            <td class="hide_top & hide_left & hide_right", colspan="4"> Your choice (Column) </td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
+            <td colspan="2"><input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
+        </tr>
+        <tr>
+            <td> Column payment </td>
+            <td>Your payment</td>
+            <td> Column payment </td>
+            <td>Your payment</td>
+        </tr>
+        <tr>
+            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> Row's choice </td>
+            <td style="background-color:MediumSeaGreen;"> <input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
+            <td style="background-color:MediumSeaGreen;"> 35 tokens </td>
+            <td style="background-color:MediumSeaGreen;"> 40 tokens </td>
+            <td style="background-color:MediumSeaGreen;"> 20 tokens </td>
+            <td style="background-color:MediumSeaGreen;"> 50 tokens </td>
+        </tr>
+        <tr>
+            <td> <input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
+            <td> 60 tokens </td>
+            <td> 20 tokens </td>
+            <td> 30 tokens </td>
+            <td> 25 tokens </td>
+        </tr>
+    </table>
+
+
+    <table>
+        <tr>
+            <td class="hide_top & hide_left", colspan="2", rowspan="3"> </td>
+            <td class="hide_top & hide_left & hide_right", colspan="4"> Your choice (Column) </td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
+            <td colspan="2"><input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
+        </tr>
+        <tr>
+            <td> Column payment </td>
+            <td>Your payment</td>
+            <td> Column payment </td>
+            <td>Your payment</td>
+        </tr>
+        <tr>
+            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> Row's choice </td>
+            <td> <input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
+            <td> 35 tokens </td>
+            <td> 40 tokens </td>
+            <td> 20 tokens </td>
+            <td> 50 tokens </td>
+        </tr>
+        <tr>
+            <td style="background-color:MediumSeaGreen;"> <input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
+            <td style="background-color:MediumSeaGreen;"> 60 tokens </td>
+            <td style="background-color:MediumSeaGreen;"> 20 tokens </td>
+            <td style="background-color:MediumSeaGreen;"> 30 tokens </td>
+            <td style="background-color:MediumSeaGreen;"> 25 tokens </td>
+        </tr>
+    </table>
+
+
+<ul>
+  <li> That is, you need to take two decisions:
+      <ul>
+          <li> Choose A or B if ROW player chose A (the above table) </li>
+          <li> Choose A or B if ROW player chose B (the below table)</li>
+      </ul>
+  </li>
+  <li> Note that both decisions are important to determine the outcome as until the end of the experiment you do not know what the ROW player would choose. </li>
+</ul>
+
+<h2> Payments: </h2>
+<ul>
+    <li> The payments for each round are determined as follows. </li>
+    <li> You are randomly matched with another player in the room. </li>
+    <li> You are randomly assigned a role (ROW or COLUM). </li>
+    <li> The decision you and another player made would be implemented (in the corresponding roles) and thus the payoff would be determined. </li>
+    <li> One of the rounds will be selected for payment. </li>
+    <li> You will only see outcomes in the end of the experiment. </li>
+</ul>
+
+
+    <script>
+        window.onload = function(){
+            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
+        }
+    </script>
+
+    <button class ="o-tree-btn-next btn btn-primary" id="Next" style="visibility:hidden;"> Next </button>
+
+{{ endblock }}
+
+
+{{ block app_styles }}
+    <style>
+        table {
+            border: 1px solid black;
+        }
+        td {
+           border: 1px solid black;
+           background-color: white;
+           color: black;
+           font-weight: solid;
+           font-size: 19px;
+           padding: 10px 10px 10px 10px;
+           text-align: center;
+        }
+        tr.hide_all > td, td.hide_all{
+           border-style:hidden;
+        }
+        tr.hide_right > td, td.hide_right{
+           border-right-style:hidden;
+        }
+        tr.hide_left > td, td.hide_left{
+           border-left-style:hidden;
+        }
+        tr.hide_top > td, td.hide_top{
+           border-top-style:hidden;
+        }
+        tr.hide_bottom > td, td.hide_bottom{
+           border-bottom-style:hidden;
+        }
+        tr.width_bottom > td, td.width_bottom{
+           border-bottom-width:4px;
+        }
+        tr:nth-child(5){
+           background-color: red;
+        }
+    </style>
+{{ endblock }}

@@ -9,44 +9,15 @@ ASPD
 class C(BaseConstants):
     NAME_IN_URL = 'ASPD'
     PLAYERS_PER_GROUP = 2
-    TASKS = ['A1', 'B1', 'C1', 'A2', 'B2', 'C2', 'A3', 'B3', 'C3', 'A4', 'B4', 'C4']
-    NUM_ROUNDS = len(TASKS)
-    payoff_1R1 = cu(40)
-    payoff_1S1 = cu(20)
-    payoff_1T1 = cu(60)
-    payoff_1D1 = cu(25)
-    payoff_1R2 = cu(40)
-    payoff_1S2 = cu(20)
-    payoff_1T2 = cu(50)
-    payoff_1D2 = cu(25)
-
-    payoff_2R1 = cu(40)
-    payoff_2S1 = cu(20)
-    payoff_2T1 = cu(60)
-    payoff_2D1 = cu(25)
-    payoff_2R2 = cu(40)
-    payoff_2S2 = cu(30)
-    payoff_2T2 = cu(50)
-    payoff_2D2 = cu(25)
-
-    payoff_3R1 = cu(40)
-    payoff_3S1 = cu(20)
-    payoff_3T1 = cu(60)
-    payoff_3D1 = cu(30)
-    payoff_3R2 = cu(40)
-    payoff_3S2 = cu(20)
-    payoff_3T2 = cu(50)
-    payoff_3D2 = cu(35)
-
-    payoff_4R1 = cu(40)
-    payoff_4S1 = cu(20)
-    payoff_4T1 = cu(60)
-    payoff_4D1 = cu(35)
-    payoff_4R2 = cu(40)
-    payoff_4S2 = cu(20)
-    payoff_4T2 = cu(50)
-    payoff_4D2 = cu(35)
-
+    NUM_ROUNDS = 4
+    payoff_R1 = [40, 40, 40, 40]
+    payoff_S1 = [20, 20, 20, 20]
+    payoff_T1 = [60, 60, 60, 60]
+    payoff_D1 = [25, 25, 30, 35]
+    payoff_R2 = [40, 40, 40, 40]
+    payoff_S2 = [20, 30, 20, 20]
+    payoff_T2 = [50, 50, 50, 50]
+    payoff_D2 = [25, 25, 35, 35]
 
 class Subsession(BaseSubsession):
     pass
@@ -70,73 +41,20 @@ class Player(BasePlayer):
     quiz9 = models.BooleanField(label="Can the First Mover observe the Second Mover's choice before making decisions?")
     quiz10 = models.BooleanField(label="Can the Second Mover observe the First Mover's choice before making decisions?")
 
-    payoff_one = models.CurrencyField()
-    payoff_two = models.CurrencyField()
-    payoff_three = models.CurrencyField()
-    payoff_four = models.CurrencyField()
 
-
-    top1 = models.BooleanField(
-        label='Now you are the first mover: you move first, and another participant will make choose after observing your choice. Please choose either Top or Down!',
+    choice_1st =  models.BooleanField(
         choices=[
            [True, 'Top'],
            [False, 'Down'],
         ]
     )
-    L_after_T1 = models.BooleanField(
-        label='Now you are the second mover: another participant who is the first mover has selected Top. Please choose either Left or Right',
+    choice_2nd_Top =  models.BooleanField(
         choices=[
            [True, 'Left'],
            [False, 'Right'],
         ]
     )
-    L_after_D1 = models.BooleanField(
-        label='Now you are the second mover: another participant who is the first mover has selected Down. Please choose either Left or Right',
-        choices=[
-           [True, 'Left'],
-           [False, 'Right'],
-        ]
-    )
-
-
-    top2 = models.BooleanField(
-        label='Now you are the first mover: you move first, and another participant will make choose after observing your choice. Please choose either Top or Down!',
-        choices=[
-           [True, 'Top'],
-           [False, 'Down'],
-        ]
-    )
-    L_after_T2 = models.BooleanField(
-        label='Now you are the second mover: another participant who is the first mover has selected Top. Please choose either Left or Right',
-        choices=[
-           [True, 'Left'],
-           [False, 'Right'],
-        ]
-    )
-    L_after_D2 = models.BooleanField(
-        label='Now you are the second mover: another participant who is the first mover has selected Down. Please choose either Left or Right',
-        choices=[
-           [True, 'Left'],
-           [False, 'Right'],
-        ]
-    )
-
-    top3 = models.BooleanField(
-        label='Now you are the first mover: you move first, and another participant will make choose after observing your choice. Please choose either Top or Down!',
-        choices=[
-           [True, 'Top'],
-           [False, 'Down'],
-        ]
-    )
-    L_after_T3 = models.BooleanField(
-        label='Now you are the second mover: another participant who is the first mover has selected Top. Please choose either Left or Right',
-        choices=[
-           [True, 'Left'],
-           [False, 'Right'],
-        ]
-    )
-    L_after_D3 = models.BooleanField(
-        label='Now you are the second mover: another participant who is the first mover has selected Down. Please choose either Left or Right',
+    choice_2nd_Down =  models.BooleanField(
         choices=[
            [True, 'Left'],
            [False, 'Right'],
@@ -144,44 +62,81 @@ class Player(BasePlayer):
     )
 
 
-    top4 = models.BooleanField(
-        label='Now you are the first mover: you move first, and another participant will make choose after observing your choice. Please choose either Top or Down!',
-        choices=[
-           [True, 'Top'],
-           [False, 'Down'],
-        ]
-    )
-    L_after_T4 = models.BooleanField(
-        label='Now you are the second mover: another participant who is the first mover has selected Top. Please choose either Left or Right',
-        choices=[
-           [True, 'Left'],
-           [False, 'Right'],
-        ]
-    )
-    L_after_D4 = models.BooleanField(
-        label='Now you are the second mover: another participant who is the first mover has selected Down. Please choose either Left or Right',
-        choices=[
-           [True, 'Left'],
-           [False, 'Right'],
-        ]
-    )
+    task_number = models.IntegerField()
 
 def creating_session(subsession: Subsession):
     if subsession.round_number == 1:
         for p in subsession.get_players():
-            round_numbers = list(range(1, C.NUM_ROUNDS + 1))
-            random.shuffle(round_numbers)
-            task_rounds = dict(zip(C.TASKS, round_numbers))
-            p.participant.task_rounds = task_rounds
+            game_numbers = [0, 1, 2, 3, 4]
+            random.shuffle(game_numbers)
+            k=0
+            for i in range(C.NUM_ROUNDS):
+                p.in_round(i+1).task_number = game_numbers[i]
+                k=k+1
 
 
-class Instruction(Page):
+class ASPD_GamePage_1st(Page):
+    form_model = 'player'
+    form_fields = ['choice_1st']
+
+    @staticmethod
+    def vars_for_template(player):
+        task_number = player.task_number
+        return dict(
+            R1 = C.payoff_R1[task_number],
+            S1 = C.payoff_S1[task_number],
+            T1 = C.payoff_T1[task_number],
+            D1 = C.payoff_D1[task_number],
+            R2 = C.payoff_R2[task_number],
+            S2 = C.payoff_S2[task_number],
+            T2 = C.payoff_T2[task_number],
+            D2 = C.payoff_D2[task_number]
+            )
+
+
+class ASPD_GamePage_2nd_Top(Page):
+    form_model = 'player'
+    form_fields = ['choice_2nd_Top']
+
+    @staticmethod
+    def vars_for_template(player):
+        task_number = player.task_number
+        return dict(
+            R1 = C.payoff_R1[task_number],
+            S1 = C.payoff_S1[task_number],
+            T1 = C.payoff_T1[task_number],
+            D1 = C.payoff_D1[task_number],
+            R2 = C.payoff_R2[task_number],
+            S2 = C.payoff_S2[task_number],
+            T2 = C.payoff_T2[task_number],
+            D2 = C.payoff_D2[task_number]
+            )
+
+class ASPD_GamePage_2nd_Down(Page):
+    form_model = 'player'
+    form_fields = ['choice_2nd_Down']
+
+    @staticmethod
+    def vars_for_template(player):
+        task_number = player.task_number
+        return dict(
+            R1 = C.payoff_R1[task_number],
+            S1 = C.payoff_S1[task_number],
+            T1 = C.payoff_T1[task_number],
+            D1 = C.payoff_D1[task_number],
+            R2 = C.payoff_R2[task_number],
+            S2 = C.payoff_S2[task_number],
+            T2 = C.payoff_T2[task_number],
+            D2 = C.payoff_D2[task_number]
+            )
+
+class ASPD_Instructions(Page):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1
 
 
-class test(Page):
+class ASPD_Comprehension_Test(Page):
     form_model = 'player'
     form_fields = ['quiz1', 'quiz2', 'quiz3', 'quiz4', 'quiz5', 'quiz6', 'quiz7', 'quiz8', 'quiz9', 'quiz10']
 
@@ -208,115 +163,6 @@ class Failed(Page):
     @staticmethod
     def is_displayed(player: Player):
         return player.failed_too_many
-
-class ASPD1_1(Page):
-    form_model = 'player'
-    form_fields = ['top1']
-
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return player.round_number == participant.task_rounds['A1']
-
-class ASPD1_2(Page):
-    form_model = 'player'
-    form_fields = ['L_after_T1']
-
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return player.round_number == participant.task_rounds['B1']
-
-class ASPD1_3(Page):
-    form_model = 'player'
-    form_fields = ['L_after_D1']
-
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return player.round_number == participant.task_rounds['C1']
-
-class ASPD2_1(Page):
-    form_model = 'player'
-    form_fields = ['top2']
-
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return player.round_number == participant.task_rounds['A2']
-
-class ASPD2_2(Page):
-    form_model = 'player'
-    form_fields = ['L_after_T2']
-
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return player.round_number == participant.task_rounds['B2']
-
-class ASPD2_3(Page):
-    form_model = 'player'
-    form_fields = ['L_after_D2']
-
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return player.round_number == participant.task_rounds['C2']
-
-class ASPD3_1(Page):
-    form_model = 'player'
-    form_fields = ['top3']
-
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return player.round_number == participant.task_rounds['A3']
-
-class ASPD3_2(Page):
-    form_model = 'player'
-    form_fields = ['L_after_T3']
-
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return player.round_number == participant.task_rounds['B3']
-
-class ASPD3_3(Page):
-    form_model = 'player'
-    form_fields = ['L_after_D3']
-
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return player.round_number == participant.task_rounds['C3']
-
-class ASPD4_1(Page):
-    form_model = 'player'
-    form_fields = ['top4']
-
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return player.round_number == participant.task_rounds['A4']
-
-class ASPD4_2(Page):
-    form_model = 'player'
-    form_fields = ['L_after_T4']
-
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return player.round_number == participant.task_rounds['B4']
-
-class ASPD4_3(Page):
-    form_model = 'player'
-    form_fields = ['L_after_D4']
-
-    @staticmethod
-    def is_displayed(player: Player):
-        participant = player.participant
-        return player.round_number == participant.task_rounds['C4']
-
 
 class ResultsWaitPage(WaitPage):
     wait_for_all_groups = True
@@ -397,4 +243,4 @@ class Results(Page):
 
 
 
-page_sequence = [Instruction, test, ASPD1_1, ASPD1_2, ASPD1_3, ASPD2_1, ASPD2_2, ASPD2_3, ASPD3_1, ASPD3_2, ASPD3_3, ASPD4_1, ASPD4_2, ASPD4_3, ResultsWaitPage, Results]
+page_sequence = [ASPD_Instructions, ASPD_Comprehension_Test, ASPD_GamePage_1st, ASPD_GamePage_2nd_Top, ASPD_GamePage_2nd_Down]
