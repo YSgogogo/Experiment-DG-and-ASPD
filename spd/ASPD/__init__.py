@@ -24,7 +24,7 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    pass
+    task_number = models.IntegerField()
 
 
 class Player(BasePlayer):
@@ -63,7 +63,7 @@ class Player(BasePlayer):
 
 
     task_number = models.IntegerField()
-
+    ASPD_outcome = models.IntegerField()
 def creating_session(subsession: Subsession):
     if subsession.round_number == 1:
         for g in subsession.get_groups():
@@ -172,82 +172,31 @@ class Failed(Page):
         return player.failed_too_many
 
 class ResultsWaitPage(WaitPage):
-    wait_for_all_groups = True
-
-
-class Results(Page):
-    @staticmethod
-    def is_displayed(player: Player):
-        return player.round_number == 12
-
     @staticmethod
     def after_all_players_arrive(group: Group):
+        task_number = group.task_number
         player_lists = group.get_players()
         player_1 = player_lists[0]
         player_2 = player_lists[1]
-        if player_1.top1:
-            if player_2.L_after_T1:
-                player_1.payoff_one = C.payoff_1R1
-                player_2.payoff_one = C.ppayoff_1R2
+        if player_1.choice_1st:
+            if player_2.choice_2nd_Top:
+                player_1.ASPD_outcome = C.payoff_R1[task_number]
+                player_2.ASPD_outcome = C.payoff_R2[task_number]
             else:
-                player_1.payoff_one = C.payoff_1S1
-                player_2.payoff_one = C.payoff_1T2
+                player_1.ASPD_outcome = C.payoff_S1[task_number]
+                player_2.ASPD_outcome = C.payoff_T2[task_number]
         else:
-            if player_2.L_after_D1:
-                player_1.payoff_one = C.payoff_1T1
-                player_2.payoff_one = C.payoff_1S2
+            if player_2.choice_2nd_Down:
+                player_1.ASPD_outcome = C.payoff_T1[task_number]
+                player_2.ASPD_outcome = C.payoff_S2[task_number]
             else:
-                player_1.payoff_one = C.payoff_1D1
-                player_2.payoff_one = C.payoff_1D2
+                player_1.ASPD_outcome = C.payoff_D1[task_number]
+                player_2.ASPD_outcome = C.payoff_D2[task_number]
 
-        if player_1.top2:
-            if player_2.L_after_T2:
-                player_1.payoff_two = C.payoff_2R1
-                player_2.payoff_two = C.ppayoff_2R2
-            else:
-                player_1.payoff_two = C.payoff_2S1
-                player_2.payoff_two = C.payoff_2T2
-        else:
-            if player_2.L_after_D2:
-                player_1.payoff_two = C.payoff_2T1
-                player_2.payoff_two = C.payoff_2S2
-            else:
-                player_1.payoff_two = C.payoff_2D1
-                player_2.payoff_two = C.payoff_2D2
 
-        if player_1.top3:
-            if player_2.L_after_T3:
-                player_1.payoff_three = C.payoff_3R1
-                player_2.payoff_three = C.ppayoff_3R2
-            else:
-                player_1.payoff_three = C.payoff_3S1
-                player_2.payoff_three = C.payoff_3T2
-        else:
-            if player_2.L_after_D3:
-                player_1.payoff_three = C.payoff_3T1
-                player_2.payoff_three = C.payoff_3S2
-            else:
-                player_1.payoff_three = C.payoff_3D1
-                player_2.payoff_three = C.payoff_3D2
-
-        if player_1.top4:
-            if player_2.L_after_T4:
-                player_1.payoff_four = C.payoff_4R1
-                player_2.payoff_four = C.ppayoff_4R2
-            else:
-                player_1.payoff_four = C.payoff_4S1
-                player_2.payoff_four = C.payoff_4T2
-        else:
-            if player_2.L_after_D4:
-                player_1.payoff_four = C.payoff_4T1
-                player_2.payoff_four = C.payoff_4S2
-            else:
-                player_1.payoff_four = C.payoff_4D1
-                player_2.payoff_four = C.payoff_4D2
+class Results(Page):
+    pass
 
 
 
-
-
-
-page_sequence = [ASPD_GamePage_1st, ASPD_GamePage_2nd_Top, ASPD_GamePage_2nd_Down]
+page_sequence = [ASPD_GamePage_1st, ASPD_GamePage_2nd_Top, ASPD_GamePage_2nd_Down, ResultsWaitPage]

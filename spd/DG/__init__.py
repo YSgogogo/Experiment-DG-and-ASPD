@@ -60,6 +60,8 @@ class Player(BasePlayer):
 
     # getting the game numbers stored:
     task_number = models.IntegerField()
+    DG_outcome = models.IntegerField()
+    #creat a var to store the outcomes
 
 def creating_session(subsession: Subsession):
     if subsession.round_number == 1:
@@ -90,10 +92,6 @@ class DG_GamePage(Page):
             R1 = C.payoff_R1[task_number],
             R2 = C.payoff_R2[task_number]
             )
-
-
-
-
 
 class Main_Instructions(Page):
     @staticmethod
@@ -135,50 +133,20 @@ class Failed(Page):
 
 
 class ResultsWaitPage(WaitPage):
-    wait_for_all_groups = True
-
-class DG_Results(Page):
     @staticmethod
     def after_all_players_arrive(group: Group):
+        task_number = group.task_number
         player_lists = group.get_players()
         player_1 = player_lists[0]
         player_2 = player_lists[1]
-        if player_1.one:
-                player_1.payoff_one = C.payoff_1L1
-                player_2.payoff_one = C.payoff_1L2
+        if player_1.choice:
+            player_1.DG_outcome = C.payoff_L1[task_number]
+            player_2.DG_outcome = C.payoff_L2[task_number]
         else:
-                player_1.payoff_one = C.payoff_1R1
-                player_2.payoff_one = C.payoff_1R2
-
-        if player_1.two:
-                player_1.payoff_two = C.payoff_2L1
-                player_2.payoff_two = C.payoff_2L2
-        else:
-                player_1.payoff_two = C.payoff_2R1
-                player_2.payoff_two = C.payoff_2R2
-
-        if player_1.three:
-                player_1.payoff_three = C.payoff_3L1
-                player_2.payoff_three = C.payoff_3L2
-        else:
-                player_1.payoff_three = C.payoff_3R1
-                player_2.payoff_three = C.payoff_3R2
-
-        if player_1.four:
-                player_1.payoff_four = C.payoff_4L1
-                player_2.payoff_four = C.payoff_4L2
-        else:
-                player_1.payoff_four = C.payoff_4R1
-                player_2.payoff_four = C.payoff_4R2
-
-        if player_1.five:
-                player_1.payoff_five = C.payoff_5L1
-                player_2.payoff_five = C.payoff_5L2
-        else:
-                player_1.payoff_five = C.payoff_5R1
-                player_2.payoff_five = C.payoff_5R2
-
-
+            player_1.DG_outcome = C.payoff_R1[task_number]
+            player_2.DG_outcome = C.payoff_R2[task_number]
+class DG_Results(Page):
+    pass
 
 page_sequence = [Main_Instructions, DG_Instructions, DG_Comprehension_Test, DG_GamePage, ResultsWaitPage]
 
