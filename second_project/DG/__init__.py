@@ -1,11 +1,9 @@
 import random
 from otree.api import *
 
-
 doc = """
 DG
 """
-
 
 class C(BaseConstants):
     NAME_IN_URL = 'DG'
@@ -19,14 +17,11 @@ class C(BaseConstants):
     payoff_R2 = [50, 30, 30, 25, 35]
     # end of arrays definitions
 
-
 class Subsession(BaseSubsession):
     pass
 
-
 class Group(BaseGroup):
     task_number = models.IntegerField()
-
 
 class Player(BasePlayer):
     num_failed_attempts = models.IntegerField(initial=0)
@@ -52,8 +47,6 @@ class Player(BasePlayer):
     )
     # I changed to the Booleanfield as integerfield leads one choice 'left' can not be chosen
 
-
-
     # choice is coded as:
     # -1 == left (first)
     # 1 == right (second)
@@ -74,10 +67,6 @@ def creating_session(subsession: Subsession):
                 k=k+1
                 for p in g.get_players():
                     p.in_round(i+1).task_number = g.in_round(i+1).task_number
-#            round_numbers = list(range(1, C.NUM_ROUNDS + 1))
-#            random.shuffle(round_numbers)
-#            task_rounds = dict(zip(C.TASKS, round_numbers))
-#            p.participant.task_rounds = task_rounds
 
 class DG_GamePage(Page):
     form_model = 'player'
@@ -95,23 +84,23 @@ class DG_GamePage(Page):
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
+        # if it's the last round
         if player.round_number == C.NUM_ROUNDS:
             random_round = random.randint(1, C.NUM_ROUNDS)
             participant.selected_round = random_round
             player_in_selected_round = player.in_round(random_round)
             player.payoff = player_in_selected_round.DG_outcome
 #   randomly choose one round as payoff
+
 class Main_Instructions(Page):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1
 
-
 class DG_Instructions(Page):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1
-
 
 class DG_Comprehension_Test(Page):
     form_model = 'player'
@@ -119,10 +108,7 @@ class DG_Comprehension_Test(Page):
 
     @staticmethod
     def error_message(player: Player, values):
-
         solutions = dict(quiz1=40, quiz2=50, quiz3=40, quiz4=20, quiz5=40, quiz6=20, quiz7=40, quiz8=50, quiz9=False, quiz10=True)
-
-
         errors = {name: 'Wrong' for name in solutions if values[name] != solutions[name]}
         if errors:
             player.num_failed_attempts += 1
@@ -138,7 +124,6 @@ class Failed(Page):
     @staticmethod
     def is_displayed(player: Player):
         return player.failed_too_many
-
 
 class ResultsWaitPage(WaitPage):
     @staticmethod
@@ -157,6 +142,7 @@ class DG_Results(Page):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == C.NUM_ROUNDS
+
 
 
 page_sequence = [Main_Instructions, DG_Instructions, DG_Comprehension_Test, DG_GamePage, ResultsWaitPage, DG_Results]

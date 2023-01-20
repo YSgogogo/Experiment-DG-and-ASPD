@@ -4,18 +4,16 @@ from os import environ
 SESSION_CONFIGS = [
     dict(
         name='game1',
-        display_name="SPD",
-        app_sequence=['ASPD'],
-        num_demo_participants=2,
-    ),
-    dict(
-        name='game2',
         display_name="DG",
         app_sequence=['DG'],
         num_demo_participants=2,
     ),
-
-
+    dict(
+        name='game2',
+        display_name="SPD",
+        app_sequence=['ASPD'],
+        num_demo_participants=2,
+    ),
 ]
 
 
@@ -32,6 +30,7 @@ LANGUAGE_CODE = 'en'
 
 REAL_WORLD_CURRENCY_CODE = 'GBP'
 USE_POINTS = True
+POINTS_CUSTOM_NAME = 'tokens'
 
 ROOMS = [
     dict(
