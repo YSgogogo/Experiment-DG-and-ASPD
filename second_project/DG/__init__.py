@@ -26,16 +26,16 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     num_failed_attempts = models.IntegerField(initial=0)
     failed_too_many = models.BooleanField(initial=False)
-    quiz1 = models.IntegerField(label='If you are the Dictator and select Left, and your randomly paired participant is the receiver. Then you get:')
-    quiz2 = models.IntegerField(label='If you are the Dictator and select Right, and your randomly paired participant is the receiver. Then you get:')
-    quiz3 = models.IntegerField(label='If you are the Dictator and select Left, and your randomly paired participant is the receiver. Then he/she gets:')
-    quiz4 = models.IntegerField(label='If you are the Dictator and select Right, and your randomly paired participant is the receiver. Then he/she gets:')
-    quiz5 = models.IntegerField(label='If you are the receiver, and your randomly paired participant is the dictator and select Left. Then you get:')
-    quiz6 = models.IntegerField(label='If you are the receiver, and your randomly paired participant is the dictator and select Right. Then you get:')
-    quiz7 = models.IntegerField(label='If you are the receiver, and your randomly paired participant is the dictator and select Left. Then he/she gets:')
-    quiz8 = models.IntegerField(label='If you are the receiver, and your randomly paired participant is the dictator and select Right. Then he/she gets:')
-    quiz9 = models.BooleanField(label="Can the receiver decide the the final Points?")
-    quiz10 = models.BooleanField(label="Can the dictator decide the the final Points?")
+    quiz1 = models.IntegerField(label='If you are the First Mover, and you chose A. Then you get:')
+    quiz2 = models.IntegerField(label='If you are the First Mover, and you chose B. Then you get:')
+    quiz3 = models.IntegerField(label='If you are the First Mover, and you chose A. Then the Second Mover gets:')
+    quiz4 = models.IntegerField(label='If you are the First Mover, and you chose B. Then the Second Mover gets:')
+    quiz5 = models.IntegerField(label='If you are the Second Mover, and the First Mover chose A. Then you get:')
+    quiz6 = models.IntegerField(label='If you are the Second Mover, and the First Mover chose B. Then you get:')
+    quiz7 = models.IntegerField(label='If you are the Second Mover, and the First Mover chose A. Then the First Mover gets:')
+    quiz8 = models.IntegerField(label='If you are the Second Mover, and the First Mover chose B. Then the First Mover gets:')
+    quiz9 = models.BooleanField(label="Can the Second Mover decide the the final Points?")
+    quiz10 = models.BooleanField(label="Can the First Mover decide the the final Points?")
 
     # choice of the dictator game
     #choice = models.IntegerField(initial = 0)
@@ -55,6 +55,8 @@ class Player(BasePlayer):
     task_number = models.IntegerField()
     DG_outcome = models.IntegerField()
     #creat a var to store the outcomes
+    roles = models.StringField()
+    #creat a var to store the roles
 
 def creating_session(subsession: Subsession):
     if subsession.round_number == 1:
@@ -86,11 +88,19 @@ class DG_GamePage(Page):
         participant = player.participant
         # if it's the last round
         if player.round_number == C.NUM_ROUNDS:
-            random_round = random.randint(1, C.NUM_ROUNDS)
+            random_round = random.randint(1, C.NUM_ROUNDS-1)
+        # I set the round num to -1, because this will generate at the start of the last round.
             participant.selected_round = random_round
             player_in_selected_round = player.in_round(random_round)
             player.payoff = player_in_selected_round.DG_outcome
 #   randomly choose one round as payoff
+
+        if player.id_in_group == 1:
+            player.roles = 'first mover'
+        else:
+            player.roles = 'second mover'
+#   player's roles, if their id is one, they will be the first mover who can directly decide the outcome.
+#   if their id is 2, they will be the second mover who can only accept the offer.
 
 class Main_Instructions(Page):
     @staticmethod
@@ -108,7 +118,7 @@ class DG_Comprehension_Test(Page):
 
     @staticmethod
     def error_message(player: Player, values):
-        solutions = dict(quiz1=40, quiz2=50, quiz3=40, quiz4=20, quiz5=40, quiz6=20, quiz7=40, quiz8=50, quiz9=False, quiz10=True)
+        solutions = dict(quiz1=40, quiz2=50, quiz3=45, quiz4=20, quiz5=45, quiz6=20, quiz7=40, quiz8=50, quiz9=False, quiz10=True)
         errors = {name: 'Wrong' for name in solutions if values[name] != solutions[name]}
         if errors:
             player.num_failed_attempts += 1

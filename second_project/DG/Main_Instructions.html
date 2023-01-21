@@ -1,8 +1,20 @@
-{{ block title }}
-<p style="font-size:35px;text-align:center"> Instructions </p>
-{{ endblock }}
+{{ extends 'global/Page.html' }}
+   {{ block title }}{{ endblock }}
+
 
 {{ block content }}
+        <style>
+            .ribbon {
+               position: relative;
+               top: -16px;
+               right: -706px;
+            }
+        </style>
+
+         <div style="text-align: justify;" class="card bg-light mb-3  ">
+            <div class="card-body">
+                <h2 style="text-align: center">Instructions</h2>    <!-- To change the size of the title, use other headers like h1 -bigger, h3 -smaller  -->
+                <br>
 <h2> Welcome to ESSEXLab </h2>
 <ul>
   <li> Welcome to ESSEXLab and thank you for participating in today’s experiment. </li>
@@ -18,23 +30,34 @@
     <li> The amount of money that you ultimately earn in the experiment depends on your decisions, the decisions of others and random chance. </li>
     <li> You have each earned a £5 payment for showing up on time. </li>
     <li> Please DO NOT socialize or talk during the experiment. </li>
-    <li> The experiment consists of two blocks. Each block will be precluded by the set of instructions as well as the comprehension check. </li>
+    <li> The experiment consists of <b>two blocks</b>. Each block will be precluded by the set of instructions as well as the comprehension check. </li>
 </ul>
 
 <h2> How final earnings are computed </h2>
-   <li> You will receive the GBP5 for showing up on time (as the show up payment).</li>
-   <li> In the end of the experiment 1 decision making problem from each block would be selected for payment.</li>
-   <li> All decision making problems are equally likely to be selected.</li>
-   <li>You will be paid privately and in cash at the end of the experiment. </li>
+<ul>
+   <li> You will receive the £5 for showing up on time (as the show up payment). </li>
+   <li> In the end of the experiment 1 decision making problem from each block would be selected for payment. </li>
+   <li> All decision making problems are equally likely to be selected. </li>
+   <li> You will be paid privately and in cash at the end of the experiment. </li>
+</ul>
 
+<h2> Further information </h2>
+<ul>
+    <li> At the bottom of each page, you can see the ``Next'' button after a period of time. </li>
+    <li> Only when the ``Next'' button appears, you are able to move to the next page. </li>
+    <li> You can take as much time as you need to read and consider the content. There is no time limit on how long you can stay on the page </li>
+</ul>
 
+            </div>
+        </div>
+        <br>
     <script>
         window.onload = function(){
             setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
         }
     </script>
 
-    <button class ="o-tree-btn-next btn btn-primary" id="Next" style="visibility:hidden;"> Next </button>
+    <button class ="o-tree-btn-next btn btn-primary button1" id="Next" style="visibility:hidden; float: right;"> Next </button>
 
 {{ endblock }}
 

@@ -1,35 +1,49 @@
-{{ block title }}
-    BLOCK 2
-{{ endblock }}
+{{ extends 'global/Page.html' }}
+   {{ block title }}{{ endblock }}
+
+
 {{ block content }}
-<p>
-    Below you find your role, related points, and choices:
-</p>
-        <table>
+        <style>
+            .ribbon {
+               position: relative;
+               top: -16px;
+               right: -706px;
+            }
+        </style>
+
+         <div style="text-align: justify;" class="card bg-light mb-3  ">
+            <div class="card-body">
+                <h2 style="text-align: center">Please take a decision</h2>    <!-- To change the size of the title, use other headers like h1 -bigger, h3 -smaller  -->
+                <br>
+
+                <p>Below you find your role, related points, and choices of one decision situation:</p>
+        <table class="mx-auto">
         <tr>
-            <td class="hide_top & hide_left", colspan="2", rowspan="3"> </td>
-            <td class="hide_top & hide_left & hide_right", colspan="4"> Your choice (Column) </td>
+            <td class="hide_top & hide_left", colspan="3", rowspan="3"> </td>
+            <td class="hide_top & hide_left & hide_right", colspan="4"> Your (Second Mover) choice </td>
         </tr>
         <tr>
             <td colspan="2"><input type="radio" name="choice_2nd_Top" value="{{ True }}" class="btn btn-primary btn-large"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
             <td colspan="2"><input type="radio" name="choice_2nd_Top" value="{{ False }}" class="btn btn-primary btn-large"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
         </tr>
         <tr>
-            <td> Column payment </td>
+            <td> First Mover payment </td>
             <td>Your payment</td>
-            <td> Column payment </td>
+            <td> First Mover payment </td>
             <td>Your payment</td>
         </tr>
         <tr>
-            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> Row's choice </td>
-            <td style="background-color:MediumSeaGreen;"> A </td>
+            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> First Mover choice </td>
+            <td style="background-color:MediumSeaGreen;"></td>
+            <td class=" hide_left" style="background-color:MediumSeaGreen;"> A </td>
             <td style="background-color:MediumSeaGreen;"> {{R1}} tokens </td>
             <td style="background-color:MediumSeaGreen;"> {{R2}} tokens </td>
             <td style="background-color:MediumSeaGreen;"> {{S1}} tokens </td>
             <td style="background-color:MediumSeaGreen;"> {{T2}} tokens </td>
         </tr>
         <tr>
-            <td>  B </td>
+            <td></td>
+            <td class=" hide_left"> B </td>
             <td> {{T1}} tokens </td>
             <td> {{S2}} tokens </td>
             <td> {{D1}} tokens </td>
@@ -37,31 +51,33 @@
         </tr>
     </table>
 
-    <table>
+    <table class="mx-auto">
         <tr>
-            <td class="hide_top & hide_left", colspan="2", rowspan="3"> </td>
-            <td class="hide_top & hide_left & hide_right", colspan="4"> Your choice (Column) </td>
+            <td class="hide_top & hide_left", colspan="3", rowspan="3"> </td>
+            <td class="hide_top & hide_left & hide_right", colspan="4"> Your (Second Mover) choice </td>
         </tr>
         <tr>
             <td colspan="2"><input type="radio" name="choice_2nd_Down" value="{{ True }}" class="btn btn-primary btn-large"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
             <td colspan="2"><input type="radio" name="choice_2nd_Down" value="{{ False }}" class="btn btn-primary btn-large"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
         </tr>
         <tr>
-            <td> Column payment </td>
+            <td> First Mover payment </td>
             <td>Your payment</td>
-            <td> Column payment </td>
+            <td> First Mover payment </td>
             <td>Your payment</td>
         </tr>
         <tr>
-            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> Row's choice </td>
-            <td> A </td>
+            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> First Mover choice </td>
+            <td></td>
+            <td class=" hide_left"> A </td>
             <td> {{R1}} tokens </td>
             <td> {{R2}} tokens </td>
             <td> {{S1}} tokens </td>
             <td> {{T2}} tokens </td>
         </tr>
         <tr>
-            <td style="background-color:MediumSeaGreen;"> B </td>
+            <td style="background-color:MediumSeaGreen;"></td>
+            <td class=" hide_left" style="background-color:MediumSeaGreen;"> B </td>
             <td style="background-color:MediumSeaGreen;"> {{T1}} tokens </td>
             <td style="background-color:MediumSeaGreen;"> {{S2}} tokens </td>
             <td style="background-color:MediumSeaGreen;"> {{D1}} tokens </td>
@@ -69,13 +85,16 @@
         </tr>
     </table>
 
+            </div>
+        </div>
+        <br>
     <script>
         window.onload = function(){
             setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
         }
     </script>
 
-    <button class ="o-tree-btn-next btn btn-primary" id="Next" style="visibility:hidden;"> Next </button>
+    <button class ="o-tree-btn-next btn btn-primary button1" id="Next" style="visibility:hidden; float: right;"> Next </button>
 
 {{ endblock }}
 

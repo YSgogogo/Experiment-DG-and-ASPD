@@ -1,11 +1,13 @@
 {{ block title }}
     {{ if subsession.round_number == C.NUM_ROUNDS }}
-    <p>
-        Round {{ participant.selected_round }} was randomly selected for payment.
-        Your final payoff in this round is therefore {{ player.payoff }}.
 
+<h2> Your additional payment </h2>
+<ul>
+  <li> Round {{ participant.selected_round }} was randomly selected for payment. </li>
+  <li> Your assigned role is the {{player.roles}}. </li>
+  <li>  Your final payoff in this round is therefore {{ player.payoff }}. </li>
+</ul>
 
-    </p>
     {{ endif }}
 
 {{ endblock }}

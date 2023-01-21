@@ -1,15 +1,27 @@
-{{ block title }}
-    <div style="float: center; text-align: center;">
-    Please take a decision
-</div>
-{{ endblock }}
+{{ extends 'global/Page.html' }}
+   {{ block title }}{{ endblock }}
+
+
 {{ block content }}
-    Below you find your role, related points, and choices of one decision situation:
-    <table class="center">
+        <style>
+            .ribbon {
+               position: relative;
+               top: -16px;
+               right: -706px;
+            }
+        </style>
+
+         <div style="text-align: justify;" class="card bg-light mb-3  ">
+            <div class="card-body">
+                <h2 style="text-align: center">Please take a decision</h2>    <!-- To change the size of the title, use other headers like h1 -bigger, h3 -smaller  -->
+                <br>
+
+                <p>Below you find your role, related points, and choices of one decision situation:</p>
+    <table class="mx-auto">
         <tr>
             <td colspan="3"> </td>
-            <td> Your payment </td>
-            <td> Other payment </td>
+            <td> Your (First Mover) payment </td>
+            <td> Second Mover payment </td>
         </tr>
         <tr>
             <td rowspan="2"> Your choice </td>
@@ -27,14 +39,16 @@
     </table>
 
 
+            </div>
+        </div>
+        <br>
     <script>
         window.onload = function(){
             setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
         }
     </script>
 
-    <button class ="o-tree-btn-next btn btn-primary" id="Next" style="visibility:hidden;"> Next </button>
-
+    <button class ="o-tree-btn-next btn btn-primary button1" id="Next" style="visibility:hidden; float: right;"> Next </button>
 
 {{ endblock }}
 

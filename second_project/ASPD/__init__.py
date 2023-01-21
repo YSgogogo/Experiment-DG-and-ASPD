@@ -27,14 +27,14 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     num_failed_attempts = models.IntegerField(initial=0)
     failed_too_many = models.BooleanField(initial=False)
-    quiz1 = models.IntegerField(label='If the First Mover chooses Top, then the Seconder Mover observed the choice and decide Left. Then the First Mover gets:')
-    quiz2 = models.IntegerField(label='If the First Mover chooses Top, then the Seconder Mover observed the choice and decide Left. Then the Second Mover gets:')
-    quiz3 = models.IntegerField(label='If the First Mover chooses Top, then the Seconder Mover observed the choice and decide Right. Then the First Mover gets:')
-    quiz4 = models.IntegerField(label='If the First Mover chooses Top, then the Seconder Mover observed the choice and decide Right. Then the Second Mover gets:')
-    quiz5 = models.IntegerField(label='If the First Mover chooses Down, then the Seconder Mover observed the choice and decide Left. Then the First Mover gets:')
-    quiz6 = models.IntegerField(label='If the First Mover chooses Down, then the Seconder Mover observed the choice and decide Left. Then the Second Mover gets:')
-    quiz7 = models.IntegerField(label='If the First Mover chooses Down, then the Seconder Mover observed the choice and decide Right. Then the First Mover gets:')
-    quiz8 = models.IntegerField(label='If the First Mover chooses Down, then the Seconder Mover observed the choice and decide Right. Then the Second Mover gets:')
+    quiz1 = models.IntegerField(label='If the First Mover chose A, then the Seconder Mover observed the choice and decides A. Then the First Mover gets:')
+    quiz2 = models.IntegerField(label='If the First Mover chose A, then the Seconder Mover observed the choice and decides A. Then the Second Mover gets:')
+    quiz3 = models.IntegerField(label='If the First Mover chose A, then the Seconder Mover observed the choice and decides B. Then the First Mover gets:')
+    quiz4 = models.IntegerField(label='If the First Mover chose A, then the Seconder Mover observed the choice and decides B. Then the Second Mover gets:')
+    quiz5 = models.IntegerField(label='If the First Mover chose B, then the Seconder Mover observed the choice and decides A. Then the First Mover gets:')
+    quiz6 = models.IntegerField(label='If the First Mover chose B, then the Seconder Mover observed the choice and decides A. Then the Second Mover gets:')
+    quiz7 = models.IntegerField(label='If the First Mover chose B, then the Seconder Mover observed the choice and decides B. Then the First Mover gets:')
+    quiz8 = models.IntegerField(label='If the First Mover chose B, then the Seconder Mover observed the choice and decides B. Then the Second Mover gets:')
     quiz9 = models.BooleanField(label="Can the First Mover observe the Second Mover's choice before making decisions?")
     quiz10 = models.BooleanField(label="Can the Second Mover observe the First Mover's choice before making decisions?")
 
@@ -59,6 +59,9 @@ class Player(BasePlayer):
 
     task_number = models.IntegerField()
     ASPD_outcome = models.IntegerField()
+    roles = models.StringField()
+    #creat a var to store the roles
+
 def creating_session(subsession: Subsession):
     if subsession.round_number == 1:
         for g in subsession.get_groups():
@@ -112,11 +115,19 @@ class ASPD_GamePage_2nd(Page):
         participant = player.participant
         # if it's the last round
         if player.round_number == C.NUM_ROUNDS:
-            random_round = random.randint(1, C.NUM_ROUNDS)
+            random_round = random.randint(1, C.NUM_ROUNDS-1)
+        # I set the round num to -1, because this will generate at the start of the last round.
             participant.selected_round = random_round
             player_in_selected_round = player.in_round(random_round)
             player.payoff = player_in_selected_round.ASPD_outcome
 #   randomly choose one round as payoff
+
+        if player.id_in_group == 1:
+            player.roles = 'first mover'
+        else:
+            player.roles = 'second mover'
+#   player's roles, if their id is one, they will be the first mover who can directly decide the outcome.
+#   if their id is 2, they will be the second mover who can only accept the offer.
 
 class ASPD_Instructions(Page):
     @staticmethod
@@ -129,7 +140,7 @@ class ASPD_Comprehension_Test(Page):
 
     @staticmethod
     def error_message(player: Player, values):
-        solutions = dict(quiz1=40, quiz2=40, quiz3=20, quiz4=50, quiz5=60, quiz6=20, quiz7=25, quiz8=25, quiz9=False, quiz10=True)
+        solutions = dict(quiz1=35, quiz2=40, quiz3=20, quiz4=50, quiz5=60, quiz6=20, quiz7=30, quiz8=25, quiz9=False, quiz10=True)
         errors = {name: 'Wrong' for name in solutions if values[name] != solutions[name]}
         if errors:
             player.num_failed_attempts += 1

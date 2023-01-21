@@ -1,43 +1,61 @@
-{{ block title }}
-<p style="font-size:35px;text-align:center">Comprehensive test </p>
-{{ endblock }}
+{{ extends 'global/Page.html' }}
+   {{ block title }}{{ endblock }}
 
 
 {{ block content }}
+        <style>
+            .ribbon {
+               position: relative;
+               top: -16px;
+               right: -706px;
+            }
+        </style>
+
+         <div style="text-align: justify;" class="card bg-light mb-3  ">
+            <div class="card-body">
+                <h2 style="text-align: center">Comprehension Test</h2>    <!-- To change the size of the title, use other headers like h1 -bigger, h3 -smaller  -->
+                <br>
+
 <ul>
-  <li> Before proceeding with the formal session, you need to answer the following questions correctly. </li>
-  <li> The following table contains roles, choices, and tokens. </li>
+    <li> Before proceeding with the formal session, you need to answer the following questions correctly. </li>
+    <li> The following table contains roles, choices, and tokens. </li>
+    <li> You only need to enter the number (e.g. 20). Do not need to enter ``tokens''. </li>
 </ul>
 
-    <table>
+    <table class="mx-auto">
         <tr>
             <td colspan="3"> </td>
-            <td> Row payment </td>
-            <td> Column payment </td>
+            <td> First Mover payment </td>
+            <td> Second Mover payment </td>
         </tr>
         <tr>
-            <td rowspan="2"> Row </td>
+            <td rowspan="2"> First Mover choice </td>
             <td><input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"></td>
             <td class="hide_left"> A </td>
             <td> 40 tokens </td>
-            <td> 40 tokens </td>
+            <td> 45 tokens </td>
         </tr>
         <tr>
             <td><input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"></td>
             <td class="hide_left"> B </td>
-            <td> 20 tokens </td>
             <td> 50 tokens </td>
+            <td> 20 tokens </td>
         </tr>
     </table>
+
     {{ formfields }}
 
+
+            </div>
+        </div>
+        <br>
     <script>
         window.onload = function(){
             setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
         }
     </script>
 
-    <button class ="o-tree-btn-next btn btn-primary" id="Next" style="visibility:hidden;"> Next </button>
+    <button class ="o-tree-btn-next btn btn-primary button1" id="Next" style="visibility:hidden; float: right;"> Next </button>
 
 {{ endblock }}
 
