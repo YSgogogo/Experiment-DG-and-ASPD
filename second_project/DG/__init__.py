@@ -83,16 +83,16 @@ class DG_GamePage(Page):
             R1 = C.payoff_R1[task_number],
             R2 = C.payoff_R2[task_number]
             )
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        participant = player.participant
+#    @staticmethod
+#    def before_next_page(player: Player, timeout_happened):
+#        participant = player.participant
         # if it's the last round
-        if player.round_number == C.NUM_ROUNDS:
-            random_round = random.randint(1, C.NUM_ROUNDS-1)
+#        if player.round_number == C.NUM_ROUNDS:
+#            random_round = random.randint(1, C.NUM_ROUNDS-1)
         # I set the round num to -1, because this will generate at the start of the last round.
-            participant.selected_round = random_round
-            player_in_selected_round = player.in_round(random_round)
-            player.payoff = player_in_selected_round.DG_outcome
+#            participant.selected_round = random_round
+#            player_in_selected_round = player.in_round(random_round)
+#            player.payoff = player_in_selected_round.DG_outcome
 #   randomly choose one round as payoff
 
         if player.id_in_group == 1:
@@ -136,18 +136,24 @@ class Failed(Page):
         return player.failed_too_many
 
 class ResultsWaitPage(WaitPage):
-    @staticmethod
-    def after_all_players_arrive(group: Group):
-        task_number = group.task_number
-        player_lists = group.get_players()
-        player_1 = player_lists[0]
-        player_2 = player_lists[1]
-        if player_1.choice:
-            player_1.DG_outcome = C.payoff_L1[task_number]
-            player_2.DG_outcome = C.payoff_L2[task_number]
-        else:
-            player_1.DG_outcome = C.payoff_R1[task_number]
-            player_2.DG_outcome = C.payoff_R2[task_number]
+    def is_displayed(player:Player):
+        return player.round_number==C.NUM_ROUNDS
+
+
+    # show only in the final round
+    # compute the payment for a random round selected for payment
+#    @staticmethod
+#    def after_all_players_arrive(group: Group):
+#        task_number = group.task_number
+#        player_lists = group.get_players()
+#        player_1 = player_lists[0]
+#        player_2 = player_lists[1]
+#        if player_1.choice:
+#            player_1.DG_outcome = C.payoff_L1[task_number]
+#            player_2.DG_outcome = C.payoff_L2[task_number]
+#        else:
+#            player_1.DG_outcome = C.payoff_R1[task_number]
+#            player_2.DG_outcome = C.payoff_R2[task_number]
 class DG_Results(Page):
     @staticmethod
     def is_displayed(player: Player):
