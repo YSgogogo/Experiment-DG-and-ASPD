@@ -52,8 +52,8 @@
             <td class="hide_top & hide_left & hide_right", colspan="4"> Second Mover choice  </td>
         </tr>
         <tr>
-            <td colspan="2"> <input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
-            <td colspan="2"> <input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
+            <td colspan="2"> <input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
+            <td colspan="2"> <input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
         </tr>
         <tr>
             <td>First Mover payment</td>
@@ -63,7 +63,7 @@
         </tr>
         <tr>
             <td class="hide_top & hide_left & hide_bottom", rowspan="2"> First Mover choice </td>
-            <td><input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"></td>
+            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
             <td class="hide_left"> A </td>
             <td> 35 tokens </td>
             <td> 40 tokens </td>
@@ -71,7 +71,7 @@
             <td> 50 tokens </td>
         </tr>
         <tr>
-            <td><input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"></td>
+            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
             <td class="hide_left"> B </td>
             <td> 60 tokens </td>
             <td> 20 tokens </td>
@@ -123,7 +123,7 @@
         </tr>
         <tr>
             <td class="hide_top & hide_left & hide_bottom", rowspan="2"> Your (First Mover) choice </td>
-            <td><input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"></td>
+            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
             <td class="hide_left"> A </td>
             <td> 35 tokens </td>
             <td> 40 tokens </td>
@@ -131,7 +131,7 @@
             <td> 50 tokens </td>
         </tr>
         <tr>
-            <td><input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"></td>
+            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
             <td class="hide_left"> B </td>
             <td> 60 tokens </td>
             <td> 20 tokens </td>
@@ -152,82 +152,45 @@
 
         <table class="mx-auto">
         <tr>
-            <td class="hide_top & hide_left", colspan="3", rowspan="3"> </td>
-            <td class="hide_top & hide_left & hide_right", colspan="4"> Your (Second Mover) choice </td>
-        </tr>
-        <tr>
-            <td colspan="2"><input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
-            <td colspan="2"><input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
-        </tr>
-        <tr>
+            <td class="hide_top & hide_left", colspan="4"> </td>
+            <td> Your payment </td>
             <td> First Mover payment </td>
-            <td>Your payment</td>
-            <td> First Mover payment </td>
-            <td>Your payment</td>
         </tr>
         <tr>
-            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> First Mover choice </td>
-            <td style="background-color:MediumSeaGreen;"></td>
-            <td class=" hide_left" style="background-color:MediumSeaGreen;"> A </td>
-            <td style="background-color:MediumSeaGreen;"> 35 tokens </td>
-            <td style="background-color:MediumSeaGreen;"> 40 tokens </td>
-            <td style="background-color:MediumSeaGreen;"> 20 tokens </td>
-            <td style="background-color:MediumSeaGreen;"> 50 tokens </td>
+            <td class="hide_top & hide_left & hide_bottom", rowspan="4"> First Mover choice </td>
+            <td rowspan="2", style="background-color:LightGoldenrodYellow;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
+            <td rowspan="2"> Your choice </td>
+            <td> <input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
+            <td> 35 tokens </td>
+            <td> 40 tokens </td>
         </tr>
         <tr>
-            <td></td>
-            <td class=" hide_left"> B </td>
+            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
+            <td> 20 tokens </td>
+            <td> 50 tokens </td>
+        </tr>
+        <tr>
+            <td rowspan="2", style="background-color:LightGray;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
+            <td rowspan="2"> Your choice </td>
+            <td> <input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
             <td> 60 tokens </td>
             <td> 20 tokens </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
             <td> 30 tokens </td>
             <td> 25 tokens </td>
         </tr>
     </table>
 
-
-    <table class="mx-auto">
-        <tr>
-            <td class="hide_top & hide_left", colspan="3", rowspan="3"> </td>
-            <td class="hide_top & hide_left & hide_right", colspan="4"> Your (Second Mover) choice </td>
-        </tr>
-        <tr>
-            <td colspan="2"><input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
-            <td colspan="2"><input type="radio" name="myButton" value="theValue" onclick="this.checked=false; alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
-        </tr>
-        <tr>
-            <td> First Mover payment </td>
-            <td>Your payment</td>
-            <td> First Mover payment </td>
-            <td>Your payment</td>
-        </tr>
-        <tr>
-            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> First Mover choice </td>
-            <td></td>
-            <td class=" hide_left"> A </td>
-            <td> 35 tokens </td>
-            <td> 40 tokens </td>
-            <td> 20 tokens </td>
-            <td> 50 tokens </td>
-        </tr>
-        <tr>
-            <td style="background-color:MediumSeaGreen;"></td>
-            <td class=" hide_left" style="background-color:MediumSeaGreen;"> B </td>
-            <td style="background-color:MediumSeaGreen;"> 60 tokens </td>
-            <td style="background-color:MediumSeaGreen;"> 20 tokens </td>
-            <td style="background-color:MediumSeaGreen;"> 30 tokens </td>
-            <td style="background-color:MediumSeaGreen;"> 25 tokens </td>
-        </tr>
-    </table>
-
-
 <ul>
   <li> That is, you need to take two decisions:
       <ul>
-          <li> Choose A or B if First Mover chose A (the above table) </li>
-          <li> Choose A or B if First Mover chose B (the below table)</li>
+          <li> Choose A or B if First Mover chose A (the yellow row) </li>
+          <li> Choose A or B if First Mover chose B (the gray row)</li>
       </ul>
   </li>
-  <li> Note that both decisions are important to determine the outcome as until the end of the experiment you do not know what the ROW player would choose. </li>
+  <li> Note that both decisions are important to determine the outcome as until the end of the experiment you do not know what the First Mover would choose. </li>
 </ul>
 
 <h2> Payments: </h2>

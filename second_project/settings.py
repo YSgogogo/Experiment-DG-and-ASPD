@@ -82,4 +82,5 @@ PARTICIPANT_FIELDS = [
     'task_rounds',
     'time_pressure',
     'wait_page_arrival',
+    'selected_round',
 ]

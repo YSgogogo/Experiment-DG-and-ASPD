@@ -1,5 +1,6 @@
 from otree.api import *
 import random
+from collections import defaultdict
 
 doc = """
 ASPD
@@ -58,7 +59,6 @@ class Player(BasePlayer):
     )
 
     task_number = models.IntegerField()
-    ASPD_outcome = models.IntegerField()
     roles = models.StringField()
     #creat a var to store the roles
 
@@ -113,21 +113,42 @@ class ASPD_GamePage_2nd(Page):
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
-        # if it's the last round
-        if player.round_number == C.NUM_ROUNDS:
-            random_round = random.randint(1, C.NUM_ROUNDS-1)
-        # I set the round num to -1, because this will generate at the start of the last round.
-            participant.selected_round = random_round
-            player_in_selected_round = player.in_round(random_round)
-            player.payoff = player_in_selected_round.ASPD_outcome
-#   randomly choose one round as payoff
-
+        random_round = random.randint(1, C.NUM_ROUNDS)
         if player.id_in_group == 1:
             player.roles = 'first mover'
         else:
             player.roles = 'second mover'
-#   player's roles, if their id is one, they will be the first mover who can directly decide the outcome.
-#   if their id is 2, they will be the second mover who can only accept the offer.
+
+        if player.round_number == C.NUM_ROUNDS:
+            # Group players by their group
+            group_players = defaultdict(list)
+            for p in player.subsession.get_players():
+                group_players[p.group_id].append(p)
+            # Generate a random number for each group
+            for group_id, players in group_players.items():
+                # Assign the generated number to all players in the group
+                for p in players:
+                    p.participant.selected_round = random_round
+                    player_in_selected_round = player.in_round(random_round)
+                    selected_payment = player_in_selected_round.task_number
+            player_lists = player.group.get_players()
+            player_1 = player_lists[0]
+            player_2 = player_lists[1]
+            if player_1.choice_1st:
+                if player_2.choice_2nd_Top:
+                    player_1.payoff = C.payoff_R1[selected_payment]
+                    player_2.payoffe = C.payoff_R2[selected_payment]
+                else:
+                    player_1.payoff = C.payoff_S1[selected_payment]
+                    player_2.payoff = C.payoff_T2[selected_payment]
+            else:
+                if player_2.choice_2nd_Down:
+                    player_1.payoff = C.payoff_T1[selected_payment]
+                    player_2.payoff = C.payoff_S2[selected_payment]
+                else:
+                    player_1.payoff = C.payoff_D1[selected_payment]
+                    player_2.payoff = C.payoff_D2[selected_payment]
+
 
 class ASPD_Instructions(Page):
     @staticmethod
@@ -160,25 +181,8 @@ class Failed(Page):
 
 class ResultsWaitPage(WaitPage):
     @staticmethod
-    def after_all_players_arrive(group: Group):
-        task_number = group.task_number
-        player_lists = group.get_players()
-        player_1 = player_lists[0]
-        player_2 = player_lists[1]
-        if player_1.choice_1st:
-            if player_2.choice_2nd_Top:
-                player_1.ASPD_outcome = C.payoff_R1[task_number]
-                player_2.ASPD_outcome = C.payoff_R2[task_number]
-            else:
-                player_1.ASPD_outcome = C.payoff_S1[task_number]
-                player_2.ASPD_outcome = C.payoff_T2[task_number]
-        else:
-            if player_2.choice_2nd_Down:
-                player_1.ASPD_outcome = C.payoff_T1[task_number]
-                player_2.ASPD_outcome = C.payoff_S2[task_number]
-            else:
-                player_1.ASPD_outcome = C.payoff_D1[task_number]
-                player_2.ASPD_outcome = C.payoff_D2[task_number]
+    def is_displayed(player: Player):
+        return player.round_number == C.NUM_ROUNDS
 
 class ASPD_Results(Page):
     @staticmethod

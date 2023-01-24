@@ -1,5 +1,6 @@
 import random
 from otree.api import *
+from collections import defaultdict
 
 doc = """
 DG
@@ -53,7 +54,6 @@ class Player(BasePlayer):
 
     # getting the game numbers stored:
     task_number = models.IntegerField()
-    DG_outcome = models.IntegerField()
     #creat a var to store the outcomes
     roles = models.StringField()
     #creat a var to store the roles
@@ -83,24 +83,38 @@ class DG_GamePage(Page):
             R1 = C.payoff_R1[task_number],
             R2 = C.payoff_R2[task_number]
             )
-#    @staticmethod
-#    def before_next_page(player: Player, timeout_happened):
-#        participant = player.participant
-        # if it's the last round
-#        if player.round_number == C.NUM_ROUNDS:
-#            random_round = random.randint(1, C.NUM_ROUNDS-1)
-        # I set the round num to -1, because this will generate at the start of the last round.
-#            participant.selected_round = random_round
-#            player_in_selected_round = player.in_round(random_round)
-#            player.payoff = player_in_selected_round.DG_outcome
-#   randomly choose one round as payoff
 
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        participant = player.participant
+        random_round = random.randint(1, C.NUM_ROUNDS)
         if player.id_in_group == 1:
             player.roles = 'first mover'
         else:
             player.roles = 'second mover'
-#   player's roles, if their id is one, they will be the first mover who can directly decide the outcome.
-#   if their id is 2, they will be the second mover who can only accept the offer.
+
+        if player.round_number == C.NUM_ROUNDS:
+            # Group players by their group
+            group_players = defaultdict(list)
+            for p in player.subsession.get_players():
+                group_players[p.group_id].append(p)
+            # Generate a random number for each group
+            for group_id, players in group_players.items():
+                # Assign the generated number to all players in the group
+                for p in players:
+                    p.participant.selected_round = random_round
+                    player_in_selected_round = player.in_round(random_round)
+                    selected_payment = player_in_selected_round.task_number
+            player_lists = player.group.get_players()
+            player_1 = player_lists[0]
+            player_2 = player_lists[1]
+            if player_1.choice:
+                player_1.payoff = C.payoff_L1[selected_payment]
+                player_2.payoff = C.payoff_L2[selected_payment]
+            else:
+                player_1.payoff = C.payoff_R1[selected_payment]
+                player_2.payoff = C.payoff_R2[selected_payment]
+
 
 class Main_Instructions(Page):
     @staticmethod
@@ -142,18 +156,7 @@ class ResultsWaitPage(WaitPage):
 
     # show only in the final round
     # compute the payment for a random round selected for payment
-#    @staticmethod
-#    def after_all_players_arrive(group: Group):
-#        task_number = group.task_number
-#        player_lists = group.get_players()
-#        player_1 = player_lists[0]
-#        player_2 = player_lists[1]
-#        if player_1.choice:
-#            player_1.DG_outcome = C.payoff_L1[task_number]
-#            player_2.DG_outcome = C.payoff_L2[task_number]
-#        else:
-#            player_1.DG_outcome = C.payoff_R1[task_number]
-#            player_2.DG_outcome = C.payoff_R2[task_number]
+
 class DG_Results(Page):
     @staticmethod
     def is_displayed(player: Player):

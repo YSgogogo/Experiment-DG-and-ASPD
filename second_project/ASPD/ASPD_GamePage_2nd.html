@@ -16,72 +16,37 @@
                 <h2 style="text-align: center">Please take a decision</h2>    <!-- To change the size of the title, use other headers like h1 -bigger, h3 -smaller  -->
                 <br>
 
-                <p>Below you find your role, related points, and choices of one decision situation:</p>
+                <p>Below you find your role, related payment, and choices conditional on First Mover choice:</p>
         <table class="mx-auto">
         <tr>
-            <td class="hide_top & hide_left", colspan="3", rowspan="3"> </td>
-            <td class="hide_top & hide_left & hide_right", colspan="4"> Your (Second Mover) choice </td>
-        </tr>
-        <tr>
-            <td colspan="2"><input type="radio" name="choice_2nd_Top" value="{{ True }}" class="btn btn-primary btn-large"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
-            <td colspan="2"><input type="radio" name="choice_2nd_Top" value="{{ False }}" class="btn btn-primary btn-large"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
-        </tr>
-        <tr>
+            <td class="hide_top & hide_left", colspan="4"> </td>
+            <td> Your payment </td>
             <td> First Mover payment </td>
-            <td>Your payment</td>
-            <td> First Mover payment </td>
-            <td>Your payment</td>
         </tr>
         <tr>
-            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> First Mover choice </td>
-            <td style="background-color:MediumSeaGreen;"></td>
-            <td class=" hide_left" style="background-color:MediumSeaGreen;"> A </td>
-            <td style="background-color:MediumSeaGreen;"> {{R1}} tokens </td>
-            <td style="background-color:MediumSeaGreen;"> {{R2}} tokens </td>
-            <td style="background-color:MediumSeaGreen;"> {{S1}} tokens </td>
-            <td style="background-color:MediumSeaGreen;"> {{T2}} tokens </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td class=" hide_left"> B </td>
-            <td> {{T1}} tokens </td>
-            <td> {{S2}} tokens </td>
-            <td> {{D1}} tokens </td>
-            <td> {{D2}} tokens </td>
-        </tr>
-    </table>
-
-    <table class="mx-auto">
-        <tr>
-            <td class="hide_top & hide_left", colspan="3", rowspan="3"> </td>
-            <td class="hide_top & hide_left & hide_right", colspan="4"> Your (Second Mover) choice </td>
-        </tr>
-        <tr>
-            <td colspan="2"><input type="radio" name="choice_2nd_Down" value="{{ True }}" class="btn btn-primary btn-large"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
-            <td colspan="2"><input type="radio" name="choice_2nd_Down" value="{{ False }}" class="btn btn-primary btn-large"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
-        </tr>
-        <tr>
-            <td> First Mover payment </td>
-            <td>Your payment</td>
-            <td> First Mover payment </td>
-            <td>Your payment</td>
-        </tr>
-        <tr>
-            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> First Mover choice </td>
-            <td></td>
-            <td class=" hide_left"> A </td>
+            <td class="hide_top & hide_left & hide_bottom", rowspan="4"> First Mover choice </td>
+            <td rowspan="2", style="background-color:LightGoldenrodYellow;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
+            <td rowspan="2"> Your choice </td>
+            <td> <input type="radio" name="choice_2nd_Top" value="{{ True }}" class="btn btn-primary btn-large"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
             <td> {{R1}} tokens </td>
             <td> {{R2}} tokens </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="choice_2nd_Top" value="{{ False }}" class="btn btn-primary btn-large"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
             <td> {{S1}} tokens </td>
             <td> {{T2}} tokens </td>
         </tr>
         <tr>
-            <td style="background-color:MediumSeaGreen;"></td>
-            <td class=" hide_left" style="background-color:MediumSeaGreen;"> B </td>
-            <td style="background-color:MediumSeaGreen;"> {{T1}} tokens </td>
-            <td style="background-color:MediumSeaGreen;"> {{S2}} tokens </td>
-            <td style="background-color:MediumSeaGreen;"> {{D1}} tokens </td>
-            <td style="background-color:MediumSeaGreen;"> {{D2}} tokens </td>
+            <td rowspan="2", style="background-color:LightGray;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
+            <td rowspan="2"> Your choice </td>
+            <td> <input type="radio" name="choice_2nd_Down" value="{{ True }}" class="btn btn-primary btn-large"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
+            <td> {{T1}} tokens </td>
+            <td> {{S1}} tokens </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="choice_2nd_Down" value="{{ False }}" class="btn btn-primary btn-large"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
+            <td> {{D1}} tokens </td>
+            <td> {{D2}} tokens </td>
         </tr>
     </table>
 
