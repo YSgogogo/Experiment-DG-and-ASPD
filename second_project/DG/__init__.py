@@ -161,6 +161,8 @@ class ResultsWaitPage(WaitPage):
                 else:
                     player_1.payoff = C.payoff_R1[selected_payment]
                     player_2.payoff = C.payoff_R2[selected_payment]
+                player_1.participant.vars[__name__] = [str(player_1.payoff), 'First mover', str(selected_round)]
+                player_2.participant.vars[__name__] = [str(player_2.payoff), 'Second mover', str(selected_round)]
 
 
     # show only in the final round
@@ -173,5 +175,5 @@ class DG_Results(Page):
 
 
 
-page_sequence = [Main_Instructions, DG_Instructions, DG_Comprehension_Test, DG_GamePage, ResultsWaitPage, DG_Results]
+page_sequence = [Main_Instructions, DG_Instructions, DG_Comprehension_Test, DG_GamePage, ResultsWaitPage]
 

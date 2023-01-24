@@ -1,0 +1,20 @@
+
+{{ block title }}
+<h2> Congratulations </h2>
+<ul>
+  <li> You have finished three blocks in our experiment. </li>
+  <li> We are preparing for your payment. </li>
+  <li> Proceed to the ''Next'' step to view the final payment determined by the random round and role assignment in each block. </li>
+</ul>
+
+{{ endblock }}
+{{ block content }}
+
+    <script>
+        window.onload = function(){
+            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
+        }
+    </script>
+
+    <button class ="o-tree-btn-next btn btn-primary" id="Next" style="visibility:hidden;"> Next </button>
+{{ endblock }}

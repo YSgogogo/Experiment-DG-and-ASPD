@@ -185,7 +185,7 @@ class ResultsWaitPage(WaitPage):
                 if player_1_in_selected_round.choice_1st:
                     if player_2_in_selected_round.choice_2nd_Top:
                         player_1.payoff = C.payoff_R1[selected_payment]
-                        player_2.payoffe = C.payoff_R2[selected_payment]
+                        player_2.payoff = C.payoff_R2[selected_payment]
                     else:
                         player_1.payoff = C.payoff_S1[selected_payment]
                         player_2.payoff = C.payoff_T2[selected_payment]
@@ -196,6 +196,9 @@ class ResultsWaitPage(WaitPage):
                     else:
                         player_1.payoff = C.payoff_D1[selected_payment]
                         player_2.payoff = C.payoff_D2[selected_payment]
+                player_1.participant.vars[__name__] = [str(player_1.payoff), 'First mover', str(selected_round)]
+                player_2.participant.vars[__name__] = [str(player_2.payoff), 'Second mover', str(selected_round)]
+
 
 class ASPD_Results(Page):
     @staticmethod
@@ -205,4 +208,4 @@ class ASPD_Results(Page):
 
 
 
-page_sequence = [ASPD_Instructions, ASPD_Comprehension_Test, ASPD_GamePage_1st, ASPD_GamePage_2nd, ResultsWaitPage, ASPD_Results]
+page_sequence = [ASPD_Instructions, ASPD_Comprehension_Test, ASPD_GamePage_1st, ASPD_GamePage_2nd, ResultsWaitPage]

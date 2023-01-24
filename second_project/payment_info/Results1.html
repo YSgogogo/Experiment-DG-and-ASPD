@@ -1,0 +1,19 @@
+{{ block title }}
+<h2> Additional payment in Block 1 </h2>
+<ul>
+  <li> Round {{player.round_to_pay1}} was randomly selected for payment. </li>
+  <li> Your assigned role is the {{ player.role_to_pay1 }}. </li>
+  <li>  Your final payoff in this round is therefore {{ player.points_to_pay1 }}. </li>
+</ul>
+
+{{ endblock }}
+{{ block content }}
+
+    <script>
+        window.onload = function(){
+            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
+        }
+    </script>
+
+    <button class ="o-tree-btn-next btn btn-primary" id="Next" style="visibility:hidden;"> Next </button>
+{{ endblock }}
