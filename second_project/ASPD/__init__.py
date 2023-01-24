@@ -113,12 +113,14 @@ class ASPD_GamePage_2nd(Page):
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
-        random_round = random.randint(1, C.NUM_ROUNDS)
+
         if player.id_in_group == 1:
             player.roles = 'first mover'
         else:
             player.roles = 'second mover'
 
+
+        random_round = random.randint(1, C.NUM_ROUNDS)
         if player.round_number == C.NUM_ROUNDS:
             # Group players by their group
             group_players = defaultdict(list)
@@ -129,25 +131,6 @@ class ASPD_GamePage_2nd(Page):
                 # Assign the generated number to all players in the group
                 for p in players:
                     p.participant.selected_round = random_round
-                    player_in_selected_round = player.in_round(random_round)
-                    selected_payment = player_in_selected_round.task_number
-            player_lists = player.group.get_players()
-            player_1 = player_lists[0]
-            player_2 = player_lists[1]
-            if player_1.choice_1st:
-                if player_2.choice_2nd_Top:
-                    player_1.payoff = C.payoff_R1[selected_payment]
-                    player_2.payoffe = C.payoff_R2[selected_payment]
-                else:
-                    player_1.payoff = C.payoff_S1[selected_payment]
-                    player_2.payoff = C.payoff_T2[selected_payment]
-            else:
-                if player_2.choice_2nd_Down:
-                    player_1.payoff = C.payoff_T1[selected_payment]
-                    player_2.payoff = C.payoff_S2[selected_payment]
-                else:
-                    player_1.payoff = C.payoff_D1[selected_payment]
-                    player_2.payoff = C.payoff_D2[selected_payment]
 
 
 class ASPD_Instructions(Page):
@@ -183,6 +166,36 @@ class ResultsWaitPage(WaitPage):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == C.NUM_ROUNDS
+
+
+    def after_all_players_arrive(self):
+        group_players = defaultdict(list)
+        for p in self.subsession.get_players():
+            group_players[p.group_id].append(p)
+        for group_id, players in group_players.items():
+            for p in players:
+                selected_round = p.participant.selected_round
+                player_in_selected_round = p.in_round(selected_round)
+                selected_payment = player_in_selected_round.task_number
+                player_lists = p.group.get_players()
+                player_1 = player_lists[0]
+                player_2 = player_lists[1]
+                player_1_in_selected_round = player_1.in_round(selected_round)
+                player_2_in_selected_round = player_2.in_round(selected_round)
+                if player_1_in_selected_round.choice_1st:
+                    if player_2_in_selected_round.choice_2nd_Top:
+                        player_1.payoff = C.payoff_R1[selected_payment]
+                        player_2.payoffe = C.payoff_R2[selected_payment]
+                    else:
+                        player_1.payoff = C.payoff_S1[selected_payment]
+                        player_2.payoff = C.payoff_T2[selected_payment]
+                else:
+                    if player_2_in_selected_round.choice_2nd_Down:
+                        player_1.payoff = C.payoff_T1[selected_payment]
+                        player_2.payoff = C.payoff_S2[selected_payment]
+                    else:
+                        player_1.payoff = C.payoff_D1[selected_payment]
+                        player_2.payoff = C.payoff_D2[selected_payment]
 
 class ASPD_Results(Page):
     @staticmethod
