@@ -20,6 +20,12 @@ SESSION_CONFIGS = [
         app_sequence=['ASPD'],
         num_demo_participants=2,
     ),
+    dict(
+        name='game3',
+        display_name="belief",
+        app_sequence=['Belief_elicitation'],
+        num_demo_participants=2,
+    ),
 ]
 
 
