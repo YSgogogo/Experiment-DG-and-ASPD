@@ -28,7 +28,8 @@ class Player(BasePlayer):
     round_to_pay2 = models.StringField()
     role_to_pay2 = models.StringField()
     points_to_pay2 = models.StringField()
-
+    question_to_pay3 = models.StringField()
+    points_to_pay3 = models.StringField()
 class Pay(Page):
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -48,7 +49,14 @@ class Results1(Page):
         player.points_to_pay2 = str(participant.vars['ASPD'][0])
 
 class Results2(Page):
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        participant = player.participant
+        player.question_to_pay3 = str(participant.vars['Belief_elicitation'][1])
+        player.points_to_pay3 = str(participant.vars['Belief_elicitation'][0])
+
+
+class Results3(Page):
     pass
 
-
-page_sequence = [Pay, Results1, Results2]
+page_sequence = [Pay, Results1, Results2, Results3]

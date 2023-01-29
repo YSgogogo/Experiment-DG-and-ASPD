@@ -1,0 +1,18 @@
+{{ block title }}
+<h2> Additional payment in Block 3 </h2>
+<ul>
+  <li> Question {{player.question_to_pay3}} was randomly selected for payment. </li>
+  <li>  Your final payoff in this question is therefore {{ player.points_to_pay3 }}. </li>
+</ul>
+
+{{ endblock }}
+{{ block content }}
+
+    <script>
+        window.onload = function(){
+            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
+        }
+    </script>
+
+    <button class ="o-tree-btn-next btn btn-primary" id="Next" style="visibility:hidden;"> Next </button>
+{{ endblock }}

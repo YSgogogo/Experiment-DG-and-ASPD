@@ -4,8 +4,8 @@ from os import environ
 SESSION_CONFIGS = [
     dict(
         name='Our_experiment',
-        display_name="Our experiment with two blocks",
-        app_sequence=['DG', 'ASPD', 'payment_info'],
+        display_name="Our experiment",
+        app_sequence=['DG', 'ASPD', 'Belief_elicitation', 'payment_info'],
         num_demo_participants=2,
     ),
     dict(
@@ -18,12 +18,6 @@ SESSION_CONFIGS = [
         name='game2',
         display_name="SPD",
         app_sequence=['ASPD'],
-        num_demo_participants=2,
-    ),
-    dict(
-        name='game3',
-        display_name="belief",
-        app_sequence=['Belief_elicitation'],
         num_demo_participants=2,
     ),
 ]
