@@ -20,6 +20,10 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+
+    num_failed_attempts = models.IntegerField(initial=0)
+    failed_too_many = models.BooleanField(initial=False)
+
     o_choice = models.StringField()
     selected_question_number = models.IntegerField()
 
@@ -60,7 +64,48 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
     )
 
+    quiz1 = models.IntegerField()
+    quiz2 = models.IntegerField()
+    quiz3 = models.IntegerField()
+    quiz4 = models.IntegerField()
+    quiz5 = models.IntegerField()
+    quiz6 = models.IntegerField()
+    quiz7 = models.IntegerField()
+    quiz8 = models.IntegerField()
+    quiz9 = models.IntegerField()
+    quiz10 = models.IntegerField()
+    quiz11 = models.IntegerField()
+    quiz12 = models.IntegerField()
+    quiz13 = models.IntegerField()
+    quiz14 = models.IntegerField()
+    quiz15 = models.IntegerField()
+    quiz16 = models.IntegerField()
+
 # PAGES
+
+class Belief_elicitation_Instructions(Page):
+    pass
+
+class Belief_Comprehension_Test(Page):
+    form_model = 'player'
+    form_fields = ['quiz1', 'quiz2', 'quiz3', 'quiz4', 'quiz5', 'quiz6', 'quiz7', 'quiz8', 'quiz9', 'quiz10', 'quiz11', 'quiz12', 'quiz13', 'quiz14', 'quiz15', 'quiz16']
+
+    @staticmethod
+    def error_message(player: Player, values):
+        solutions = dict(quiz1=0, quiz2=5, quiz3=5, quiz4=5, quiz5=5, quiz6=5, quiz7=5, quiz8=5, quiz9=5, quiz10=5, quiz11=5, quiz12=5, quiz13=5, quiz14=5, quiz15=5, quiz16=5)
+        errors = {name: 'Wrong' for name in solutions if values[name] != solutions[name]}
+        if errors:
+            player.num_failed_attempts += 1
+            if player.num_failed_attempts >= 100:
+                player.failed_too_many = True
+            else:
+                return errors
+
+class Failed(Page):
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.failed_too_many
+
 class First_Mover(Page):
     form_model = 'player'
     form_fields = ['f1', 'f2', 'f3', 'f4']
@@ -112,9 +157,9 @@ class ResultsWaitPage(WaitPage):
                    player_1.payoff = 0
            else:
                if 0 < x:
-                   player_1.payoff = 0
-               else:
                    player_1.payoff = 50
+               else:
+                   player_1.payoff = 0
 
         elif getattr(player_1, "f" + str(player_1.selected_question_number)) == 1:
            if player_1.o_choice == str(True):
@@ -199,9 +244,9 @@ class ResultsWaitPage(WaitPage):
                    player_2.payoff = 0
            else:
                if 0 < x:
-                   player_2.payoff = 0
-               else:
                    player_2.payoff = 50
+               else:
+                   player_2.payoff = 0
 
         elif getattr(player_2, "f" + str(player_2.selected_question_number)) == 1:
            if player_2.o_choice == str(True):
@@ -282,4 +327,4 @@ class ResultsWaitPage(WaitPage):
 
 
 
-page_sequence = [First_Mover, Second_Mover, ResultsWaitPage]
+page_sequence = [Belief_elicitation_Instructions, Belief_Comprehension_Test, First_Mover, Second_Mover, ResultsWaitPage]

@@ -1,0 +1,221 @@
+{{ extends 'global/Page.html' }}
+   {{ block title }}{{ endblock }}
+
+
+{{ block content }}
+        <style>
+            .ribbon {
+               position: relative;
+               top: -16px;
+               right: -706px;
+            }
+        </style>
+
+         <div style="text-align: justify;" class="card bg-light mb-3  ">
+            <div class="card-body">
+                <h2 style="text-align: center">BLOCK 3: Instructions</h2>    <!-- To change the size of the title, use other headers like h1 -bigger, h3 -smaller  -->
+                <br>
+
+<h2> Structure of the block </h2>
+<ul>
+  <li> In this block there are <b>2</b> main tasks. </li>
+      <ul>
+          <li> Guessing the First Mover's choice, and </li>
+          <li> Guessing the Second Mover's choice. </li>
+      </ul>
+  <li> You will participate in 12 Guessing problems. </li>
+  <li> Each problem is equally likely to be selected for payment. </li>
+</ul>
+
+<h2> Structure of the task 1 </h2>
+<ul>
+    <li>There are 4 guessing problems in this block. You need to: </li>
+        <ul>
+            <li> guess the First Mover's decision. </li>
+            <li> you would see the following interface: </li>
+        </ul>
+</ul>
+
+    <table class="mx-auto">
+        <tr>
+            <td class="hide_top & hide_left", colspan="3", rowspan="3"> </td>
+            <td class="hide_top & hide_left & hide_right", colspan="4"> Second Mover choice </td>
+        </tr>
+        <tr>
+            <td colspan="2">  A </td>
+            <td colspan="2">  B </td>
+        </tr>
+        <tr>
+            <td>Your payment</td>
+            <td> Second Mover payment </td>
+            <td>Your payment</td>
+            <td> Second Mover payment </td>
+        </tr>
+        <tr>
+            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> Your (First Mover) choice </td>
+            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
+            <td class="hide_left"> A </td>
+            <td> 35 tokens </td>
+            <td> 40 tokens </td>
+            <td> 20 tokens </td>
+            <td> 50 tokens </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
+            <td class="hide_left"> B </td>
+            <td> 60 tokens </td>
+            <td> 20 tokens </td>
+            <td> 30 tokens </td>
+            <td> 25 tokens </td>
+        </tr>
+    </table>
+    <br>
+
+<ul>
+    <li>You are asked to guess the percentage interval of the First Mover's choice: </li>
+        <ul>
+            <li> What do you think is the percent chance that the First Mover would choose ``A''?  </li>
+            <li> You are asked to make four guess with different payment structures.  </li>
+        </ul>
+</ul>
+
+
+<h2> Structure of the task 2 </h2>
+<ul>
+    <li>There are 8 guessing problems in this block. You will: </li>
+        <ul>
+            <li> learn the choice of First Mover, then </li>
+            <li> guess the Second Mover's decision </li>
+            <li> you would see the following interface: </li>
+        </ul>
+
+        <table class="mx-auto">
+        <tr>
+            <td class="hide_top & hide_left", colspan="4"> </td>
+            <td> Your payment </td>
+            <td> First Mover payment </td>
+        </tr>
+        <tr>
+            <td class="hide_top & hide_left & hide_bottom", rowspan="4"> First Mover choice </td>
+            <td rowspan="2", style="background-color:LightGoldenrodYellow;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
+            <td rowspan="2"> Your choice </td>
+            <td> <input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
+            <td> 35 tokens </td>
+            <td> 40 tokens </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
+            <td> 20 tokens </td>
+            <td> 50 tokens </td>
+        </tr>
+        <tr>
+            <td rowspan="2", style="background-color:LightGray;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
+            <td rowspan="2"> Your choice </td>
+            <td> <input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
+            <td> 60 tokens </td>
+            <td> 20 tokens </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
+            <td> 30 tokens </td>
+            <td> 25 tokens </td>
+        </tr>
+    </table>
+    <br>
+
+
+
+<ul>
+    <li>You are asked to guess the percentage interval of the First Mover's choice: </li>
+        <ul>
+            <li> What do you think is the percent chance that the First Mover would choose ``A''?  </li>
+            <li> You are asked to make four guess with different payment structures.  </li>
+        </ul>
+</ul>
+
+
+
+<ul>
+  <li> That is, you need to take two guesses for each payment structure:
+      <ul>
+          <li> Guess the Second Mover's choice if First Mover chose A (the yellow row): </li>
+              <ul>
+                  <li> What do you think is the percent chance that the Second Mover would choose A given the First Mover chose A?</li>
+              </ul>
+          <li> Guess the Second Mover's choice if First Mover chose B (the gray row):</li>
+              <ul>
+                  <li> What do you think is the percent chance that the Second Mover would choose A given the First Mover chose B?</li>
+              </ul>
+      </ul>
+  </li>
+
+  <li> Note that every guess is important to determine the outcome as until the end of the experiment you do not know what they exactly choose. </li>
+</ul>
+
+<h2> Payments: </h2>
+<ul>
+    <li> You will be able to earn up to £5 in addition to your earnings in other blocks.</li>
+    <li> You will receive the additional payment if you are able to outperform the random machine in guessing the choice of others.</li>
+    <li> After you submit all guessing problems, your earnings will be calculated by the following procedure:</li>
+    <ul>
+        <li> One of the guessing questions will be chosen at random;</li>
+        <li> One participant (anonymous) in this room (excluding you) will be picked at random and her/his decision will be retrieved;</li>
+        <li> Your guessing error is computed as (1-your guessing)^2 if the choice picked by the selected participant is A and (your guessing)^2 if the decision picked by the selected participant is B;</li>
+        <li> A uniform random number will be drawn form the interval from 0 to 1;</li>
+        <li> You will receive £5 (in addition to money you already earned) if your prediction error is below the random number and will not receive any additional payment otherwise;</li>
+        <li> You will only see outcomes in the end of the experiment. </li>
+    </ul>
+</ul>
+
+
+            </div>
+        </div>
+        <br>
+    <script>
+        window.onload = function(){
+            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
+        }
+    </script>
+
+    <button class ="o-tree-btn-next btn btn-primary button1" id="Next" style="visibility:hidden; float: right;"> Next </button>
+
+{{ endblock }}
+
+
+{{ block app_styles }}
+    <style>
+        table {
+            border: 1px solid black;
+        }
+        td {
+           border: 1px solid black;
+           background-color: white;
+           color: black;
+           font-weight: solid;
+           font-size: 19px;
+           padding: 10px 10px 10px 10px;
+           text-align: center;
+        }
+        tr.hide_all > td, td.hide_all{
+           border-style:hidden;
+        }
+        tr.hide_right > td, td.hide_right{
+           border-right-style:hidden;
+        }
+        tr.hide_left > td, td.hide_left{
+           border-left-style:hidden;
+        }
+        tr.hide_top > td, td.hide_top{
+           border-top-style:hidden;
+        }
+        tr.hide_bottom > td, td.hide_bottom{
+           border-bottom-style:hidden;
+        }
+        tr.width_bottom > td, td.width_bottom{
+           border-bottom-width:4px;
+        }
+        tr:nth-child(5){
+           background-color: red;
+        }
+    </style>
+{{ endblock }}
