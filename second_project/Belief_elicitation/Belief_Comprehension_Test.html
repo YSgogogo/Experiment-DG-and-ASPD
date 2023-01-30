@@ -63,27 +63,19 @@
     </table>
 
 <ul>
-    <li> Assume: you are ask to guess the First Mover's choice, and your matched participant chose A </li>
+    <li> Assume: you need to guess the First Mover's choice, and your another random participant (as the First Mover) chose A </li>
         <ul>
-            <li> If you chose the interval 1%-20%, and the random number is 0.5 . Then how much you get:</li>
+            <li>If you chose the interval 1%-20%, and the random number is 0.5 . Then how much you get:</li>
                 {{form.quiz1}}
-            <li>If you chose the interval 0%, and the random number is 0.7 . Then how much you get:</li>
+            <li>If you chose the interval 100%, and the random number is 0.7 . Then how much you get:</li>
                 {{form.quiz2}}
-            <li>If you chose the interval 41%-60%, and the random number is 0.3 . Then how much you get:</li>
-                {{form.quiz3}}
-            <li>If you chose the interval 81%-99%, and the random number is 0.5 . Then how much you get:</li>
-                {{form.quiz4}}
         </ul>
-    <li> Assume: you are ask to guess the First Mover's choice, and your matched participant chose B </li>
+    <li> Assume: you need to guess the First Mover's choice, and your another random participant (as the First Mover) chose B </li>
         <ul>
-            <li> If you chose the interval 1%-20%, and the random number is 0.5 . Then how much you get:</li>
-                {{form.quiz5}}
-            <li>If you chose the interval 0%, and the random number is 0.7 . Then how much you get:</li>
-                {{form.quiz6}}
-            <li>If you chose the interval 41%-60%, and the random number is 0.3 . Then how much you get:</li>
-                {{form.quiz7}}
-            <li>If you chose the interval 81%-99%, and the random number is 0.5 . Then how much you get:</li>
-                {{form.quiz8}}
+            <li> If you chose the interval 21%-40%, and the random number is 0.5 . Then how much you get:</li>
+                {{form.quiz3}}
+            <li>If you chose the interval 0%, and the random number is 0.2 . Then how much you get:</li>
+                {{form.quiz4}}
         </ul>
 </ul>
 
@@ -94,13 +86,13 @@
         <table class="mx-auto">
         <tr>
             <td class="hide_top & hide_left", colspan="4"> </td>
-            <td> Your payment </td>
             <td> First Mover payment </td>
+            <td> Your payment </td>
         </tr>
         <tr>
             <td class="hide_top & hide_left & hide_bottom", rowspan="4"> First Mover choice </td>
             <td rowspan="2", style="background-color:LightGoldenrodYellow;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
-            <td rowspan="2"> Your choice </td>
+            <td rowspan="2"> Your (Second Mover) choice </td>
             <td> <input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
             <td> 35 tokens </td>
             <td> 40 tokens </td>
@@ -112,7 +104,7 @@
         </tr>
         <tr>
             <td rowspan="2", style="background-color:LightGray;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
-            <td rowspan="2"> Your choice </td>
+            <td rowspan="2"> Your (Second Mover) choice </td>
             <td> <input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
             <td> 60 tokens </td>
             <td> 20 tokens </td>
@@ -124,35 +116,20 @@
         </tr>
     </table>
 
-
 <ul>
-    <li> Assume: you are ask to guess the Second Mover's choice given the First Mover chose A, and your matched participant chose A </li>
+    <li> Assume: you need to guess the Second Mover's choice given the First Mover chose A, and your another random participant (as the Second Mover) chose A </li>
         <ul>
-            <li> If you chose the interval 1%-20%, and the random number is 0.5 . Then how much you get:</li>
-                {{form.quiz9}}
+            <li> If you chose the interval 61%-80%, and the random number is 0.01. Then how much you get:</li>
+                {{form.quiz5}}
             <li>If you chose the interval 0%, and the random number is 0.7 . Then how much you get:</li>
-                {{form.quiz10}}
+                {{form.quiz6}}
         </ul>
-    <li> Assume: you are ask to guess the First Mover's choice given the First Mover chose A, and your matched participant chose B </li>
+    <li> Assume: you need to guess the First Mover's choice given the First Mover chose B, and your another random participant (as the Second Mover) chose B </li>
         <ul>
             <li> If you chose the interval 1%-20%, and the random number is 0.5 . Then how much you get:</li>
-                {{form.quiz11}}
-            <li>If you chose the interval 0%, and the random number is 0.7 . Then how much you get:</li>
-                {{form.quiz12}}
-        </ul>
-    <li> Assume: you are ask to guess the Second Mover's choice given the First Mover chose B, and your matched participant chose A </li>
-        <ul>
-            <li> If you chose the interval 1%-20%, and the random number is 0.5 . Then how much you get:</li>
-                {{form.quiz13}}
-            <li>If you chose the interval 0%, and the random number is 0.7 . Then how much you get:</li>
-                {{form.quiz14}}
-        </ul>
-    <li> Assume: you are ask to guess the First Mover's choice given the First Mover chose B, and your matched participant chose B </li>
-        <ul>
-            <li> If you chose the interval 1%-20%, and the random number is 0.5 . Then how much you get:</li>
-                {{form.quiz15}}
-            <li>If you chose the interval 0%, and the random number is 0.7 . Then how much you get:</li>
-                {{form.quiz16}}
+                {{form.quiz7}}
+            <li>If you chose the interval 100%, and the random number is 0.7 . Then how much you get:</li>
+                {{form.quiz8}}
         </ul>
 </ul>
 
@@ -178,7 +155,7 @@
         }
         td {
            border: 1px solid black;
-           background-color: white;
+           background-color: bg-light mb-3;
            color: black;
            font-weight: solid;
            font-size: 19px;
@@ -203,8 +180,6 @@
         tr.width_bottom > td, td.width_bottom{
            border-bottom-width:4px;
         }
-        tr:nth-child(5){
-           background-color: red;
-        }
+
     </style>
 {{ endblock }}

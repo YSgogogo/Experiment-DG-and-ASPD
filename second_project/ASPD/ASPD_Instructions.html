@@ -21,7 +21,8 @@
   <li> In this block there are <b>2 active</b> players: First Mover and Second Mover. </li>
   <li> You will participate in 5 decision problems. </li>
   <li> Each decision problem is equally likely to be selected for payment. </li>
-  <li> Thus, you will face 10 rounds:
+  <li> Thus, it is important for you to take each round seriously. </li>
+  <li> You will face 10 rounds:
       <ul>
           <li> assuming role of the First Mover, and </li>
           <li> assuming role of the Second Mover. </li>
@@ -153,13 +154,13 @@
         <table class="mx-auto">
         <tr>
             <td class="hide_top & hide_left", colspan="4"> </td>
-            <td> Your payment </td>
             <td> First Mover payment </td>
+            <td> Your payment </td>
         </tr>
         <tr>
             <td class="hide_top & hide_left & hide_bottom", rowspan="4"> First Mover choice </td>
             <td rowspan="2", style="background-color:LightGoldenrodYellow;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
-            <td rowspan="2"> Your choice </td>
+            <td rowspan="2"> Your (Second Mover) choice </td>
             <td> <input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
             <td> 35 tokens </td>
             <td> 40 tokens </td>
@@ -171,7 +172,7 @@
         </tr>
         <tr>
             <td rowspan="2", style="background-color:LightGray;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
-            <td rowspan="2"> Your choice </td>
+            <td rowspan="2"> Your (Second Mover) choice </td>
             <td> <input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
             <td> 60 tokens </td>
             <td> 20 tokens </td>
@@ -225,7 +226,7 @@
         }
         td {
            border: 1px solid black;
-           background-color: white;
+           background-color: bg-light mb-3;
            color: black;
            font-weight: solid;
            font-size: 19px;
@@ -250,8 +251,6 @@
         tr.width_bottom > td, td.width_bottom{
            border-bottom-width:4px;
         }
-        tr:nth-child(5){
-           background-color: red;
-        }
+
     </style>
 {{ endblock }}

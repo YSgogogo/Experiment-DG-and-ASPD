@@ -72,14 +72,6 @@ class Player(BasePlayer):
     quiz6 = models.IntegerField()
     quiz7 = models.IntegerField()
     quiz8 = models.IntegerField()
-    quiz9 = models.IntegerField()
-    quiz10 = models.IntegerField()
-    quiz11 = models.IntegerField()
-    quiz12 = models.IntegerField()
-    quiz13 = models.IntegerField()
-    quiz14 = models.IntegerField()
-    quiz15 = models.IntegerField()
-    quiz16 = models.IntegerField()
 
 # PAGES
 
@@ -88,11 +80,11 @@ class Belief_elicitation_Instructions(Page):
 
 class Belief_Comprehension_Test(Page):
     form_model = 'player'
-    form_fields = ['quiz1', 'quiz2', 'quiz3', 'quiz4', 'quiz5', 'quiz6', 'quiz7', 'quiz8', 'quiz9', 'quiz10', 'quiz11', 'quiz12', 'quiz13', 'quiz14', 'quiz15', 'quiz16']
+    form_fields = ['quiz1', 'quiz2', 'quiz3', 'quiz4', 'quiz5', 'quiz6', 'quiz7', 'quiz8']
 
     @staticmethod
     def error_message(player: Player, values):
-        solutions = dict(quiz1=0, quiz2=5, quiz3=5, quiz4=5, quiz5=5, quiz6=5, quiz7=5, quiz8=5, quiz9=5, quiz10=5, quiz11=5, quiz12=5, quiz13=5, quiz14=5, quiz15=5, quiz16=5)
+        solutions = dict(quiz1=0, quiz2=5, quiz3=5, quiz4=5, quiz5=0, quiz6=0, quiz7=5, quiz8=0)
         errors = {name: 'Wrong' for name in solutions if values[name] != solutions[name]}
         if errors:
             player.num_failed_attempts += 1
