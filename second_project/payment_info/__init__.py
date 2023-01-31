@@ -39,43 +39,24 @@ class Player(BasePlayer):
     Major = models.StringField()
     Age = models.StringField()
     How_choose = models.StringField()
-class Pay(Page):
+
+class Survey(Page):
+    form_model = 'player'
+    form_fields = ['Gender', 'Age', 'Major', 'How_choose']
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
         player.round_to_pay1 = str(participant.vars['DG'][2])
         player.role_to_pay1 = str(participant.vars['DG'][1])
         player.points_to_pay1 = str(participant.vars['DG'][0])
-
-
-
-class Results1(Page):
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        participant = player.participant
         player.round_to_pay2 = str(participant.vars['ASPD'][2])
         player.role_to_pay2 = str(participant.vars['ASPD'][1])
         player.points_to_pay2 = str(participant.vars['ASPD'][0])
-
-class Results2(Page):
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        participant = player.participant
         player.question_to_pay3 = str(participant.vars['Belief_elicitation'][1])
         player.points_to_pay3 = str(participant.vars['Belief_elicitation'][0])
 
-
-class Results3(Page):
+class Payment(Page):
     pass
 
-class Final_payment(Page):
-    pass
 
-class Survey(Page):
-    form_model = 'player'
-    form_fields = ['Gender', 'Age', 'Major', 'How_choose']
-
-class Assistant_payment(Page):
-    pass
-
-page_sequence = [Pay, Results1, Results2, Results3, Final_payment, Survey, Assistant_payment]
+page_sequence = [Survey, Payment]

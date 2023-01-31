@@ -1,0 +1,114 @@
+{{ extends 'global/Page.html' }}
+   {{ block title }}{{ endblock }}
+
+
+{{ block content }}
+        <style>
+            .ribbon {
+               position: relative;
+               top: -16px;
+               right: -706px;
+            }
+        </style>
+
+         <div style="text-align: justify;" class="card bg-light mb-3  ">
+            <div class="card-body">
+                <h2 style="text-align: center">Your payment in today's experiment</h2>    <!-- To change the size of the title, use other headers like h1 -bigger, h3 -smaller  -->
+                <br>
+
+<ul>
+  <li>  Thank you for participating in today’s experiment. </li>
+  <li>  See what you have earned today in details in the following table: </li>
+</ul>
+
+<br>
+    <table class="mx-auto">
+        <tr>
+            <td> </td>
+            <td> Round/Question  </td>
+            <td> Role </td>
+            <td> Tokens </td>
+        </tr>
+        <tr>
+            <td class="hide_bottom"> Block 1 </td>
+            <td class="hide_bottom"> {{ player.round_to_pay1 }} </td>
+            <td class="hide_bottom"> {{ player.role_to_pay1 }} </td>
+            <td class="hide_bottom"> {{ player.points_to_pay1 }} </td>
+        </tr>
+        <tr>
+            <td class="hide_bottom"> Block 2 </td>
+            <td class="hide_bottom"> {{ player.round_to_pay2 }} </td>
+            <td class="hide_bottom"> {{ player.role_to_pay2 }} </td>
+            <td class="hide_bottom"> {{ player.points_to_pay2 }} </td>
+        </tr>
+        <tr>
+            <td class="hide_bottom"> Block 3 </td>
+            <td class="hide_bottom"> {{player.question_to_pay3}} </td>
+            <td class="hide_bottom"> N/A </td>
+            <td class="hide_bottom"> {{ player.points_to_pay3 }} </td>
+        </tr>
+        <tr>
+            <td> Show-up fee </td>
+            <td> N/A </td>
+            <td> N/A </td>
+            <td> £5 </td>
+        </tr>
+        <tr>
+            <td> Total Payment</td>
+            <td> N/A </td>
+            <td> N/A </td>
+            <td> {{participant.payoff_plus_participation_fee()}} </td>
+        </tr>
+    </table>
+<br>
+
+
+
+<ul>
+  <li>  Note: 10 tokens = £1. </li>
+  <li>  Your final payment in today's experiment is therefore {{participant.payoff_plus_participation_fee()}}. </li>
+  <li>  We are preparing for your payment. Please keep calm, and we will come and pay you.</li>
+</ul>
+
+            </div>
+        </div>
+        <br>
+
+{{ endblock }}
+
+
+{{ block app_styles }}
+    <style>
+        table {
+            border: 1px solid black;
+        }
+        td {
+           border: 1px solid black;
+           background-color: bg-light mb-3;
+           color: black;
+           font-weight: solid;
+           font-size: 19px;
+           padding: 10px 10px 10px 10px;
+           text-align: center;
+        }
+        tr.hide_all > td, td.hide_all{
+           border-style:hidden;
+        }
+        tr.hide_right > td, td.hide_right{
+           border-right-style:hidden;
+        }
+        tr.hide_left > td, td.hide_left{
+           border-left-style:hidden;
+        }
+        tr.hide_top > td, td.hide_top{
+           border-top-style:hidden;
+        }
+        tr.hide_bottom > td, td.hide_bottom{
+           border-bottom-style:hidden;
+        }
+        tr.width_bottom > td, td.width_bottom{
+           border-bottom-width:4px;
+        }
+
+    </style>
+{{ endblock }}

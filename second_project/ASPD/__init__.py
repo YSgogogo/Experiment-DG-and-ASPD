@@ -200,11 +200,6 @@ class ResultsWaitPage(WaitPage):
                 player_2.participant.vars[__name__] = [str(player_2.payoff), 'Second mover', str(selected_round), str(player_1_in_selected_round.choice_1st), str(player_1_in_selected_round.choice_2nd_Top), str(player_1_in_selected_round.choice_2nd_Down), str(selected_payment)]
 
 
-class ASPD_Results(Page):
-    @staticmethod
-    def is_displayed(player: Player):
-        return player.round_number == C.NUM_ROUNDS
-
 
 
 

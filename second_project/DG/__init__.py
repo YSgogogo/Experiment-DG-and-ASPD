@@ -168,10 +168,6 @@ class ResultsWaitPage(WaitPage):
     # show only in the final round
     # compute the payment for a random round selected for payment
 
-class DG_Results(Page):
-    @staticmethod
-    def is_displayed(player: Player):
-        return player.round_number == C.NUM_ROUNDS
 
 
 

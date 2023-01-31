@@ -8,18 +8,6 @@ SESSION_CONFIGS = [
         app_sequence=['DG', 'ASPD', 'Belief_elicitation', 'payment_info'],
         num_demo_participants=2,
     ),
-    dict(
-        name='game1',
-        display_name="DG",
-        app_sequence=['DG'],
-        num_demo_participants=2,
-    ),
-    dict(
-        name='game2',
-        display_name="SPD",
-        app_sequence=['ASPD'],
-        num_demo_participants=2,
-    ),
 ]
 
 
