@@ -15,8 +15,11 @@
             <div class="card-body">
                 <h2 style="text-align: center">Please take a decision</h2>    <!-- To change the size of the title, use other headers like h1 -bigger, h3 -smaller  -->
                 <br>
-
-                <p>Below you find your role, related payment, and your choices as the First Mover:</p>
+<ul>
+    <li> Below you find your role (First Mover), related payment (You and Second Mover), and choices. </li>
+    <li> You need to select either A or B: </li>
+</ul>
+<br>
         <table class="mx-auto">
         <tr>
             <td class="hide_top & hide_left", colspan="3", rowspan="3"> </td>
@@ -33,7 +36,7 @@
             <td> Second Mover payment </td>
         </tr>
         <tr>
-            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> Your (First Mover) choice</td>
+            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> Your choice (First Mover)</td>
             <td><input type="radio" name="choice_1st" value="{{ True }}" class="btn btn-primary btn-large"></td>
             <td class="hide_left"> A </td>
             <td> {{R1}} tokens </td>
@@ -50,6 +53,7 @@
             <td> {{D2}} tokens </td>
         </tr>
     </table>
+<br>
 
 
             </div>

@@ -30,6 +30,15 @@ class Player(BasePlayer):
     points_to_pay2 = models.StringField()
     question_to_pay3 = models.StringField()
     points_to_pay3 = models.StringField()
+    Gender =  models.BooleanField(
+        choices=[
+           [True, 'Male'],
+           [False, 'Female'],
+        ]
+    )
+    Major = models.StringField()
+    Age = models.StringField()
+    How_choose = models.StringField()
 class Pay(Page):
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -59,4 +68,14 @@ class Results2(Page):
 class Results3(Page):
     pass
 
-page_sequence = [Pay, Results1, Results2, Results3]
+class Final_payment(Page):
+    pass
+
+class Survey(Page):
+    form_model = 'player'
+    form_fields = ['Gender', 'Age', 'Major', 'How_choose']
+
+class Assistant_payment(Page):
+    pass
+
+page_sequence = [Pay, Results1, Results2, Results3, Final_payment, Survey, Assistant_payment]

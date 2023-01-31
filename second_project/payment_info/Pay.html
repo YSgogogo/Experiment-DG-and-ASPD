@@ -1,20 +1,37 @@
+{{ extends 'global/Page.html' }}
+   {{ block title }}{{ endblock }}
 
-{{ block title }}
-<h2> Congratulations </h2>
+
+{{ block content }}
+        <style>
+            .ribbon {
+               position: relative;
+               top: -16px;
+               right: -706px;
+            }
+        </style>
+
+         <div style="text-align: justify;" class="card bg-light mb-3  ">
+            <div class="card-body">
+                <h2 style="text-align: center">Congratulations</h2>    <!-- To change the size of the title, use other headers like h1 -bigger, h3 -smaller  -->
+                <br>
+
 <ul>
   <li> You have finished three blocks in our experiment. </li>
-  <li> We are preparing for your payment. </li>
   <li> Proceed to the ''Next'' step to view the final payment determined by the random round and role assignment in each block. </li>
 </ul>
 
-{{ endblock }}
-{{ block content }}
 
+
+            </div>
+        </div>
+        <br>
     <script>
         window.onload = function(){
             setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
         }
     </script>
 
-    <button class ="o-tree-btn-next btn btn-primary" id="Next" style="visibility:hidden;"> Next </button>
+    <button class ="o-tree-btn-next btn btn-primary button1" id="Next" style="visibility:hidden; float: right;"> Next </button>
+
 {{ endblock }}
