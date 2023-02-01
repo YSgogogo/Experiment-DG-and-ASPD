@@ -24,6 +24,7 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
     task_number = models.IntegerField()
+    selected_round = models.IntegerField()
 
 class Player(BasePlayer):
     num_failed_attempts = models.IntegerField(initial=0)
@@ -45,12 +46,14 @@ class Player(BasePlayer):
            [False, 'Down'],
         ]
     )
+
     choice_2nd_Top =  models.BooleanField(
         choices=[
            [True, 'Left'],
            [False, 'Right'],
         ]
     )
+
     choice_2nd_Down =  models.BooleanField(
         choices=[
            [True, 'Left'],
@@ -59,8 +62,7 @@ class Player(BasePlayer):
     )
 
     task_number = models.IntegerField()
-    roles = models.StringField()
-    #creat a var to store the roles
+    selected_round = models.IntegerField()
 
 def creating_session(subsession: Subsession):
     if subsession.round_number == 1:
@@ -73,6 +75,12 @@ def creating_session(subsession: Subsession):
                 k=k+1
                 for p in g.get_players():
                     p.in_round(i+1).task_number = g.in_round(i+1).task_number
+
+        for g in subsession.get_groups():
+            random_round = random.randint(1, C.NUM_ROUNDS)
+            g.in_round(4).selected_round = random_round
+            for p in g.get_players():
+                p.in_round(4).selected_round = g.in_round(4).selected_round
 
 class ASPD_GamePage_1st(Page):
     form_model = 'player'
@@ -110,29 +118,6 @@ class ASPD_GamePage_2nd(Page):
             D2=C.payoff_D2[task_number]
             )
 
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        participant = player.participant
-
-        if player.id_in_group == 1:
-            player.roles = 'first mover'
-        else:
-            player.roles = 'second mover'
-
-
-        random_round = random.randint(1, C.NUM_ROUNDS)
-        if player.round_number == C.NUM_ROUNDS:
-            # Group players by their group
-            group_players = defaultdict(list)
-            for p in player.subsession.get_players():
-                group_players[p.group_id].append(p)
-            # Generate a random number for each group
-            for group_id, players in group_players.items():
-                # Assign the generated number to all players in the group
-                for p in players:
-                    p.participant.selected_round = random_round
-
-
 class ASPD_Instructions(Page):
     @staticmethod
     def is_displayed(player: Player):
@@ -167,40 +152,35 @@ class ResultsWaitPage(WaitPage):
     def is_displayed(player: Player):
         return player.round_number == C.NUM_ROUNDS
 
-
-    def after_all_players_arrive(self):
-        group_players = defaultdict(list)
-        for p in self.subsession.get_players():
-            group_players[p.group_id].append(p)
-        for group_id, players in group_players.items():
-            for p in players:
-                selected_round = p.participant.selected_round
-                player_in_selected_round = p.in_round(selected_round)
-                selected_payment = player_in_selected_round.task_number
-                player_lists = p.group.get_players()
-                player_1 = player_lists[0]
-                player_2 = player_lists[1]
-                player_1_in_selected_round = player_1.in_round(selected_round)
-                player_2_in_selected_round = player_2.in_round(selected_round)
-                if player_1_in_selected_round.choice_1st:
-                    if player_2_in_selected_round.choice_2nd_Top:
-                        player_1.payoff = C.payoff_R1[selected_payment]
-                        player_2.payoff = C.payoff_R2[selected_payment]
-                    else:
-                        player_1.payoff = C.payoff_S1[selected_payment]
-                        player_2.payoff = C.payoff_T2[selected_payment]
-                else:
-                    if player_2_in_selected_round.choice_2nd_Down:
-                        player_1.payoff = C.payoff_T1[selected_payment]
-                        player_2.payoff = C.payoff_S2[selected_payment]
-                    else:
-                        player_1.payoff = C.payoff_D1[selected_payment]
-                        player_2.payoff = C.payoff_D2[selected_payment]
-                player_1.participant.vars[__name__] = [str(player_1.payoff), 'First mover', str(selected_round), str(player_2_in_selected_round.choice_1st), str(player_2_in_selected_round.choice_2nd_Top), str(player_2_in_selected_round.choice_2nd_Down), str(selected_payment)]
-                player_2.participant.vars[__name__] = [str(player_2.payoff), 'Second mover', str(selected_round), str(player_1_in_selected_round.choice_1st), str(player_1_in_selected_round.choice_2nd_Top), str(player_1_in_selected_round.choice_2nd_Down), str(selected_payment)]
+    @staticmethod
+    def after_all_players_arrive(group: Group):
+        selected_round = group.selected_round
+        group_in_selected_round = group.in_round(selected_round)
+        selected_payment = group_in_selected_round.task_number
+        player_lists = group.get_players()
+        player_1 = player_lists[0]
+        player_2 = player_lists[1]
+        player_1_in_selected_round = player_1.in_round(selected_round)
+        player_2_in_selected_round = player_2.in_round(selected_round)
+        if player_1_in_selected_round.choice_1st:
+            if player_2_in_selected_round.choice_2nd_Top:
+                player_1.payoff = C.payoff_R1[selected_payment]
+                player_2.payoff = C.payoff_R2[selected_payment]
+            else:
+                player_1.payoff = C.payoff_S1[selected_payment]
+                player_2.payoff = C.payoff_T2[selected_payment]
+        else:
+            if player_2_in_selected_round.choice_2nd_Down:
+                player_1.payoff = C.payoff_T1[selected_payment]
+                player_2.payoff = C.payoff_S2[selected_payment]
+            else:
+                player_1.payoff = C.payoff_D1[selected_payment]
+                player_2.payoff = C.payoff_D2[selected_payment]
+        player_1.participant.vars[__name__] = [str(player_1.payoff), 'First mover', str(selected_round), str(player_2_in_selected_round.choice_1st), str(player_2_in_selected_round.choice_2nd_Top), str(player_2_in_selected_round.choice_2nd_Down), str(selected_payment)]
+        player_2.participant.vars[__name__] = [str(player_2.payoff), 'Second mover', str(selected_round), str(player_1_in_selected_round.choice_1st), str(player_1_in_selected_round.choice_2nd_Top), str(player_1_in_selected_round.choice_2nd_Down), str(selected_payment)]
 
 
 
 
 
-page_sequence = [ASPD_Instructions, ASPD_Comprehension_Test, ASPD_GamePage_1st, ASPD_GamePage_2nd, ResultsWaitPage]
+page_sequence = [ASPD_GamePage_1st, ASPD_GamePage_2nd, ResultsWaitPage]

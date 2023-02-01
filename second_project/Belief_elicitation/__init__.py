@@ -6,18 +6,16 @@ doc = """
 player's beliefs
 """
 
-
 class C(BaseConstants):
     NAME_IN_URL = 'Belief_elicitation'
     PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 1
+
 class Subsession(BaseSubsession):
     pass
 
-
 class Group(BaseGroup):
     pass
-
 
 class Player(BasePlayer):
 
@@ -72,8 +70,6 @@ class Player(BasePlayer):
     quiz6 = models.IntegerField()
     quiz7 = models.IntegerField()
     quiz8 = models.IntegerField()
-
-# PAGES
 
 class Belief_elicitation_Instructions(Page):
     pass
@@ -130,9 +126,6 @@ class First_Mover(Page):
 class Second_Mover(Page):
     form_model = 'player'
     form_fields = ['f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12']
-
-
-
 
 class ResultsWaitPage(WaitPage):
     @staticmethod
@@ -226,8 +219,6 @@ class ResultsWaitPage(WaitPage):
                     player_1.payoff = 0
 
 
-
-
         if getattr(player_2, "f" + str(player_2.selected_question_number)) == 0:
            if player_2.o_choice == str(True):
                if 1 < x:
@@ -312,11 +303,10 @@ class ResultsWaitPage(WaitPage):
                 else:
                     player_2.payoff = 0
 
-
         player_1.participant.vars[__name__] = [str(player_1.payoff), str(player_1.selected_question_number)]
         player_2.participant.vars[__name__] = [str(player_2.payoff), str(player_2.selected_question_number)]
 
 
 
 
-page_sequence = [Belief_elicitation_Instructions, Belief_Comprehension_Test, First_Mover, Second_Mover, ResultsWaitPage]
+page_sequence = [ First_Mover, Second_Mover, ResultsWaitPage]
