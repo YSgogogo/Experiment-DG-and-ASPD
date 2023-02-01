@@ -183,4 +183,4 @@ class ResultsWaitPage(WaitPage):
 
 
 
-page_sequence = [ASPD_GamePage_1st, ASPD_GamePage_2nd, ResultsWaitPage]
+page_sequence = [ASPD_Instructions, ASPD_Comprehension_Test, ASPD_GamePage_1st, ASPD_GamePage_2nd, ResultsWaitPage]

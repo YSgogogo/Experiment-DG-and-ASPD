@@ -4,22 +4,17 @@ from os import environ
 SESSION_CONFIGS = [
     dict(
         name='Our_experiment',
-        display_name="Our experiment",
+        display_name="Our experiment (2 players)",
+        app_sequence=['DG', 'ASPD', 'Belief_elicitation', 'payment_info'],
+        num_demo_participants=2,
+    ),
+    dict(
+        name='Experiment',
+        display_name="Our experiment (4 players)",
         app_sequence=['DG', 'ASPD', 'Belief_elicitation', 'payment_info'],
         num_demo_participants=4,
     ),
-    dict(
-        name='DG',
-        display_name="DG",
-        app_sequence=['DG'],
-        num_demo_participants=2,
-    ),
-    dict(
-        name='PD',
-        display_name="PD",
-        app_sequence=['ASPD'],
-        num_demo_participants=2,
-    ),
+
 ]
 
 

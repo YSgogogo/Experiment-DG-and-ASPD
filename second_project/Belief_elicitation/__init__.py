@@ -309,4 +309,4 @@ class ResultsWaitPage(WaitPage):
 
 
 
-page_sequence = [ First_Mover, Second_Mover, ResultsWaitPage]
+page_sequence = [Belief_elicitation_Instructions, Belief_Comprehension_Test, First_Mover, Second_Mover, ResultsWaitPage]

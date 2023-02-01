@@ -136,5 +136,5 @@ class ResultsWaitPage(WaitPage):
 
 
 
-page_sequence = [ DG_GamePage, ResultsWaitPage]
+page_sequence = [Main_Instructions, DG_Instructions, DG_Comprehension_Test, DG_GamePage, ResultsWaitPage]
 
