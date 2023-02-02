@@ -9,12 +9,12 @@ DG
 class C(BaseConstants):
     NAME_IN_URL = 'DG'
     PLAYERS_PER_GROUP = 2
-    NUM_ROUNDS = 5
+    NUM_ROUNDS = 10
 
-    payoff_L1 = [40, 50, 50, 50, 50]
-    payoff_L2 = [40, 20, 20, 20, 20]
-    payoff_R1 = [20, 25, 30, 30, 30]
-    payoff_R2 = [50, 30, 30, 25, 35]
+    payoff_L1 = [400, 50, 50, 50, 50, 50, 50, 180, 180, 180]
+    payoff_L2 = [350, 360, 360, 360, 600, 600, 600, 600, 600, 600]
+    payoff_R1 = [500, 200, 200, 380, 200, 200, 380, 200, 200, 380,]
+    payoff_R2 = [150, 160, 320, 320, 160, 320, 320, 160, 320, 320,]
 
 class Subsession(BaseSubsession):
     pass
@@ -50,7 +50,7 @@ class Player(BasePlayer):
 def creating_session(subsession: Subsession):
     if subsession.round_number == 1:
         for g in subsession.get_groups():
-            game_numbers = [0, 1, 2, 3, 4]
+            game_numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
             random.shuffle(game_numbers)
             k=0
             for i in range(C.NUM_ROUNDS): 
@@ -61,9 +61,9 @@ def creating_session(subsession: Subsession):
 
         for g in subsession.get_groups():
             random_round = random.randint(1, C.NUM_ROUNDS)
-            g.in_round(5).selected_round = random_round
+            g.in_round(10).selected_round = random_round
             for p in g.get_players():
-                p.in_round(5).selected_round = g.in_round(5).selected_round
+                p.in_round(10).selected_round = g.in_round(10).selected_round
 
 class DG_GamePage(Page):
     form_model = 'player'
@@ -95,7 +95,7 @@ class DG_Comprehension_Test(Page):
 
     @staticmethod
     def error_message(player: Player, values):
-        solutions = dict(quiz1=40, quiz2=50, quiz3=45, quiz4=20, quiz5=45, quiz6=20, quiz7=40, quiz8=50, quiz9=False, quiz10=True)
+        solutions = dict(quiz1=400, quiz2=500, quiz3=450, quiz4=200, quiz5=450, quiz6=200, quiz7=400, quiz8=500, quiz9=False, quiz10=True)
         errors = {name: 'Wrong' for name in solutions if values[name] != solutions[name]}
         if errors:
             player.num_failed_attempts += 1

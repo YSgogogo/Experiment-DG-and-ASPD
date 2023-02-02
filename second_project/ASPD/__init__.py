@@ -9,15 +9,15 @@ ASPD
 class C(BaseConstants):
     NAME_IN_URL = 'ASPD'
     PLAYERS_PER_GROUP = 2
-    NUM_ROUNDS = 4
-    payoff_R1 = [40, 40, 40, 40]
-    payoff_S1 = [20, 20, 20, 20]
-    payoff_T1 = [60, 60, 60, 60]
-    payoff_D1 = [25, 25, 30, 35]
-    payoff_R2 = [40, 40, 40, 40]
-    payoff_S2 = [20, 30, 20, 20]
-    payoff_T2 = [50, 50, 50, 50]
-    payoff_D2 = [25, 25, 35, 35]
+    NUM_ROUNDS = 9
+    payoff_R1 = [350, 350, 350, 350, 350, 350, 350, 350, 350]
+    payoff_S1 = [150, 150, 150, 150, 150, 150, 150, 150, 150]
+    payoff_T1 = [360, 360, 360, 600, 600, 600, 600, 600, 600]
+    payoff_D1 = [160, 320, 320, 160, 320, 320, 160, 320, 320]
+    payoff_R2 = [400, 400, 400, 400, 400, 400, 400, 400, 400]
+    payoff_S2 = [50, 50, 50, 50, 50, 50, 180, 180, 180]
+    payoff_T2 = [500, 500, 500, 500, 500, 500, 500, 500, 500]
+    payoff_D2 = [200, 200, 380, 200, 200, 380, 200, 200, 380]
 
 class Subsession(BaseSubsession):
     pass
@@ -67,7 +67,7 @@ class Player(BasePlayer):
 def creating_session(subsession: Subsession):
     if subsession.round_number == 1:
         for g in subsession.get_groups():
-            game_numbers = [0, 1, 2, 3]
+            game_numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8]
             random.shuffle(game_numbers)
             k=0
             for i in range(C.NUM_ROUNDS):
@@ -78,9 +78,9 @@ def creating_session(subsession: Subsession):
 
         for g in subsession.get_groups():
             random_round = random.randint(1, C.NUM_ROUNDS)
-            g.in_round(4).selected_round = random_round
+            g.in_round(9).selected_round = random_round
             for p in g.get_players():
-                p.in_round(4).selected_round = g.in_round(4).selected_round
+                p.in_round(9).selected_round = g.in_round(9).selected_round
 
 class ASPD_GamePage_1st(Page):
     form_model = 'player'
@@ -129,7 +129,7 @@ class ASPD_Comprehension_Test(Page):
 
     @staticmethod
     def error_message(player: Player, values):
-        solutions = dict(quiz1=35, quiz2=40, quiz3=20, quiz4=50, quiz5=60, quiz6=20, quiz7=30, quiz8=25, quiz9=False, quiz10=True)
+        solutions = dict(quiz1=350, quiz2=400, quiz3=200, quiz4=500, quiz5=600, quiz6=200, quiz7=300, quiz8=250, quiz9=False, quiz10=True)
         errors = {name: 'Wrong' for name in solutions if values[name] != solutions[name]}
         if errors:
             player.num_failed_attempts += 1

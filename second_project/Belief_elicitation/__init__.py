@@ -61,6 +61,55 @@ class Player(BasePlayer):
     f12 = models.IntegerField(
         widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
     )
+    f13 = models.IntegerField(
+        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
+    )
+    f14 = models.IntegerField(
+        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
+    )
+    f15 = models.IntegerField(
+        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
+    )
+    f16 = models.IntegerField(
+        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
+    )
+    f17 = models.IntegerField(
+        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
+    )
+    f18 = models.IntegerField(
+        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
+    )
+    f19 = models.IntegerField(
+        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
+    )
+    f20 = models.IntegerField(
+        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
+    )
+    f21 = models.IntegerField(
+        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
+    )
+    f22 = models.IntegerField(
+        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
+    )
+    f23 = models.IntegerField(
+        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
+    )
+    f24 = models.IntegerField(
+        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
+    )
+    f25 = models.IntegerField(
+        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
+    )
+    f26 = models.IntegerField(
+        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
+    )
+    f12 = models.IntegerField(
+        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
+    )
+    f27 = models.IntegerField(
+        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
+    )
+
 
     quiz1 = models.IntegerField()
     quiz2 = models.IntegerField()
@@ -96,14 +145,14 @@ class Failed(Page):
 
 class First_Mover(Page):
     form_model = 'player'
-    form_fields = ['f1', 'f2', 'f3', 'f4']
+    form_fields = ['f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9']
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
 
         if player.id_in_group == 1:
-            options = [int(participant.vars['ASPD'][6]) + 1, int(participant.vars['ASPD'][6]) + 5,
-                       int(participant.vars['ASPD'][6]) + 9]
+            options = [int(participant.vars['ASPD'][6]) + 1, int(participant.vars['ASPD'][6]) + 10,
+                       int(participant.vars['ASPD'][6]) + 19]
             player.selected_question_number = choice(options)
             if player.selected_question_number == options[0]:
                 player.o_choice = str(participant.vars['ASPD'][3])
@@ -113,8 +162,8 @@ class First_Mover(Page):
                 player.o_choice = str(participant.vars['ASPD'][5])
 
         else:
-            options = [int(participant.vars['ASPD'][6]) + 1, int(participant.vars['ASPD'][6]) + 5,
-                       int(participant.vars['ASPD'][6]) + 9]
+            options = [int(participant.vars['ASPD'][6]) + 1, int(participant.vars['ASPD'][6]) + 10,
+                       int(participant.vars['ASPD'][6]) + 19]
             player.selected_question_number = choice(options)
             if player.selected_question_number == options[0]:
                 player.o_choice = str(participant.vars['ASPD'][3])
@@ -125,7 +174,7 @@ class First_Mover(Page):
 
 class Second_Mover(Page):
     form_model = 'player'
-    form_fields = ['f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12']
+    form_fields = ['f10', 'f11', 'f12','f13', 'f14', 'f15', 'f16', 'f17', 'f18', 'f19', 'f20', 'f21', 'f22','f23', 'f24', 'f25', 'f26', 'f27']
 
 class ResultsWaitPage(WaitPage):
     @staticmethod
@@ -137,84 +186,84 @@ class ResultsWaitPage(WaitPage):
         if getattr(player_1, "f" + str(player_1.selected_question_number)) == 0:
            if player_1.o_choice == str(True):
                if 1 < x:
-                   player_1.payoff = 50
+                   player_1.payoff = 500
                else:
                    player_1.payoff = 0
            else:
                if 0 < x:
-                   player_1.payoff = 50
+                   player_1.payoff = 500
                else:
                    player_1.payoff = 0
 
         elif getattr(player_1, "f" + str(player_1.selected_question_number)) == 1:
            if player_1.o_choice == str(True):
                if 0.64 < x:
-                   player_1.payoff = 50
+                   player_1.payoff = 500
                else:
                    player_1.payoff = 0
            else:
                if 0.01 < x:
-                   player_1.payoff = 50
+                   player_1.payoff = 500
                else:
                    player_1.payoff = 0
 
         elif getattr(player_1, "f" + str(player_1.selected_question_number)) == 2:
            if player_1.o_choice == str(True):
                if 0.36 < x:
-                   player_1.payoff = 50
+                   player_1.payoff = 500
                else:
                    player_1.payoff = 0
            else:
                if 0.0421 < x:
-                   player_1.payoff = 50
+                   player_1.payoff = 500
                else:
                    player_1.payoff = 0
 
         elif getattr(player_1, "f" + str(player_1.selected_question_number)) == 3:
            if player_1.o_choice == str(True):
                if 0.16 < x:
-                   player_1.payoff = 50
+                   player_1.payoff = 500
                else:
                    player_1.payoff = 0
            else:
                if 0.1681 < x:
-                   player_1.payoff = 50
+                   player_1.payoff = 500
                else:
                    player_1.payoff = 0
 
         elif getattr(player_1, "f" + str(player_1.selected_question_number)) == 4:
             if player_1.o_choice == str(True):
                 if 0.04 < x:
-                    player_1.payoff = 50
+                    player_1.payoff = 500
                 else:
                     player_1.payoff = 0
             else:
                 if 0.3721 < x:
-                    player_1.payoff = 50
+                    player_1.payoff = 500
                 else:
                     player_1.payoff = 0
 
         elif getattr(player_1, "f" + str(player_1.selected_question_number)) == 5:
             if player_1.o_choice == str(True):
                 if 0.0001 < x:
-                    player_1.payoff = 50
+                    player_1.payoff = 500
                 else:
                     player_1.payoff = 0
             else:
                 if 0.6561 < x:
-                    player_1.payoff = 50
+                    player_1.payoff = 500
                 else:
                     player_1.payoff = 0
 
         elif getattr(player_1, "f" + str(player_1.selected_question_number)) == 6:
             if player_1.o_choice == str(True):
                 if 0 < x:
-                    player_1.payoff = 50
+                    player_1.payoff = 500
                 else:
                     player_1.payoff = 0
             else:
                 if 1 < x:
-                    player_1.payoff = 50
+                    player_1.payoff = 500
                 else:
                     player_1.payoff = 0
 
@@ -222,84 +271,84 @@ class ResultsWaitPage(WaitPage):
         if getattr(player_2, "f" + str(player_2.selected_question_number)) == 0:
            if player_2.o_choice == str(True):
                if 1 < x:
-                   player_2.payoff = 50
+                   player_2.payoff = 500
                else:
                    player_2.payoff = 0
            else:
                if 0 < x:
-                   player_2.payoff = 50
+                   player_2.payoff = 500
                else:
                    player_2.payoff = 0
 
         elif getattr(player_2, "f" + str(player_2.selected_question_number)) == 1:
            if player_2.o_choice == str(True):
                if 0.64 < x:
-                   player_2.payoff = 50
+                   player_2.payoff = 500
                else:
                    player_2.payoff = 0
            else:
                if 0.01 < x:
-                   player_2.payoff = 50
+                   player_2.payoff = 500
                else:
                    player_2.payoff = 0
 
         elif getattr(player_2, "f" + str(player_2.selected_question_number)) == 2:
            if player_2.o_choice == str(True):
                if 0.36 < x:
-                   player_2.payoff = 50
+                   player_2.payoff = 500
                else:
                    player_2.payoff = 0
            else:
                if 0.0421 < x:
-                   player_2.payoff = 50
+                   player_2.payoff = 500
                else:
                    player_2.payoff = 0
 
         elif getattr(player_2, "f" + str(player_2.selected_question_number)) == 3:
            if player_2.o_choice == str(True):
                if 0.16 < x:
-                   player_2.payoff = 50
+                   player_2.payoff = 500
                else:
                    player_2.payoff = 0
            else:
                if 0.1681 < x:
-                   player_2.payoff = 50
+                   player_2.payoff = 500
                else:
                    player_2.payoff = 0
 
         elif getattr(player_2, "f" + str(player_2.selected_question_number)) == 4:
             if player_2.o_choice == str(True):
                 if 0.04 < x:
-                    player_2.payoff = 50
+                    player_2.payoff = 500
                 else:
                     player_2.payoff = 0
             else:
                 if 0.3721 < x:
-                    player_2.payoff = 50
+                    player_2.payoff = 500
                 else:
                     player_2.payoff = 0
 
         elif getattr(player_2, "f" + str(player_2.selected_question_number)) == 5:
             if player_2.o_choice == str(True):
                 if 0.0001 < x:
-                    player_2.payoff = 50
+                    player_2.payoff = 500
                 else:
                     player_2.payoff = 0
             else:
                 if 0.6561 < x:
-                    player_2.payoff = 50
+                    player_2.payoff = 500
                 else:
                     player_2.payoff = 0
 
         elif getattr(player_2, "f" + str(player_2.selected_question_number)) == 6:
             if player_2.o_choice == str(True):
                 if 0 < x:
-                    player_2.payoff = 50
+                    player_2.payoff = 500
                 else:
                     player_2.payoff = 0
             else:
                 if 1 < x:
-                    player_2.payoff = 50
+                    player_2.payoff = 500
                 else:
                     player_2.payoff = 0
 
