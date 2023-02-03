@@ -64,15 +64,19 @@
         <ul>
             <li>If you chose the interval 1%-20%, and the random number is 0.5 . Then how much you get:</li>
                 {{form.quiz1}}
+                {{ formfield_errors 'quiz1' }}
             <li>If you chose the interval 100%, and the random number is 0.7 . Then how much you get:</li>
                 {{form.quiz2}}
+                {{ formfield_errors 'quiz2' }}
         </ul>
     <li> Assume: you need to guess the First Mover's choice, and your another random participant (as the First Mover) chose B </li>
         <ul>
             <li> If you chose the interval 21%-40%, and the random number is 0.5 . Then how much you get:</li>
                 {{form.quiz3}}
+                {{ formfield_errors 'quiz3' }}
             <li>If you chose the interval 0%, and the random number is 0.2 . Then how much you get:</li>
                 {{form.quiz4}}
+                {{ formfield_errors 'quiz4' }}
         </ul>
 </ul>
 
@@ -119,15 +123,19 @@
         <ul>
             <li> If you chose the interval 61%-80%, and the random number is 0.01. Then how much you get:</li>
                 {{form.quiz5}}
+                {{ formfield_errors 'quiz5' }}
             <li>If you chose the interval 0%, and the random number is 0.7 . Then how much you get:</li>
                 {{form.quiz6}}
+                {{ formfield_errors 'quiz6' }}
         </ul>
     <li> Assume: you need to guess the First Mover's choice given the First Mover chose B, and your another random participant (as the Second Mover) chose B </li>
         <ul>
             <li> If you chose the interval 1%-20%, and the random number is 0.5 . Then how much you get:</li>
                 {{form.quiz7}}
+                {{ formfield_errors 'quiz7' }}
             <li>If you chose the interval 100%, and the random number is 0.7 . Then how much you get:</li>
                 {{form.quiz8}}
+                {{ formfield_errors 'quiz8' }}
         </ul>
 </ul>
 
