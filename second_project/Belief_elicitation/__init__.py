@@ -24,6 +24,7 @@ class Player(BasePlayer):
 
     o_choice = models.StringField()
     selected_question_number = models.IntegerField()
+    paid_question = models.FloatField()
 
     f1 = models.IntegerField(
         widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
@@ -107,26 +108,66 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
     )
 
-
-    quiz1 = models.IntegerField()
-    quiz2 = models.IntegerField()
-    quiz3 = models.IntegerField()
-    quiz4 = models.IntegerField()
-    quiz5 = models.IntegerField()
-    quiz6 = models.IntegerField()
-    quiz7 = models.IntegerField()
-    quiz8 = models.IntegerField()
+    quiz1 = models.IntegerField(
+        widget=widgets.RadioSelect,
+        choices=[
+            [0, '£0'],
+            [1, '£1.00'],
+            [2, '£3.00'],
+            [3, '£5.00'],
+        ]
+    )
+    quiz2 = models.IntegerField(
+        widget=widgets.RadioSelect,
+        choices=[
+            [0, '£0'],
+            [1, '£1.00'],
+            [2, '£3.00'],
+            [3, '£5.00'],
+        ]
+    )
+    quiz3 = models.IntegerField(
+        widget=widgets.RadioSelect,
+        choices=[
+            [0, '£0.50'],
+            [1, '£1.30'],
+            [2, '£4.49'],
+            [3, 'None of the options is correct'],
+        ]
+    )
+    quiz4 = models.IntegerField(
+        widget=widgets.RadioSelect,
+        choices=[
+            [0, 'Yes, they will'],
+            [1, 'No, they will not'],
+        ]
+    )
+    quiz5 = models.IntegerField(
+        widget=widgets.RadioSelect,
+        choices=[
+            [0, 'Yes, they will'],
+            [1, 'No, they will not'],
+        ]
+    )
+    quiz6 = models.IntegerField(
+        widget=widgets.RadioSelect,
+        choices=[
+            [0, 'Choose randomly'],
+            [1, 'Simply state what I think'],
+            [2, 'Always state oen interval for all blocks'],
+        ]
+    )
 
 class Belief_elicitation_Instructions(Page):
     pass
 
 class Belief_Comprehension_Test(Page):
     form_model = 'player'
-    form_fields = ['quiz1', 'quiz2', 'quiz3', 'quiz4', 'quiz5', 'quiz6', 'quiz7', 'quiz8']
+    form_fields = ['quiz1', 'quiz2', 'quiz3', 'quiz4', 'quiz5', 'quiz6']
 
     @staticmethod
     def error_message(player: Player, values):
-        solutions = dict(quiz1=0, quiz2=5, quiz3=5, quiz4=5, quiz5=0, quiz6=0, quiz7=5, quiz8=0)
+        solutions = dict(quiz1=0, quiz2=3, quiz3=3, quiz4=1, quiz5=0, quiz6=1)
         errors = {name: 'Wrong' for name in solutions if values[name] != solutions[name]}
         if errors:
             player.num_failed_attempts += 1
@@ -153,10 +194,13 @@ class First_Mover(Page):
             player.selected_question_number = choice(options)
             if player.selected_question_number == options[0]:
                 player.o_choice = str(participant.vars['ASPD'][3])
+                player.paid_question = player.selected_question_number
             elif player.selected_question_number == options[1]:
                 player.o_choice = str(participant.vars['ASPD'][4])
+                player.paid_question = player.selected_question_number + 0.1
             elif player.selected_question_number == options[2]:
                 player.o_choice = str(participant.vars['ASPD'][5])
+                player.paid_question = player.selected_question_number - 8.8
 
         else:
             options = [int(participant.vars['ASPD'][6]) + 1, int(participant.vars['ASPD'][6]) + 10,
@@ -164,10 +208,13 @@ class First_Mover(Page):
             player.selected_question_number = choice(options)
             if player.selected_question_number == options[0]:
                 player.o_choice = str(participant.vars['ASPD'][3])
+                player.paid_question = player.selected_question_number
             elif player.selected_question_number == options[1]:
                 player.o_choice = str(participant.vars['ASPD'][4])
+                player.paid_question = player.selected_question_number + 0.1
             elif player.selected_question_number == options[2]:
                 player.o_choice = str(participant.vars['ASPD'][5])
+                player.paid_question = player.selected_question_number - 8.8
 
 class Second_Mover(Page):
     form_model = 'player'
@@ -349,8 +396,8 @@ class ResultsWaitPage(WaitPage):
                 else:
                     player_2.payoff = 0
 
-        player_1.participant.vars[__name__] = [str(player_1.payoff), str(player_1.selected_question_number)]
-        player_2.participant.vars[__name__] = [str(player_2.payoff), str(player_2.selected_question_number)]
+        player_1.participant.vars[__name__] = [str(player_1.payoff), str(player_1.paid_question)]
+        player_2.participant.vars[__name__] = [str(player_2.payoff), str(player_2.paid_question)]
 
 
 
