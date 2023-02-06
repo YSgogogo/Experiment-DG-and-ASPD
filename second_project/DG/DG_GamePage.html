@@ -1,24 +1,13 @@
 {{ extends 'global/Page.html' }}
-   {{ block title }}{{ endblock }}
+   {{ block title }}
+   <h2 style="text-align: center;">
+   Round X out of Y
+    </h2>
+   {{ endblock }}
 
 {{ block content }}
-        <style>
-            .ribbon {
-               position: relative;
-               top: -16px;
-               right: -706px;
-            }
-        </style>
-
-         <div style="text-align: justify;" class="card bg-light mb-3  ">
-            <div class="card-body">
-                <h2 style="text-align: center">Please take a decision</h2>
-                <br>
-<ul>
-    <li> Below you find your role (First Mover), related payment (You and Second Mover), and choices. </li>
-    <li> You need to select either A or B: </li>
-</ul>
 <br>
+
     <table class="mx-auto">
         <tr>
             <td colspan="3"> </td>
@@ -41,17 +30,9 @@
     </table>
 <br>
 
-            </div>
-        </div>
-        <br>
-    <script>
-        window.onload = function(){
-            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
-        }
-    </script>
-
-    <button class ="o-tree-btn-next btn btn-primary button1" id="Next" style="visibility:hidden; float: right;"> Next </button>
-
+<div style="text-align: right;">
+    {{ next_button }}
+</div>
 {{ endblock }}
 
 {{ block app_styles }}

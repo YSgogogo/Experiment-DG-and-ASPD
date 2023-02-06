@@ -1,7 +1,10 @@
 {{ extends 'global/Page.html' }}
-   {{ block title }}{{ endblock }}
+   {{ block title }}
+   {{ endblock }}
 
 {{ block content }}
+<h2 style="text-align: center">Comprehension Test</h2>
+
         <style>
             .ribbon {
                position: relative;
@@ -10,10 +13,7 @@
             }
         </style>
 
-         <div style="text-align: justify;" class="card bg-light mb-3  ">
-            <div class="card-body">
-                <h2 style="text-align: center">Comprehension Test</h2>
-                <br>
+<div style="style="text-align: justify;" class="card bg-light mb-3">
 
 <ul>
     <li> Before proceeding with the formal session, you need to answer the following questions correctly. </li>
@@ -29,13 +29,13 @@
         </tr>
         <tr>
             <td rowspan="2"> First Mover choice </td>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
+            <td></td>
             <td class="hide_left"> A </td>
             <td> 400 tokens </td>
             <td> 450 tokens </td>
         </tr>
         <tr>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
+            <td></td>
             <td class="hide_left"> B </td>
             <td> 500 tokens </td>
             <td> 200 tokens </td>
@@ -45,18 +45,11 @@
 
     {{ formfields }}
 
+</div>
 
-            </div>
-        </div>
-        <br>
-    <script>
-        window.onload = function(){
-            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
-        }
-    </script>
-
-    <button class ="o-tree-btn-next btn btn-primary button1" id="Next" style="visibility:hidden; float: right;"> Next </button>
-
+<div style="flush:center; text-align: center;">
+    {{ next_button }}
+</div>
 {{ endblock }}
 
 
