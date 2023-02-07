@@ -1,6 +1,9 @@
 {{ extends 'global/Page.html' }}
-   {{ block title }}{{ endblock }}
-
+   {{ block title }}
+ <div style="text-align: center;">
+    Survey
+ </div>
+    {{ endblock }}
 
 {{ block content }}
         <style>
@@ -11,9 +14,8 @@
             }
         </style>
 
-         <div style="text-align: justify;" class="card bg-light mb-3  ">
-            <div class="card-body">
-                <h2 style="text-align: center">Survey</h2>    <!-- To change the size of the title, use other headers like h1 -bigger, h3 -smaller  -->
+<div style="style="text-align: justify;" class="card bg-light mb-3">
+
                 <br>
 <ul>
   <li>  Before you are finished with today's experiment, we ask that you please answer a few more questions.  </li>
@@ -35,18 +37,10 @@
     <li> Please briefly explain how you make you choice: </li>
     {{form.How_choose}}
 <br>
-
-            </div>
-        </div>
-        <br>
-    <script>
-        window.onload = function(){
-            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
-        }
-    </script>
-
-    <button class ="o-tree-btn-next btn btn-primary button1" id="Next" style="visibility:hidden; float: right;"> Next </button>
-
+</div>
+<div style="text-align: right;">
+    {{ next_button }}
+</div>
 {{ endblock }}
 
 

@@ -1,55 +1,53 @@
 {{ extends 'global/Page.html' }}
-{{ block title }}
+   {{ block title }}
    <h2 style="text-align: center;">
-   Round X out of Y
+   Round {{player.round_number}}.2 out of 9
     </h2>
    {{ endblock }}
 {{ block content }}
 
-
+<br>
 <br>
         <table class="mx-auto">
         <tr>
-            <td class="hide_top & hide_left", colspan="4"> </td>
+            <td class="hide_top & hide_left", colspan="5"> </td>
             <td> First Mover  payment </td>
             <td> Your payment </td>
         </tr>
         <tr>
-            <td class="hide_top & hide_left & hide_bottom", rowspan="4"> First Mover choice </td>
+            <td class="hide_top & hide_left & hide_bottom", rowspan="4"> First Mover <br> choice </td>
             <td rowspan="2", style="background-color:LightGoldenrodYellow;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
-            <td rowspan="2"> Your choice (Second Mover) </td>
-            <td> <input type="radio" name="choice_2nd_Top" value="{{ True }}" class="btn btn-primary btn-large"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
+            <td rowspan="2"> Your choice <br> (Second Mover) </td>
+            <td> <input type="radio" name="choice_2nd_Top" value="{{ True }}" class="btn btn-primary btn-large"> </td>
+            <td class="hide_left"> A </td>
             <td> {{R1}} tokens </td>
             <td> {{R2}} tokens </td>
         </tr>
         <tr>
-            <td><input type="radio" name="choice_2nd_Top" value="{{ False }}" class="btn btn-primary btn-large"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
+            <td><input type="radio" name="choice_2nd_Top" value="{{ False }}" class="btn btn-primary btn-large"> </td>
+            <td class="hide_left"> B </td>
             <td> {{S1}} tokens </td>
             <td> {{T2}} tokens </td>
         </tr>
         <tr>
             <td rowspan="2", style="background-color:LightGray;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
-            <td rowspan="2"> Your choice (Second Mover) </td>
-            <td> <input type="radio" name="choice_2nd_Down" value="{{ True }}" class="btn btn-primary btn-large"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
+            <td rowspan="2"> Your choice <br> (Second Mover) </td>
+            <td> <input type="radio" name="choice_2nd_Down" value="{{ True }}" class="btn btn-primary btn-large"> </td>
+            <td class="hide_left"> A </td>
             <td> {{T1}} tokens </td>
             <td> {{S2}} tokens </td>
         </tr>
         <tr>
-            <td><input type="radio" name="choice_2nd_Down" value="{{ False }}" class="btn btn-primary btn-large"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
+            <td><input type="radio" name="choice_2nd_Down" value="{{ False }}" class="btn btn-primary btn-large"> </td>
+            <td class="hide_left"> B </td>
             <td> {{D1}} tokens </td>
             <td> {{D2}} tokens </td>
         </tr>
     </table>
 
-        <br>
-    <script>
-        window.onload = function(){
-            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
-        }
-    </script>
-
-<div style="text-align: right;">
-    {{ next_button }}
+<br>
+<div style="flush:right; text-align: right;">
+    {% next_button %}
 </div>
 {{ endblock }}
 

@@ -1,7 +1,12 @@
 {{ extends 'global/Page.html' }}
-   {{ block title }}{{ endblock }}
+   {{ block title }}
+ <div style="text-align: center;">
+     <h1>Comprehension Test</h1>
+ </div>
+    {{ endblock }}
 
 {{ block content }}
+
         <style>
             .ribbon {
                position: relative;
@@ -10,10 +15,8 @@
             }
         </style>
 
-         <div style="text-align: justify;" class="card bg-light mb-3  ">
-            <div class="card-body">
-                <h2 style="text-align: center">Comprehension Test</h2>
-                <br>
+<div style="style="text-align: justify;" class="card bg-light mb-3">
+
 
 <ul>
     <li> Before proceeding with the formal session, you need to answer the following questions correctly. </li>
@@ -49,17 +52,12 @@
 
 </ul>
 
-            </div>
-        </div>
         <br>
-    <script>
-        window.onload = function(){
-            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
-        }
-    </script>
+</div>
 
-    <button class ="o-tree-btn-next btn btn-primary button1" id="Next" style="visibility:hidden; float: right;"> Next </button>
-
+<div style="flush:center; text-align: center;">
+    {{ next_button }}
+</div>
 {{ endblock }}
 
 

@@ -10,7 +10,6 @@ class C(BaseConstants):
     NAME_IN_URL = 'DG'
     PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 10
-
     payoff_L1 = [400, 50, 50, 50, 50, 50, 50, 180, 180, 180]
     payoff_L2 = [350, 360, 360, 360, 600, 600, 600, 600, 600, 600]
     payoff_R1 = [500, 200, 200, 380, 200, 200, 380, 200, 200, 380,]
@@ -26,16 +25,17 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     num_failed_attempts = models.IntegerField(initial=0)
     failed_too_many = models.BooleanField(initial=False)
-    quiz1 = models.IntegerField(label='If you are the First Mover, and you chose A. Then you get:')
-    quiz2 = models.IntegerField(label='If you are the First Mover, and you chose B. Then you get:')
-    quiz3 = models.IntegerField(label='If you are the First Mover, and you chose A. Then the Second Mover gets:')
-    quiz4 = models.IntegerField(label='If you are the First Mover, and you chose B. Then the Second Mover gets:')
-    quiz5 = models.IntegerField(label='If you are the Second Mover, and the First Mover chose A. Then you get:')
-    quiz6 = models.IntegerField(label='If you are the Second Mover, and the First Mover chose B. Then you get:')
-    quiz7 = models.IntegerField(label='If you are the Second Mover, and the First Mover chose A. Then the First Mover gets:')
-    quiz8 = models.IntegerField(label='If you are the Second Mover, and the First Mover chose B. Then the First Mover gets:')
-    quiz9 = models.BooleanField(label="Can the Second Mover decide the the final Points?")
-    quiz10 = models.BooleanField(label="Can the First Mover decide the the final Points?")
+    quiz1 = models.IntegerField(label='If First Mover chose A, then she gets:')
+    quiz2 = models.IntegerField(label='If First Mover chose B, then she gets:')
+    quiz3 = models.IntegerField(label='If First Mover chose A, then Second Mover gets:')
+    quiz4 = models.IntegerField(label='If First Mover chose B, then Second Mover gets:')
+    quiz5 = models.BooleanField(
+        label="Who is able to decide the final points?",
+        choices = [
+            [True, 'First Mover'],
+            [False, 'Second Mover'],
+        ]
+    )
 
     choice =  models.BooleanField(
         choices=[
@@ -91,11 +91,11 @@ class DG_Instructions(Page):
 
 class DG_Comprehension_Test(Page):
     form_model = 'player'
-    form_fields = ['quiz1', 'quiz2', 'quiz3', 'quiz4', 'quiz5', 'quiz6', 'quiz7', 'quiz8', 'quiz9', 'quiz10']
+    form_fields = ['quiz1', 'quiz2', 'quiz3', 'quiz4', 'quiz5']
 
     @staticmethod
     def error_message(player: Player, values):
-        solutions = dict(quiz1=400, quiz2=500, quiz3=450, quiz4=200, quiz5=450, quiz6=200, quiz7=400, quiz8=500, quiz9=False, quiz10=True)
+        solutions = dict(quiz1=400, quiz2=500, quiz3=450, quiz4=200, quiz5=True)
         errors = {name: 'Wrong' for name in solutions if values[name] != solutions[name]}
         if errors:
             player.num_failed_attempts += 1

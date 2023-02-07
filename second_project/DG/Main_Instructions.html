@@ -1,5 +1,9 @@
 {{ extends 'global/Page.html' }}
-   {{ block title }}{{ endblock }}
+   {{ block title }}
+ <div style="text-align: center;">
+    <h1>Instructions</h1>
+ </div>
+    {{ endblock }}
 
 {{ block content }}
         <style>
@@ -12,7 +16,6 @@
 
          <div style="text-align: justify;" class="card bg-light mb-3  ">
             <div class="card-body">
-                <h2 style="text-align: center">Instructions</h2>
                 <br>
 <h2> Welcome to ESSEXLab </h2>
 <ul>
@@ -21,14 +24,12 @@
   <li> Please use the computer only as instructed. In particular, <b>do not</b> attempt to browse or refresh the web or use programs unrelated to the experiment. </li>
 </ul>
 
-
-
 <h2> Guidelines </h2>
 <ul>
     <li> You will be paid in private and in cash at the end of the experiment. </li>
     <li> The amount of money that you ultimately earn in the experiment depends on your decisions, the decisions of others and random chance. </li>
     <li> You have each earned a £5 payment for showing up on time. </li>
-    <li> Please DO NOT socialize or talk during the experiment. </li>
+    <li> Please DO NOT socialize or talk during the experiment. If you have any problems, please raise your hand and the researcher will come and help you.</li>
     <li> The experiment consists of <b>three blocks</b>. Each block will be precluded by the set of instructions as well as the comprehension check. </li>
 </ul>
 
@@ -52,7 +53,7 @@
         <br>
     <script>
         window.onload = function(){
-            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
+            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 180000);
         }
     </script>
 

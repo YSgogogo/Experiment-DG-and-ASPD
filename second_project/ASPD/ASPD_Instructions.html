@@ -1,5 +1,9 @@
 {{ extends 'global/Page.html' }}
-   {{ block title }}{{ endblock }}
+   {{ block title }}
+ <div style="text-align: center;">
+     <h1>BLOCK 2: Instructions</h1>
+ </div>
+    {{ endblock }}
 
 {{ block content }}
         <style>
@@ -12,17 +16,16 @@
 
          <div style="text-align: justify;" class="card bg-light mb-3  ">
             <div class="card-body">
-                <h2 style="text-align: center">BLOCK 2: Instructions</h2>    <!-- To change the size of the title, use other headers like h1 -bigger, h3 -smaller  -->
                 <br>
 
 <h2> Structure of the block </h2>
 <ul>
   <li> In this block there are <b>2 active</b> players: First Mover and Second Mover. </li>
-  <li> You will participate in 9 decision problems. </li>
+  <li> You will participate in 18 decision problems. </li>
   <li> Each decision problem is equally likely to be selected for payment. </li>
   <li> Each round is independent of other rounds. </li>
   <li> Thus, it is important for you to take each round seriously. </li>
-  <li> You will face 18 rounds:
+  <li> You will face 9 rounds, each round contains 2 sub-rounds:
       <ul>
           <li> assuming role of the First Mover, and </li>
           <li> assuming role of the Second Mover. </li>
@@ -126,7 +129,7 @@
             <td> Second Mover payment </td>
         </tr>
         <tr>
-            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> Your choice (First Mover) </td>
+            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> Your choice <br> (First Mover) </td>
             <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
             <td class="hide_left"> A </td>
             <td> 350 tokens </td>
@@ -154,34 +157,39 @@
     <li> Given that the decision can be conditioned on the action of the First Mover, you would be presented with the following interface: </li>
 </ur>
         <br>
+<br>
         <table class="mx-auto">
         <tr>
-            <td class="hide_top & hide_left", colspan="4"> </td>
-            <td> First Mover payment </td>
+            <td class="hide_top & hide_left", colspan="5"> </td>
+            <td> First Mover  payment </td>
             <td> Your payment </td>
         </tr>
         <tr>
             <td class="hide_top & hide_left & hide_bottom", rowspan="4"> First Mover choice </td>
             <td rowspan="2", style="background-color:LightGoldenrodYellow;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
-            <td rowspan="2"> Your choice (Second Mover) </td>
-            <td> <input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
+            <td rowspan="2"> Your choice <br> (Second Mover) </td>
+            <td> <input type="radio" name="choice_2nd_Top" value="{{ True }}" class="btn btn-primary btn-large"> </td>
+            <td class="hide_left"> A </td>
             <td> 350 tokens </td>
             <td> 400 tokens </td>
         </tr>
         <tr>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
+            <td><input type="radio" name="choice_2nd_Top" value="{{ False }}" class="btn btn-primary btn-large"> </td>
+            <td class="hide_left"> B </td>
             <td> 200 tokens </td>
             <td> 500 tokens </td>
         </tr>
         <tr>
             <td rowspan="2", style="background-color:LightGray;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
-            <td rowspan="2"> Your choice (Second Mover) </td>
-            <td> <input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
+            <td rowspan="2"> Your choice <br> (Second Mover) </td>
+            <td> <input type="radio" name="choice_2nd_Down" value="{{ True }}" class="btn btn-primary btn-large"> </td>
+            <td class="hide_left"> A </td>
             <td> 600 tokens </td>
             <td> 200 tokens </td>
         </tr>
         <tr>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
+            <td><input type="radio" name="choice_2nd_Down" value="{{ False }}" class="btn btn-primary btn-large"> </td>
+            <td class="hide_left"> B </td>
             <td> 300 tokens </td>
             <td> 250 tokens </td>
         </tr>
@@ -214,7 +222,7 @@
         <br>
     <script>
         window.onload = function(){
-            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
+            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 180000);
         }
     </script>
 

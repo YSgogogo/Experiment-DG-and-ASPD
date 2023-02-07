@@ -71,42 +71,6 @@ class Player(BasePlayer):
     f15 = models.IntegerField(
         widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
     )
-    f16 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
-    )
-    f17 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
-    )
-    f18 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
-    )
-    f19 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
-    )
-    f20 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
-    )
-    f21 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
-    )
-    f22 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
-    )
-    f23 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
-    )
-    f24 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
-    )
-    f25 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
-    )
-    f26 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
-    )
-    f27 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
-    )
 
     quiz1 = models.IntegerField(
         widget=widgets.RadioSelect,
@@ -183,14 +147,14 @@ class Failed(Page):
 
 class First_Mover(Page):
     form_model = 'player'
-    form_fields = ['f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9']
+    form_fields = ['f1', 'f2', 'f3', 'f4', 'f5']
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
 
         if player.id_in_group == 1:
-            options = [int(participant.vars['ASPD'][6]) + 1, int(participant.vars['ASPD'][6]) + 10,
-                       int(participant.vars['ASPD'][6]) + 19]
+            options = [int(participant.vars['ASPD'][6]) + 1, int(participant.vars['ASPD'][6]) + 6,
+                       int(participant.vars['ASPD'][6]) + 11]
             player.selected_question_number = choice(options)
             if player.selected_question_number == options[0]:
                 player.o_choice = str(participant.vars['ASPD'][3])
@@ -200,11 +164,11 @@ class First_Mover(Page):
                 player.paid_question = player.selected_question_number + 0.1
             elif player.selected_question_number == options[2]:
                 player.o_choice = str(participant.vars['ASPD'][5])
-                player.paid_question = player.selected_question_number - 8.8
+                player.paid_question = player.selected_question_number - 4.8
 
         else:
-            options = [int(participant.vars['ASPD'][6]) + 1, int(participant.vars['ASPD'][6]) + 10,
-                       int(participant.vars['ASPD'][6]) + 19]
+            options = [int(participant.vars['ASPD'][6]) + 1, int(participant.vars['ASPD'][6]) + 6,
+                       int(participant.vars['ASPD'][6]) + 11]
             player.selected_question_number = choice(options)
             if player.selected_question_number == options[0]:
                 player.o_choice = str(participant.vars['ASPD'][3])
@@ -214,11 +178,11 @@ class First_Mover(Page):
                 player.paid_question = player.selected_question_number + 0.1
             elif player.selected_question_number == options[2]:
                 player.o_choice = str(participant.vars['ASPD'][5])
-                player.paid_question = player.selected_question_number - 8.8
+                player.paid_question = player.selected_question_number - 4.8
 
 class Second_Mover(Page):
     form_model = 'player'
-    form_fields = ['f10', 'f11', 'f12','f13', 'f14', 'f15', 'f16', 'f17', 'f18', 'f19', 'f20', 'f21', 'f22','f23', 'f24', 'f25', 'f26', 'f27']
+    form_fields = ['f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12','f13', 'f14', 'f15']
 
 class ResultsWaitPage(WaitPage):
     @staticmethod

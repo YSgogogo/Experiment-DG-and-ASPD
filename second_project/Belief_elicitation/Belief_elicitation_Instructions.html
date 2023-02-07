@@ -1,5 +1,9 @@
 {{ extends 'global/Page.html' }}
-   {{ block title }}{{ endblock }}
+   {{ block title }}
+ <div style="text-align: center;">
+     <h1>BLOCK 3: Instructions</h1>
+ </div>
+    {{ endblock }}
 
 {{ block content }}
         <style>
@@ -12,7 +16,6 @@
 
          <div style="text-align: justify;" class="card bg-light mb-3  ">
             <div class="card-body">
-                <h2 style="text-align: center">BLOCK 3: Instructions</h2>
                 <br>
 
 <h2> Structure of the block </h2>
@@ -22,14 +25,14 @@
           <li> forecast the First Mover's choice, and </li>
           <li> forecast the Second Mover's choice. </li>
       </ul>
-  <li> You will participate in 27 Forecasts. </li>
+  <li> You will participate in 15 Forecasts. </li>
   <li> Each problem is equally likely to be selected for payment. </li>
   <li> Thus, it is important for you to take each problem seriously. </li>
 </ul>
 
 <h2> Structure of the task 1 </h2>
 <ul>
-    <li>There are 9 payment structures along with one forecast in each payment structure. You need to: </li>
+    <li>There are 5 payment structures along with one forecast in each payment structure. You need to: </li>
         <ul>
             <li> forecast the First Mover's decision. </li>
         </ul>
@@ -85,7 +88,7 @@
 
 <h2> Structure of the task 2 </h2>
 <ul>
-    <li>There are 9 payment structures along with 2 forecasts in each payment structure. You need to: </li>
+    <li>There are 5 payment structures along with 2 forecasts in each payment structure. You need to: </li>
         <ul>
             <li> learn the choice of the First Mover, then </li>
             <li> forecast the Second Mover's decision </li>
@@ -161,9 +164,9 @@
                     <li> So your forecast error is (your choice)&sup2: (41% to 60%)&sup2 = 0.1681 to 0.36, because 0.7 > 0.36. Then you get £5.00</li>
                 </ul>
         </ul>
-    <li> One out of 27 forecasts will be chosen at random.</li>
+    <li> One out of 15 forecasts will be chosen at random.</li>
     <li> You will only see outcomes in the end of the experiment. </li>
-    <li> <b>NOTE</b> &nbsp;&nbsp;&nbsp; Since your guesses are made when you do not know what other participants have chosen. <b>The best thing you can do to gain the highest payment in this block is to simply state what you think.</b> </li>
+    <li> <b>NOTE</b> &nbsp;&nbsp;&nbsp; Since your forecasts are made when you do not know what other participants have chosen. <b>The best thing you can do to gain the highest payment in this block is to simply state what you think.</b> </li>
     <li> Read this page carefully, we will test your comprehension in the next page.</li>
 </ul>
 
@@ -172,7 +175,7 @@
         <br>
     <script>
         window.onload = function(){
-            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
+            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 180000);
         }
     </script>
 

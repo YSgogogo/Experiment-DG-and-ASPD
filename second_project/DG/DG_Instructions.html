@@ -1,5 +1,9 @@
 {{ extends 'global/Page.html' }}
-   {{ block title }}{{ endblock }}
+   {{ block title }}
+ <div style="text-align: center;">
+     <h1>BLOCK 1: Instructions</h1>
+ </div>
+    {{ endblock }}
 
 {{ block content }}
         <style>
@@ -12,7 +16,6 @@
 
          <div style="text-align: justify;" class="card bg-light mb-3  ">
             <div class="card-body">
-                <h2 style="text-align: center">BLOCK 1: Instructions</h2>
                 <br>
 
 <h2> Structure of the block </h2>
@@ -87,7 +90,7 @@
         <br>
     <script>
         window.onload = function(){
-            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 1000);
+            setTimeout(function(){document.querySelector("#Next").style.visibility = "visible";}, 180000);
         }
     </script>
 

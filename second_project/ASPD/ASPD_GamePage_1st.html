@@ -1,20 +1,15 @@
 {{ extends 'global/Page.html' }}
    {{ block title }}
-<div style="text-align: center;">
-   Round X out of Y
-</div>
+   <h2 style="text-align: center;">
+   Round {{player.round_number}}.1 out of 9
+    </h2>
    {{ endblock }}
 
 {{ block content }}
-        <style>
-            .ribbon {
-               position: relative;
-               top: -16px;
-               right: -706px;
-            }
-        </style>
 
 <br>
+<br>
+
         <table class="mx-auto">
         <tr>
             <td class="hide_top & hide_left", colspan="3", rowspan="3"> </td>
@@ -31,7 +26,7 @@
             <td> Second Mover payment </td>
         </tr>
         <tr>
-            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> Your choice (First Mover)</td>
+            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> Your choice <br> (First Mover)</td>
             <td><input type="radio" name="choice_1st" value="{{ True }}" class="btn btn-primary btn-large"></td>
             <td class="hide_left"> A </td>
             <td> {{R1}} tokens </td>
