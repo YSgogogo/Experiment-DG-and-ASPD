@@ -210,8 +210,8 @@ class ResultsWaitPage(WaitPage):
             else:
                 player_1.payoff = C.payoff_D1[selected_payment]
                 player_2.payoff = C.payoff_D2[selected_payment]
-        player_1.participant.vars[__name__] = [str(player_1.payoff), 'First mover', str(selected_round), str(player_2_in_selected_round_be_1st.choice_1st), str(player_2_in_selected_round_be_2nd.choice_2nd_Top), str(player_2_in_selected_round_be_2nd.choice_2nd_Down), str(selected_task)]
-        player_2.participant.vars[__name__] = [str(player_2.payoff), 'Second mover', str(selected_round+9), str(player_1_in_selected_round_be_1st.choice_1st), str(player_1_in_selected_round_be_2nd.choice_2nd_Top), str(player_1_in_selected_round_be_2nd.choice_2nd_Down), str(selected_task)]
+        player_1.participant.vars[__name__] = [str(player_1.payoff), 'First Mover', str(selected_round), str(player_2_in_selected_round_be_1st.choice_1st), str(player_2_in_selected_round_be_2nd.choice_2nd_Top), str(player_2_in_selected_round_be_2nd.choice_2nd_Down), str(selected_task)]
+        player_2.participant.vars[__name__] = [str(player_2.payoff), 'Second Mover', str(selected_round+9), str(player_1_in_selected_round_be_1st.choice_1st), str(player_1_in_selected_round_be_2nd.choice_2nd_Top), str(player_1_in_selected_round_be_2nd.choice_2nd_Down), str(selected_task)]
 
 
 

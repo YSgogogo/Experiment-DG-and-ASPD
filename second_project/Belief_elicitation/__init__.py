@@ -94,8 +94,8 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
         choices=[
             [0, '£0.50'],
-            [1, '£1.30'],
-            [2, '£4.49'],
+            [1, '£1.50'],
+            [2, '£3.50'],
             [3, 'None of the options is correct'],
         ]
     )
@@ -117,8 +117,8 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
         choices=[
             [0, 'Choose randomly'],
-            [1, 'Simply state what I think'],
-            [2, 'Always state oen interval for all blocks'],
+            [1, 'State what I think'],
+            [2, 'Always state oen interval for all questions'],
         ]
     )
 

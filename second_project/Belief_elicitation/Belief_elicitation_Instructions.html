@@ -12,6 +12,9 @@
                top: -16px;
                right: -706px;
             }
+            .red {
+                color: red;
+            }
         </style>
 
          <div style="text-align: justify;" class="card bg-light mb-3  ">
@@ -25,18 +28,18 @@
           <li> forecast the First Mover's choice, and </li>
           <li> forecast the Second Mover's choice. </li>
       </ul>
-  <li> You will participate in 15 Forecasts. </li>
+  <li> You will participate in 15 Forecast problems. </li>
   <li> Each problem is equally likely to be selected for payment. </li>
   <li> Thus, it is important for you to take each problem seriously. </li>
 </ul>
 
-<h2> Structure of the task 1 </h2>
+<h2> Structure of task 1 </h2>
 <ul>
-    <li>There are 5 payment structures along with one forecast in each payment structure. You need to: </li>
+    <li>There are 5 payment structures along with <b>one</b> forecast in each payment structure. You need to: </li>
         <ul>
-            <li> forecast the First Mover's decision. </li>
+            <li> forecast First Mover's decision. </li>
         </ul>
-    <li> You would see the following interface for each payment structure: </li>
+    <li> You would see the similar interface for each payment structure: </li>
 </ul>
 <br>
 
@@ -76,9 +79,9 @@
     <br>
 
 <ul>
-    <li>You are asked to forecast the percentage interval of the First Mover's choice: </li>
+    <li>You are asked to forecast the percentage interval of First Mover's choice: </li>
         <ul>
-            <li> What do you think is the percent chance that the First Mover would choose A?  </li>
+            <li> What do you think is the percent chance that First Mover would choose A?  </li>
                 <ul>
                     <li> 0%, 1%-20%, 21%-40%, 41%-60%, 61%-80%, 81%-99%, 100% </li>
                 </ul>
@@ -88,12 +91,12 @@
 
 <h2> Structure of the task 2 </h2>
 <ul>
-    <li>There are 5 payment structures along with 2 forecasts in each payment structure. You need to: </li>
+    <li>There are 5 payment structures along with <b>two</b> forecasts in each payment structure. You need to: </li>
         <ul>
             <li> learn the choice of the First Mover, then </li>
             <li> forecast the Second Mover's decision </li>
         </ul>
-    <li> You would see the following interface for each payment structure: </li>
+    <li> You would see the similar interface for each payment structure: </li>
 </ul>
         <br>
         <table class="mx-auto">
@@ -145,11 +148,11 @@
     <li> Note that every forecast is important to determine your payment as until the end of the experiment you do not know what other participant has chosen. </li>
 </ul>
 
-<h2> Payments: </h2>
+<h2> Payments </h2>
 <ul>
     <li> The payments for each question are determined as follows. </li>
-    <li> One participant (anonymous) in this room (excluding you) will be picked at random and this participant's decision in block 2 will be retrieved;</li>
-    <li> If the choice picked by the selected participant is A, the forecast error = (1-your choice)&sup2</li>
+    <li> One participant in this room (excluding you) will be picked at random and this participant's decision in block 2 will be retrieved.</li>
+    <li> If the choice picked by the selected participant is A, the forecast error = (1-your choice)&sup2.</li>
     <li> If the choice picked by the selected participant is B, the forecast error = (your choice)&sup2.</li>
     <li> A uniform random number will be drawn form the interval from 0 to 1;</li>
     <li> You will receive £5 if the forecast error is below the random number and will not receive any additional payment otherwise;</li>
@@ -166,7 +169,7 @@
         </ul>
     <li> One out of 15 forecasts will be chosen at random.</li>
     <li> You will only see outcomes in the end of the experiment. </li>
-    <li> <b>NOTE</b> &nbsp;&nbsp;&nbsp; Since your forecasts are made when you do not know what other participants have chosen. <b>The best thing you can do to gain the highest payment in this block is to simply state what you think.</b> </li>
+    <li> <span class="red"><b>NOTE</b></span> &nbsp; Since your forecasts are made when you do not know what other participants have chosen. <b>The best thing you can do to gain the highest payment in this block is to simply state what you think.</b> </li>
     <li> Read this page carefully, we will test your comprehension in the next page.</li>
 </ul>
 
@@ -179,8 +182,9 @@
         }
     </script>
 
-    <button class ="o-tree-btn-next btn btn-primary button1" id="Next" style="visibility:hidden; float: right;"> Next </button>
-
+<div style="text-align:center;">
+    <button class ="o-tree-btn-next btn btn-primary button1" id="Next" style="visibility:hidden; margin: 0 auto;"> Next </button>
+</div>
 {{ endblock }}
 
 

@@ -1,7 +1,7 @@
 {{ extends 'global/Page.html' }}
    {{ block title }}
  <div style="text-align: center;">
-    Your payment in today's experiment
+    Your payment in this experiment
  </div>
     {{ endblock }}
 
@@ -29,7 +29,7 @@
             <td> </td>
             <td> Round/Question  </td>
             <td> Role </td>
-            <td> Tokens </td>
+            <td> Payment </td>
         </tr>
         <tr>
             <td class="hide_bottom"> Block 1 </td>
@@ -50,13 +50,13 @@
             <td class="hide_bottom"> {{ player.points_to_pay3 }} </td>
         </tr>
         <tr>
-            <td> Show-up fee </td>
+            <td> Show-up </td>
             <td> N/A </td>
             <td> N/A </td>
             <td> £5 </td>
         </tr>
         <tr>
-            <td> Total Payment</td>
+            <td> Total</td>
             <td> N/A </td>
             <td> N/A </td>
             <td> {{participant.payoff_plus_participation_fee()}} </td>
@@ -68,7 +68,7 @@
 
 <ul>
   <li>  Note: 100 tokens = £1. </li>
-  <li>  Your final payment in today's experiment is therefore {{participant.payoff_plus_participation_fee()}}. </li>
+  <li>  Your final payment in this experiment is therefore {{participant.payoff_plus_participation_fee()}}. </li>
   <li>  We are preparing for your payment. Please keep calm, and we will come and pay you.</li>
 </ul>
 

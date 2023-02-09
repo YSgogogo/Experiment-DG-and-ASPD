@@ -15,8 +15,8 @@
             }
         </style>
 
-<div style="style="text-align: justify;" class="card bg-light mb-3">
-
+<div style="text-align: justify;" class="card bg-light mb-3">
+    <div class="card-body">
 
 <ul>
     <li> Before proceeding with the formal session, you need to answer the following questions correctly. </li>
@@ -40,10 +40,10 @@
 <h2> Calculation rule </h2>
 <ul>
 
-    <li> In this block, will the choices made by you in other blocks affect your payment?</li>
+    <li> In this block, will the choices made by you in block 2 affect your payment?</li>
                 {{form.quiz4}}
                 {{ formfield_errors 'quiz4' }}
-    <li> In this block, will the choices made by other participants in other blocks affect your payment?</li>
+    <li> In this block, will the choices made by other participants in block 2 affect your payment?</li>
                 {{form.quiz5}}
                 {{ formfield_errors 'quiz5' }}
     <li> In this block, what should you do to maximize your payment?</li>
@@ -53,6 +53,7 @@
 </ul>
 
         <br>
+    </div>
 </div>
 
 <div style="flush:center; text-align: center;">
