@@ -97,7 +97,7 @@ def creating_session(subsession: Subsession):
             for p in g.get_players():
                 p.in_round(18).selected_task_be = g.in_round(18).selected_task_be
 
-            for i in range(1, 9):
+            for i in range(1, 10):
                 if g.in_round(i).task1_number == g.in_round(18).selected_task_be:
                     g.in_round(18).selected_round_be = i
                     break

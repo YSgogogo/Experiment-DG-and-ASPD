@@ -34,9 +34,9 @@ POINTS_CUSTOM_NAME = 'tokens'
 
 ROOMS = [
     dict(
-        name='Eco_experiment',
-        display_name='Essex Lab',
-        participant_label_file='_EssexLab/Eco.txt',
+        name='EssexLab',
+        display_name='EssexLab',
+        participant_label_file='_rooms/Essexlab.txt',
     ),
 ]
 
