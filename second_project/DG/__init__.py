@@ -112,6 +112,10 @@ class Failed(Page):
     def is_displayed(player: Player):
         return player.failed_too_many
 
+class Wait(Page):
+    def is_displayed(player:Player):
+        return player.round_number==C.NUM_ROUNDS
+
 class ResultsWaitPage(WaitPage):
     def is_displayed(player:Player):
         return player.round_number==C.NUM_ROUNDS
@@ -136,5 +140,5 @@ class ResultsWaitPage(WaitPage):
 
 
 
-page_sequence = [Main_Instructions, DG_Instructions, DG_Comprehension_Test, DG_GamePage, ResultsWaitPage]
+page_sequence = [Main_Instructions, DG_Instructions, DG_Comprehension_Test, DG_GamePage, ResultsWaitPage, Wait]
 

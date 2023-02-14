@@ -175,6 +175,11 @@ class Failed(Page):
     def is_displayed(player: Player):
         return player.failed_too_many
 
+class Wait(Page):
+    def is_displayed(player:Player):
+        return player.round_number==C.NUM_ROUNDS
+
+
 class ResultsWaitPage(WaitPage):
     @staticmethod
     def is_displayed(player: Player):
@@ -217,4 +222,4 @@ class ResultsWaitPage(WaitPage):
 
 
 
-page_sequence = [ASPD_Instructions, ASPD_Comprehension_Test, ASPD_GamePage_1st, ASPD_GamePage_2nd, ResultsWaitPage]
+page_sequence = [ASPD_Instructions, ASPD_Comprehension_Test, ASPD_GamePage_1st, ASPD_GamePage_2nd, ResultsWaitPage, Wait]
