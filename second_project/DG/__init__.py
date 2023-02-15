@@ -89,6 +89,10 @@ class DG_Instructions(Page):
     def is_displayed(player: Player):
         return player.round_number == 1
 
+class Welcome(Page):
+    def is_displayed(player:Player):
+        return player.round_number==1
+
 class DG_Comprehension_Test(Page):
     form_model = 'player'
     form_fields = ['quiz1', 'quiz2', 'quiz3', 'quiz4', 'quiz5']
@@ -140,5 +144,5 @@ class ResultsWaitPage(WaitPage):
 
 
 
-page_sequence = [Main_Instructions, DG_Instructions, DG_Comprehension_Test, DG_GamePage, ResultsWaitPage, Wait]
+page_sequence = [Welcome, Main_Instructions, DG_Instructions, DG_Comprehension_Test, DG_GamePage, ResultsWaitPage, Wait]
 

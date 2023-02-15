@@ -153,10 +153,10 @@
 <h2> Decision of the Second Mover </h2>
 <ul>
     <li> As the Second Mover you need to take decision of A or B twice</li>
-        <ur>
+        <ul>
             <li> Choose A or B given the First Mover has chosen A </li>
             <li> Choose A or B given the First Mover has chosen B </li>
-        </ur>
+        </ul>
     <li> You would be presented with the following interface: </li>
 </ul>
         <br>
@@ -168,19 +168,19 @@
             <td> Your payment </td>
         </tr>
         <tr>
-            <td class="hide_top & hide_left & hide_bottom", rowspan="4"> First Mover choice </td>
-            <td rowspan="2", style="background-color:LightGoldenrodYellow;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
-            <td rowspan="2"> Your choice <br> (Second Mover) </td>
+            <td class="hide_top & hide_left & hide_bottom", rowspan="4"> First Mover <br> choice </td>
+            <td rowspan="2", style="background-color:LightGoldenrodYellow;"， class="width_bottom"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
+            <td rowspan="2"， class="width_bottom"> Your choice <br> (Second Mover) </td>
             <td> <input type="radio" name="choice_2nd_Top" value="{{ True }}" class="btn btn-primary btn-large"> </td>
             <td class="hide_left"> A </td>
             <td> 350 tokens </td>
             <td> 400 tokens </td>
         </tr>
         <tr>
-            <td><input type="radio" name="choice_2nd_Top" value="{{ False }}" class="btn btn-primary btn-large"> </td>
-            <td class="hide_left"> B </td>
-            <td> 200 tokens </td>
-            <td> 500 tokens </td>
+            <td class="width_bottom"><input type="radio" name="choice_2nd_Top" value="{{ False }}" class="btn btn-primary btn-large"> </td>
+            <td class="hide_left & width_bottom"> B </td>
+            <td class="width_bottom"> 280 tokens </td>
+            <td class="width_bottom"> 500 tokens </td>
         </tr>
         <tr>
             <td rowspan="2", style="background-color:LightGray;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
@@ -215,7 +215,7 @@
     <li> You are randomly assigned a role: First Mover or Second Mover. </li>
     <li> The decision you and another player made would be implemented (in the corresponding roles) and thus the payoff would be determined. </li>
     <li> One of the rounds will be randomly selected for payment. </li>
-    <li> You will only see outcomes in the end of the experiment. </li>
+    <li> You will only see outcomes at the end of the experiment. </li>
     <li> Your payment: 100 tokens = £1 </li>
 </ul>
 

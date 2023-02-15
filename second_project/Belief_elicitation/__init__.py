@@ -118,7 +118,7 @@ class Player(BasePlayer):
         choices=[
             [0, 'Choose randomly'],
             [1, 'State what I think'],
-            [2, 'Always state oen interval for all questions'],
+            [2, 'Always state one interval for all questions'],
         ]
     )
 

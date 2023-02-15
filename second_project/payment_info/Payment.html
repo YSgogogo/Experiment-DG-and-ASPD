@@ -20,45 +20,47 @@
 
 <ul>
   <li>  Thank you for participating in today’s experiment. </li>
-  <li>  See what you have earned today in details in the following table: </li>
+  <li>  Check what you have earned from this experiment: </li>
 </ul>
 
 <br>
-    <table class="mx-auto">
+    <table class="mx-auto & styled-table">
+        <thead>
         <tr>
-            <td> </td>
-            <td> Round/Question  </td>
-            <td> Role </td>
-            <td> Payment </td>
+            <td> block</td>
+            <td> selected  </td>
+            <td> role </td>
+            <td> payment </td>
         </tr>
+        </thead>
         <tr>
-            <td class="hide_bottom"> Block 1 </td>
+            <td class="hide_bottom"> 1 </td>
             <td class="hide_bottom"> {{ player.round_to_pay1 }} </td>
             <td class="hide_bottom"> {{ player.role_to_pay1 }} </td>
             <td class="hide_bottom"> {{ player.points_to_pay1 }} </td>
         </tr>
         <tr>
-            <td class="hide_bottom"> Block 2 </td>
+            <td class="hide_bottom"> 2 </td>
             <td class="hide_bottom"> {{ player.round_to_pay2 }} </td>
             <td class="hide_bottom"> {{ player.role_to_pay2 }} </td>
             <td class="hide_bottom"> {{ player.points_to_pay2 }} </td>
         </tr>
         <tr>
-            <td class="hide_bottom"> Block 3 </td>
-            <td class="hide_bottom"> {{player.question_to_pay3}} </td>
-            <td class="hide_bottom"> N/A </td>
-            <td class="hide_bottom"> {{ player.points_to_pay3 }} </td>
+            <td> 3 </td>
+            <td> {{player.question_to_pay3}} </td>
+            <td>  </td>
+            <td> {{ player.points_to_pay3 }} </td>
         </tr>
         <tr>
-            <td> Show-up </td>
-            <td> N/A </td>
-            <td> N/A </td>
+            <td> show-up </td>
+            <td>  </td>
+            <td>  </td>
             <td> £5 </td>
         </tr>
-        <tr>
-            <td> Total</td>
-            <td> N/A </td>
-            <td> N/A </td>
+        <tr class="active-row">
+            <td> total</td>
+            <td>  </td>
+            <td>  </td>
             <td> {{participant.payoff_plus_participation_fee()}} </td>
         </tr>
     </table>
@@ -110,6 +112,33 @@
         }
         tr.width_bottom > td, td.width_bottom{
            border-bottom-width:4px;
+        }
+        .styled-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+        .styled-table thead tr {
+        background-color: lightgray;
+        color: #ffffff;
+        text-align: left;
+        }
+        .styled-table th,
+        .styled-table td {
+        padding: 12px 15px;
+        }
+        .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+        }
+        .styled-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+        }
+        .styled-table tbody tr.active-row {
+        font-weight: bold;
+        color: #009879;
         }
 
     </style>
