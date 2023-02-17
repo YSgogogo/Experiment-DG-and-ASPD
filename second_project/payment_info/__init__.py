@@ -30,10 +30,12 @@ class Player(BasePlayer):
     points_to_pay2 = models.StringField()
     question_to_pay3 = models.StringField()
     points_to_pay3 = models.StringField()
-    Gender =  models.BooleanField(
+    Gender =  models.IntegerField(
+        widget=widgets.RadioSelect,
         choices=[
-           [True, 'Male'],
-           [False, 'Female'],
+            [0, 'Male'],
+            [1, 'Female'],
+            [2, 'Prefer not to say'],
         ]
     )
     Major = models.StringField()

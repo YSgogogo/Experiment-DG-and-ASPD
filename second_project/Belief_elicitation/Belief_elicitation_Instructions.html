@@ -21,7 +21,7 @@
             <div class="card-body">
                 <br>
 
-<h2> Structure of the block </h2>
+<h2> Structure of the Block </h2>
 <ul>
   <li> In this block there are <b>2</b> main tasks. You need to:</li>
       <ul>
@@ -33,13 +33,13 @@
   <li> Thus, it is important for you to take each problem seriously. </li>
 </ul>
 
-<h2> Structure of task 1 </h2>
+<h2> Structure of Task 1 </h2>
 <ul>
-    <li>There are 5 payment structures along with <b>one</b> forecast in each payment structure. You need to: </li>
+    <li>You will see 5 different payment structures. For each you will need to: </li>
         <ul>
             <li> forecast First Mover's decision. </li>
         </ul>
-    <li> You would see the similar interface for each payment structure: </li>
+    <li> You will see a similar interface for each payment structure: </li>
 </ul>
 <br>
 
@@ -79,24 +79,24 @@
     <br>
 
 <ul>
-    <li>You are asked to forecast the percentage interval of First Mover's choice: </li>
-        <ul>
-            <li> What do you think is the percent chance that First Mover would choose A?  </li>
-                <ul>
-                    <li> 0%, 1%-20%, 21%-40%, 41%-60%, 61%-80%, 81%-99%, 100% </li>
-                </ul>
-        </ul>
+    <li> What do you think is the percent chance that First Mover would choose A?  </li>
+    <ul>
+        <li> 0%, 1%-20%, 21%-40%, 41%-60%, 61%-80%, 81%-99%, 100% </li>
+    </ul>
+    <br>
+    <li>You are asked to make 5 forecasts in Task 1.</li>
 </ul>
 
 
-<h2> Structure of the task 2 </h2>
+
+<h2> Structure of Task 2 </h2>
 <ul>
-    <li>There are 5 payment structures along with <b>two</b> forecasts in each payment structure. You need to: </li>
+    <li>You will see 5 different payment structures. For each you will need to: </li>
         <ul>
             <li> learn the choice of the First Mover, then </li>
             <li> forecast the Second Mover's decision </li>
         </ul>
-    <li> You would see the similar interface for each payment structure: </li>
+    <li> You will see a similar interface for each payment structure: </li>
 </ul>
         <br>
         <table class="mx-auto">
@@ -134,26 +134,27 @@
         <br>
 
 <ul>
-    <li>You are asked to forecast the percentage interval of the Second Mover's choice: </li>
-        <ul>
-            <li> What do you think is the percent chance that the Second Mover would choose A given the First Mover chose A?  </li>
-                <ul>
-                    <li> 0%, 1%-20%, 21%-40%, 41%-60%, 61%-80%, 81%-99%, 100% </li>
-                </ul>
-            <li> What do you think is the percent chance that the Second Mover would choose A given the First Mover chose B?  </li>
-                <ul>
-                    <li> 0%, 1%-20%, 21%-40%, 41%-60%, 61%-80%, 81%-99%, 100% </li>
-                </ul>
-        </ul>
-    <li> Note that every forecast is important to determine your payment as until the end of the experiment you do not know what other participant has chosen. </li>
+
+    <li> What do you think is the percent chance that the Second Mover would choose A given the First Mover chose A?  </li>
+    <ul>
+        <li> 0%, 1%-20%, 21%-40%, 41%-60%, 61%-80%, 81%-99%, 100% </li>
+    </ul>
+    <li> What do you think is the percent chance that the Second Mover would choose A given the First Mover chose B?  </li>
+    <ul>
+        <li> 0%, 1%-20%, 21%-40%, 41%-60%, 61%-80%, 81%-99%, 100% </li>
+    </ul>
+    <br>
+    <li> You are asked to make 10 forecasts in Task 2.</li>
+    <li> Note that every forecast is important to determine your payment because until the end of the experiment you do not know what other participant has chosen. </li>
 </ul>
 
 <h2> Payments </h2>
+The payments for Block 3 are determined as follows.
 <ul>
     <li> One out of 15 forecasts will be chosen at random.</li>
-    <li> One participant in this room (excluding you) will be picked at random and this participant's decision in block 2 will be retrieved.</li>
-    <li> If the choice picked by the selected participant is A, the forecast error = (1-your choice)&sup2.</li>
-    <li> If the choice picked by the selected participant is B, the forecast error = (your choice)&sup2.</li>
+    <li> One participant in this room (excluding you) will be picked at random and this participant's decision in Block 2 will be retrieved.</li>
+    <li> If the decision picked by the selected participant is A, the forecast error = (1-your answer) &sup2.</li>
+    <li> If the decision picked by the selected participant is B, the forecast error = (your answer) &sup2.</li>
     <li> A uniform random number will be drawn form the interval from 0 to 1;</li>
     <li> You will receive £5 if the forecast error is below the random number and will not receive any additional payment otherwise;</li>
     <br>
@@ -163,11 +164,11 @@
     <br>
 <script>
   document.getElementById('my-button').addEventListener('click', function(event) {
-    alert('Example 1. You selected 1%-20%, the selected participant chose A in the corresponding payment structure, and the random number that is generated by computer is 0.5.\n \n     \u25e6 So your forecast error is (1-your choice)\u00B2:  (80% to 99%)\u00B2 = 0.64 to 0.9801, because 0.5 < 0.64. Then you get £0.\n \n \nExample 2. You selected 41%-60%, the selected participant chose B in the corresponding payment structure, and the random number that is generated by computer is 0.7.\n \n     \u25e6 So your forecast error is (your choice)\u00B2:  (41% to 60%)\u00B2 = 0.1681 to 0.36, because 0.7 > 0.36. Then you get £5.00.');
+    alert('Example 1. Your answer is 1%-20%, the selected participant chose A in the corresponding payment structure, and the random number that is generated by computer is 0.5.\n \n     \u25e6 So your forecast error is (1-your answer) \u00B2:  (80% to 99%) \u00B2 = 0.64 to 0.9801, because 0.5 < 0.64. Then you get £0.\n \n \nExample 2. Your answer is 41%-60%, the selected participant chose B in the corresponding payment structure, and the random number that is generated by computer is 0.7.\n \n     \u25e6 So your forecast error is (your answer) \u00B2:  (41% to 60%) \u00B2 = 0.1681 to 0.36, because 0.7 > 0.36. Then you get £5.00.');
     event.preventDefault();
   });
 </script>
-    <li> <span class="red"><b>NOTE</b></span> &nbsp; Since your forecasts are made when you do not know what other participants have chosen. <b>The best thing you can do to gain the highest payment in this block is to simply state what you think.</b> </li>
+    <li> <span class="red"><b>NOTE:</b></span> &nbsp; Since your forecasts are made when you do not know what other participants have chosen. <b>The best thing you can do to gain the highest payment in this block is to simply state what you think.</b> </li>
 </ul>
 
             </div>
