@@ -12,7 +12,7 @@ class C(BaseConstants):
     NUM_ROUNDS = 18
     payoff_R1 = [350, 350, 350, 350, 350, 350, 350, 350, 350]
     payoff_S1 = [150, 150, 150, 150, 150, 150, 150, 150, 150]
-    payoff_T1 = [600, 600, 600, 600, 360, 360, 360, 600, 600]
+    payoff_T1 = [550, 550, 550, 550, 360, 360, 360, 550, 550]
     payoff_D1 = [320, 320, 320, 320, 320, 160, 320, 160, 160]
     payoff_R2 = [400, 400, 400, 400, 400, 400, 400, 400, 400]
     payoff_S2 = [180, 180, 50, 50, 50, 50, 50, 50, 180]
@@ -32,12 +32,12 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     num_failed_attempts = models.IntegerField(initial=0)
     failed_too_many = models.BooleanField(initial=False)
-    quiz1 = models.IntegerField(label='If the First Mover chose A, then the Seconder Mover observed the choice and decides A. Then the First Mover gets:')
-    quiz2 = models.IntegerField(label='If the First Mover chose A, then the Seconder Mover observed the choice and decides A. Then the Second Mover gets:')
-    quiz3 = models.IntegerField(label='If the First Mover chose A, then the Seconder Mover observed the choice and decides B. Then the First Mover gets:')
-    quiz4 = models.IntegerField(label='If the First Mover chose A, then the Seconder Mover observed the choice and decides B. Then the Second Mover gets:')
-    quiz5 = models.BooleanField(label="Does the First Mover know the choice of Second Mover prior to taking her decision?")
-    quiz6 = models.BooleanField(label="Does the Second Mover know the choice of First Mover prior to taking her decision?")
+    quiz1 = models.IntegerField(label='If First Mover chose A, then Seconder Mover observed the choice and decides A. Then First Mover gets:')
+    quiz2 = models.IntegerField(label='If First Mover chose A, then Seconder Mover observed the choice and decides B. Then Second Mover gets:')
+    quiz3 = models.IntegerField(label='If First Mover chose B, then Seconder Mover observed the choice and decides A. Then First Mover gets:')
+    quiz4 = models.IntegerField(label='If First Mover chose B, then Seconder Mover observed the choice and decides B. Then Second Mover gets:')
+    quiz5 = models.BooleanField(label="Does First Mover know the choice of Second Mover prior to taking her decision?")
+    quiz6 = models.BooleanField(label="Does Second Mover know the choice of First Mover prior to taking her decision?")
 
     choice_1st =  models.BooleanField(
         choices=[
@@ -157,7 +157,7 @@ class ASPD_Comprehension_Test(Page):
 
     @staticmethod
     def error_message(player: Player, values):
-        solutions = dict(quiz1=350, quiz2=400, quiz3=200, quiz4=500, quiz5=False, quiz6=True)
+        solutions = dict(quiz1=350, quiz2=500, quiz3=550, quiz4=200, quiz5=False, quiz6=True)
         errors = {name: 'Wrong' for name in solutions if values[name] != solutions[name]}
         if errors:
             player.num_failed_attempts += 1

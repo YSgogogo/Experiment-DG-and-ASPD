@@ -109,7 +109,7 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
         choices=[
             [0, 'Choose randomly'],
-            [1, 'State what I think'],
+            [1, 'Simply state what I think'],
             [2, 'Always state one interval for all questions'],
         ]
     )

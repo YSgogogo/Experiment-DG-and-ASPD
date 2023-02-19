@@ -11,7 +11,7 @@ class C(BaseConstants):
     PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 10
     payoff_L1 = [400, 50, 50, 50, 50, 50, 50, 180, 180, 180]
-    payoff_L2 = [350, 360, 360, 360, 600, 600, 600, 600, 600, 600]
+    payoff_L2 = [350, 360, 360, 360, 550, 550, 550, 550, 550, 550]
     payoff_R1 = [500, 200, 200, 380, 200, 200, 380, 200, 200, 380,]
     payoff_R2 = [150, 160, 320, 320, 160, 320, 320, 160, 320, 320,]
 
@@ -30,7 +30,7 @@ class Player(BasePlayer):
     quiz3 = models.IntegerField(label='If First Mover chose A, then Second Mover gets:')
     quiz4 = models.IntegerField(label='If First Mover chose B, then Second Mover gets:')
     quiz5 = models.BooleanField(
-        label="Who is able to decide the final points?",
+        label="Who is able to decide final tokens?",
         choices = [
             [True, 'First Mover'],
             [False, 'Second Mover'],
@@ -99,7 +99,7 @@ class DG_Comprehension_Test(Page):
 
     @staticmethod
     def error_message(player: Player, values):
-        solutions = dict(quiz1=400, quiz2=500, quiz3=450, quiz4=200, quiz5=True)
+        solutions = dict(quiz1=400, quiz2=500, quiz3=350, quiz4=150, quiz5=True)
         errors = {name: 'Wrong' for name in solutions if values[name] != solutions[name]}
         if errors:
             player.num_failed_attempts += 1
