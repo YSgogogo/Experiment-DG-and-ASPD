@@ -62,15 +62,7 @@ class Player(BasePlayer):
     f12 = models.IntegerField(
         widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
     )
-    f13 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
-    )
-    f14 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
-    )
-    f15 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%"), (1, "1%-20%"), (2, "21%-40%"), (3, "41%-60%"), (4, "61%-80%"),(5, "81%-99%"), (6, "100%")],
-    )
+
 
     quiz1 = models.IntegerField(
         widget=widgets.RadioSelect,
@@ -147,14 +139,14 @@ class Failed(Page):
 
 class First_Mover(Page):
     form_model = 'player'
-    form_fields = ['f1', 'f2', 'f3', 'f4', 'f5']
+    form_fields = ['f1', 'f2', 'f3', 'f4']
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         participant = player.participant
 
         if player.id_in_group == 1:
-            options = [int(participant.vars['ASPD'][6]) + 1, int(participant.vars['ASPD'][6]) + 6,
-                       int(participant.vars['ASPD'][6]) + 11]
+            options = [int(participant.vars['ASPD'][6]) + 1, int(participant.vars['ASPD'][6]) + 5,
+                       int(participant.vars['ASPD'][6]) + 9]
             player.selected_question_number = choice(options)
             if player.selected_question_number == options[0]:
                 player.o_choice = str(participant.vars['ASPD'][3])
@@ -164,11 +156,11 @@ class First_Mover(Page):
                 player.paid_question = player.selected_question_number + 0.1
             elif player.selected_question_number == options[2]:
                 player.o_choice = str(participant.vars['ASPD'][5])
-                player.paid_question = player.selected_question_number - 4.8
+                player.paid_question = player.selected_question_number - 3.8
 
         else:
-            options = [int(participant.vars['ASPD'][6]) + 1, int(participant.vars['ASPD'][6]) + 6,
-                       int(participant.vars['ASPD'][6]) + 11]
+            options = [int(participant.vars['ASPD'][6]) + 1, int(participant.vars['ASPD'][6]) + 5,
+                       int(participant.vars['ASPD'][6]) + 9]
             player.selected_question_number = choice(options)
             if player.selected_question_number == options[0]:
                 player.o_choice = str(participant.vars['ASPD'][3])
@@ -178,11 +170,11 @@ class First_Mover(Page):
                 player.paid_question = player.selected_question_number + 0.1
             elif player.selected_question_number == options[2]:
                 player.o_choice = str(participant.vars['ASPD'][5])
-                player.paid_question = player.selected_question_number - 4.8
+                player.paid_question = player.selected_question_number - 3.8
 
 class Second_Mover(Page):
     form_model = 'player'
-    form_fields = ['f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12','f13', 'f14', 'f15']
+    form_fields = ['f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12']
 
 class ResultsWaitPage(WaitPage):
     @staticmethod

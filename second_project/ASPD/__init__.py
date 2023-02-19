@@ -91,7 +91,7 @@ def creating_session(subsession: Subsession):
                 p.in_round(18).selected_round = g.in_round(18).selected_round
 
         for g in subsession.get_groups():
-            task = [0, 1, 2, 3, 4]
+            task = [0, 1, 2, 3]
             random_task = random.choice(task)
             g.in_round(18).selected_task_be = random_task
             for p in g.get_players():
@@ -196,7 +196,7 @@ class ResultsWaitPage(WaitPage):
         player_1 = player_lists[0]
         player_2 = player_lists[1]
         player_1_in_selected_round_be_1st = player_1.in_round(selected_round_be)
-        player_1_in_selected_round_be_2nd = player_1.in_round(selected_round_be+9)
+        player_1_in_selected_round_be_2nd = player_1.in_round(selected_round_be + 9)
         player_2_in_selected_round_be_1st = player_2.in_round(selected_round_be)
         player_2_in_selected_round_be_2nd = player_2.in_round(selected_round_be + 9)
         player_1_in_selected_round = player_1.in_round(selected_round)

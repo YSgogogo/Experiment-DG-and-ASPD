@@ -55,9 +55,9 @@
 
     <br>
 
-<p> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 6.1 Assume First Mover has chosen A, what do you think is the percent chance that Second Mover would choose A? </p>
+<p> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 5.1 Assume First Mover has chosen A, what do you think is the percent chance that Second Mover would choose A? </p>
 <div style="display: flex">
-        {{ for choice in form.f6 }}
+        {{ for choice in form.f5 }}
         <div style="flex: 1; text-align: center">
             {{ choice }}
             <br>
@@ -69,9 +69,9 @@
 <br>
 
 
-<p> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 6.2 Assume First Mover has chosen B, what do you think is the percent chance that Second Mover would choose A? </p>
+<p> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 5.2 Assume First Mover has chosen B, what do you think is the percent chance that Second Mover would choose A? </p>
 <div style="display: flex">
-        {{ for choice in form.f11 }}
+        {{ for choice in form.f9 }}
         <div style="flex: 1; text-align: center">
             {{ choice }}
             <br>
@@ -117,9 +117,9 @@
 
     <br>
 
-<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7.1 Assume First Mover has chosen A, what do you think is the percent chance that Second Mover would choose A? </p>
+<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6.1 Assume First Mover has chosen A, what do you think is the percent chance that Second Mover would choose A? </p>
 <div style="display: flex">
-        {{ for choice in form.f7 }}
+        {{ for choice in form.f6 }}
         <div style="flex: 1; text-align: center">
             {{ choice }}
             <br>
@@ -130,9 +130,9 @@
 
 <br>
 
-<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7.2 Assume First Mover has chosen B, what do you think is the percent chance that Second Mover would choose A? </p>
+<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6.2 Assume First Mover has chosen B, what do you think is the percent chance that Second Mover would choose A? </p>
 <div style="display: flex">
-        {{ for choice in form.f12 }}
+        {{ for choice in form.f10 }}
         <div style="flex: 1; text-align: center">
             {{ choice }}
             <br>
@@ -180,9 +180,9 @@
 
     <br>
 
-<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8.1 Assume First Mover has chosen A, what do you think is the percent chance that Second Mover would choose A? </p>
+<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7.1 Assume First Mover has chosen A, what do you think is the percent chance that Second Mover would choose A? </p>
 <div style="display: flex">
-        {{ for choice in form.f8 }}
+        {{ for choice in form.f7 }}
         <div style="flex: 1; text-align: center">
             {{ choice }}
             <br>
@@ -193,9 +193,9 @@
 
 <br>
 
-<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8.2 Assume First Mover has chosen B, what do you think is the percent chance that Second Mover would choose A? </p>
+<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7.2 Assume First Mover has chosen B, what do you think is the percent chance that Second Mover would choose A? </p>
 <div style="display: flex">
-        {{ for choice in form.f13 }}
+        {{ for choice in form.f11 }}
         <div style="flex: 1; text-align: center">
             {{ choice }}
             <br>
@@ -243,9 +243,9 @@
 
     <br>
 
-<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9.1 Assume First Mover has chosen A, what do you think is the percent chance that Second Mover would choose A? </p>
+<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8.1 Assume First Mover has chosen A, what do you think is the percent chance that Second Mover would choose A? </p>
 <div style="display: flex">
-        {{ for choice in form.f9 }}
+        {{ for choice in form.f8 }}
         <div style="flex: 1; text-align: center">
             {{ choice }}
             <br>
@@ -257,9 +257,9 @@
 <br>
 
 
-<p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9.2 Assume First Mover has chosen B, what do you think is the percent chance that Second Mover would choose A? </p>
+<p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8.2 Assume First Mover has chosen B, what do you think is the percent chance that Second Mover would choose A? </p>
 <div style="display: flex">
-        {{ for choice in form.f14 }}
+        {{ for choice in form.f12 }}
         <div style="flex: 1; text-align: center">
             {{ choice }}
             <br>
@@ -267,71 +267,6 @@
         </div>
         {{ endfor }}
 </div>
-
-<br>
-
-
-
-        <table class="mx-auto">
-        <tr>
-            <td class="hide_top & hide_left", colspan="4"> </td>
-            <td> First Mover payment </td>
-            <td> Second Mover payment </td>
-        </tr>
-        <tr>
-            <td class="hide_top & hide_left & hide_bottom", rowspan="4"> First Mover choice </td>
-            <td rowspan="2", style="background-color:LightGoldenrodYellow;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
-            <td rowspan="2"> Second Mover choice </td>
-            <td> <input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
-            <td> 350 tokens </td>
-            <td> 400 tokens </td>
-        </tr>
-        <tr>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
-            <td> 150 tokens </td>
-            <td> 500 tokens </td>
-        </tr>
-        <tr>
-            <td rowspan="2", style="background-color:LightGray;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
-            <td rowspan="2"> Second Mover choice </td>
-            <td> <input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
-            <td> 360 tokens </td>
-            <td> 50 tokens </td>
-        </tr>
-        <tr>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
-            <td> 320 tokens </td>
-            <td> 380 tokens </td>
-        </tr>
-    </table>
-
-    <br>
-
-<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10.1 Assume First Mover has chosen A, what do you think is the percent chance that Second Mover would choose A? </p>
-<div style="display: flex">
-        {{ for choice in form.f10 }}
-        <div style="flex: 1; text-align: center">
-            {{ choice }}
-            <br>
-            <span style="text-align: center">{{ choice.label }}</span>
-        </div>
-        {{ endfor }}
-</div>
-
-<br>
-
-
-<p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10.2 Assume First Mover has chosen A, what do you think is the percent chance that Second Mover would choose A? </p>
-<div style="display: flex">
-        {{ for choice in form.f15 }}
-        <div style="flex: 1; text-align: center">
-            {{ choice }}
-            <br>
-            <span style="text-align: center">{{ choice.label }}</span>
-        </div>
-        {{ endfor }}
-</div>
-
 <br>
 
 
