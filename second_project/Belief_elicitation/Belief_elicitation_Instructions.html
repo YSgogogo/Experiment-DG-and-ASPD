@@ -101,45 +101,49 @@
         <br>
         <table class="mx-auto">
         <tr>
-            <td class="hide_top & hide_left", colspan="4"> </td>
-            <td> First Mover payment </td>
-            <td> Second Mover payment </td>
+            <td class="hide_top & hide_left", colspan="5"> </td>
+            <td> First Mover  payment </td>
+            <td> Your payment </td>
         </tr>
         <tr>
-            <td class="hide_top & hide_left & hide_bottom", rowspan="4"> First Mover choice </td>
-            <td rowspan="2", style="background-color:LightGoldenrodYellow;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
-            <td rowspan="2"> Second Mover choice </td>
-            <td> <input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
+            <td class="hide_top & hide_left & hide_bottom", rowspan="4"> First Mover <br> choice </td>
+            <td rowspan="2", style="background-color:LightGoldenrodYellow;"， class="width_bottom"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
+            <td rowspan="2"， class="width_bottom"> Your choice <br> (Second Mover) </td>
+            <td> <input type="radio" name="choice_2nd_Top" value="{{ True }}" class="btn btn-primary btn-large"> </td>
+            <td class="hide_left"> A </td>
             <td> 350 tokens </td>
             <td> 400 tokens </td>
         </tr>
         <tr>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
-            <td> 150 tokens </td>
-            <td> 500 tokens </td>
+            <td class="width_bottom"><input type="radio" name="choice_2nd_Top" value="{{ False }}" class="btn btn-primary btn-large"> </td>
+            <td class="hide_left & width_bottom"> B </td>
+            <td class="width_bottom"> 150 tokens </td>
+            <td class="width_bottom"> 500 tokens </td>
         </tr>
         <tr>
             <td rowspan="2", style="background-color:LightGray;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
-            <td rowspan="2"> Second Mover choice </td>
-            <td> <input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A </td>
+            <td rowspan="2"> Your choice <br> (Second Mover) </td>
+            <td> <input type="radio" name="choice_2nd_Down" value="{{ True }}" class="btn btn-primary btn-large"> </td>
+            <td class="hide_left"> A </td>
             <td> 550 tokens </td>
             <td> 180 tokens </td>
         </tr>
         <tr>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B </td>
+            <td><input type="radio" name="choice_2nd_Down" value="{{ False }}" class="btn btn-primary btn-large"> </td>
+            <td class="hide_left"> B </td>
             <td> 320 tokens </td>
             <td> 200 tokens </td>
         </tr>
-        </table>
+    </table>
         <br>
 
 <ul>
 
-    <li> What do you think is the percent chance that Second Mover would choose A given First Mover chose A?  </li>
+    <li> Assume First Mover has chosen A, what do you think is the percent chance that Second Mover would choose A?  </li>
     <ul>
         <li> 0%, 1%-20%, 21%-40%, 41%-60%, 61%-80%, 81%-99%, 100% </li>
     </ul>
-    <li> What do you think is the percent chance that Second Mover would choose A given First Mover chose B?  </li>
+    <li> Assume First Mover has chosen B, what do you think is the percent chance that Second Mover would choose A?  </li>
     <ul>
         <li> 0%, 1%-20%, 21%-40%, 41%-60%, 61%-80%, 81%-99%, 100% </li>
     </ul>
@@ -216,7 +220,7 @@ The payments for Block 3 are determined as follows.
            border-bottom-style:hidden;
         }
         tr.width_bottom > td, td.width_bottom{
-           border-bottom-width:4px;
+           border-bottom-width:3px;
         }
     </style>
 {{ endblock }}
