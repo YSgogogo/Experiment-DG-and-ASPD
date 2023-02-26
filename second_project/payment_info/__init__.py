@@ -28,8 +28,8 @@ class Player(BasePlayer):
     round_to_pay2 = models.StringField()
     role_to_pay2 = models.StringField()
     points_to_pay2 = models.StringField()
-    question_to_pay3 = models.StringField()
-    points_to_pay3 = models.StringField()
+    #question_to_pay3 = models.StringField()
+    #points_to_pay3 = models.StringField()
     Gender =  models.IntegerField(
         widget=widgets.RadioSelect,
         choices=[
@@ -54,8 +54,8 @@ class Survey(Page):
         player.round_to_pay2 = str(participant.vars['ASPD'][2])
         player.role_to_pay2 = str(participant.vars['ASPD'][1])
         player.points_to_pay2 = str(participant.vars['ASPD'][0])
-        player.question_to_pay3 = str(participant.vars['Belief_elicitation'][1])
-        player.points_to_pay3 = str(participant.vars['Belief_elicitation'][0])
+        #player.question_to_pay3 = str(participant.vars['Belief_elicitation'][1])
+        #player.points_to_pay3 = str(participant.vars['Belief_elicitation'][0])
 
 class Payment(Page):
     pass

@@ -32,12 +32,10 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     num_failed_attempts = models.IntegerField(initial=0)
     failed_too_many = models.BooleanField(initial=False)
-    quiz1 = models.IntegerField(label='If First Mover chose A, then Seconder Mover observed the choice and decides A. Then First Mover gets:')
-    quiz2 = models.IntegerField(label='If First Mover chose A, then Seconder Mover observed the choice and decides B. Then Second Mover gets:')
-    quiz3 = models.IntegerField(label='If First Mover chose B, then Seconder Mover observed the choice and decides A. Then First Mover gets:')
-    quiz4 = models.IntegerField(label='If First Mover chose B, then Seconder Mover observed the choice and decides B. Then Second Mover gets:')
-    quiz5 = models.BooleanField(label="Does First Mover know the choice of Second Mover prior to taking her decision?")
-    quiz6 = models.BooleanField(label="Does Second Mover know the choice of First Mover prior to taking her decision?")
+    quiz1 = models.IntegerField(label='If First Mover chose A, then Seconder Mover knows the choice and decides A. Then First Mover gets:')
+    quiz2 = models.IntegerField(label='If First Mover chose B, then Seconder Mover knows the choice and decides B. Then Second Mover gets:')
+    quiz3 = models.BooleanField(label="Does First Mover know the choice of Second Mover prior to taking her decision?")
+    quiz4 = models.BooleanField(label="Does Second Mover know the choice of First Mover prior to taking her decision?")
 
     choice_1st =  models.BooleanField(
         choices=[
@@ -153,11 +151,11 @@ class ASPD_Instructions(Page):
 
 class ASPD_Comprehension_Test(Page):
     form_model = 'player'
-    form_fields = ['quiz1', 'quiz2', 'quiz3', 'quiz4', 'quiz5', 'quiz6']
+    form_fields = ['quiz1', 'quiz2', 'quiz3', 'quiz4']
 
     @staticmethod
     def error_message(player: Player, values):
-        solutions = dict(quiz1=350, quiz2=500, quiz3=550, quiz4=200, quiz5=False, quiz6=True)
+        solutions = dict(quiz1=350, quiz2=200, quiz3=False, quiz4=True)
         errors = {name: 'Wrong' for name in solutions if values[name] != solutions[name]}
         if errors:
             player.num_failed_attempts += 1

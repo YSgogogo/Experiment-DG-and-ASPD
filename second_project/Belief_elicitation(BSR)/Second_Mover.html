@@ -30,13 +30,13 @@
             <td class="hide_top & hide_left & hide_bottom", rowspan="4"> First Mover <br> choice </td>
             <td rowspan="2", style="background-color:LightGoldenrodYellow;"， class="width_bottom"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
             <td rowspan="2"， class="width_bottom"> Second Mover <br> choice </td>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
+            <td> <input type="radio" name="choice_2nd_Top" value="{{ True }}" class="btn btn-primary btn-large"> </td>
             <td class="hide_left"> A </td>
             <td> 400 tokens </td>
             <td> 350 tokens </td>
         </tr>
         <tr>
-            <td class="width_bottom"><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
+            <td class="width_bottom"><input type="radio" name="choice_2nd_Top" value="{{ False }}" class="btn btn-primary btn-large"> </td>
             <td class="hide_left & width_bottom"> B </td>
             <td class="width_bottom"> 150 tokens </td>
             <td class="width_bottom"> 500 tokens </td>
@@ -44,13 +44,13 @@
         <tr>
             <td rowspan="2", style="background-color:LightGray;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
             <td rowspan="2">  Second Mover <br> choice  </td>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
+            <td> <input type="radio" name="choice_2nd_Down" value="{{ True }}" class="btn btn-primary btn-large"> </td>
             <td class="hide_left"> A </td>
             <td> 550 tokens </td>
             <td> 180 tokens </td>
         </tr>
         <tr>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
+            <td><input type="radio" name="choice_2nd_Down" value="{{ False }}" class="btn btn-primary btn-large"> </td>
             <td class="hide_left"> B </td>
             <td> 320 tokens </td>
             <td> 200 tokens </td>
@@ -59,7 +59,7 @@
 
     <br>
 
-<p> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 5.1 Assume Second Mover knows First Mover chose A, what do you think is the percent chance that Second Mover would choose A? </p>
+<p> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 5.1 Assume First Mover has chosen A, what do you think is the percent chance that Second Mover would choose A? </p>
 <div style="display: flex">
         {{ for choice in form.f5 }}
         <div style="flex: 1; text-align: center">
@@ -73,7 +73,7 @@
 <br>
 
 
-<p> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 5.2 Assume Second Mover knows First Mover chose B, what do you think is the percent chance that Second Mover would choose A? </p>
+<p> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 5.2 Assume First Mover has chosen B, what do you think is the percent chance that Second Mover would choose A? </p>
 <div style="display: flex">
         {{ for choice in form.f9 }}
         <div style="flex: 1; text-align: center">
@@ -96,13 +96,13 @@
             <td class="hide_top & hide_left & hide_bottom", rowspan="4"> First Mover <br> choice </td>
             <td rowspan="2", style="background-color:LightGoldenrodYellow;"， class="width_bottom"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
             <td rowspan="2"， class="width_bottom"> Second Mover <br> choice </td>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
+            <td> <input type="radio" name="choice_2nd_Top" value="{{ True }}" class="btn btn-primary btn-large"> </td>
             <td class="hide_left"> A </td>
             <td> 400 tokens </td>
             <td> 350 tokens </td>
         </tr>
         <tr>
-            <td class="width_bottom"><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
+            <td class="width_bottom"><input type="radio" name="choice_2nd_Top" value="{{ False }}" class="btn btn-primary btn-large"> </td>
             <td class="hide_left & width_bottom"> B </td>
             <td class="width_bottom"> 150 tokens </td>
             <td class="width_bottom"> 500 tokens </td>
@@ -110,13 +110,13 @@
         <tr>
             <td rowspan="2", style="background-color:LightGray;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
             <td rowspan="2"> Second Mover <br> choice </td>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
+            <td> <input type="radio" name="choice_2nd_Down" value="{{ True }}" class="btn btn-primary btn-large"> </td>
             <td class="hide_left"> A </td>
             <td> 550 tokens </td>
             <td> 180 tokens </td>
         </tr>
         <tr>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
+            <td><input type="radio" name="choice_2nd_Down" value="{{ False }}" class="btn btn-primary btn-large"> </td>
             <td class="hide_left"> B </td>
             <td> 320 tokens </td>
             <td> 380 tokens </td>
@@ -124,7 +124,7 @@
     </table>
     <br>
 
-<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6.1 Assume Second Mover knows First Mover chose A, what do you think is the percent chance that Second Mover would choose A? </p>
+<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6.1 Assume First Mover has chosen A, what do you think is the percent chance that Second Mover would choose A? </p>
 <div style="display: flex">
         {{ for choice in form.f6 }}
         <div style="flex: 1; text-align: center">
@@ -137,7 +137,7 @@
 
 <br>
 
-<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6.2 Assume Second Mover knows First Mover chose B, what do you think is the percent chance that Second Mover would choose A? </p>
+<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6.2 Assume First Mover has chosen B, what do you think is the percent chance that Second Mover would choose A? </p>
 <div style="display: flex">
         {{ for choice in form.f10 }}
         <div style="flex: 1; text-align: center">
@@ -162,13 +162,13 @@
             <td class="hide_top & hide_left & hide_bottom", rowspan="4"> First Mover <br> choice </td>
             <td rowspan="2", style="background-color:LightGoldenrodYellow;"， class="width_bottom"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
             <td rowspan="2"， class="width_bottom"> Second Mover <br> choice </td>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
+            <td> <input type="radio" name="choice_2nd_Top" value="{{ True }}" class="btn btn-primary btn-large"> </td>
             <td class="hide_left"> A </td>
             <td> 400 tokens </td>
             <td> 350 tokens </td>
         </tr>
         <tr>
-            <td class="width_bottom"><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
+            <td class="width_bottom"><input type="radio" name="choice_2nd_Top" value="{{ False }}" class="btn btn-primary btn-large"> </td>
             <td class="hide_left & width_bottom"> B </td>
             <td class="width_bottom"> 150 tokens </td>
             <td class="width_bottom"> 500 tokens </td>
@@ -176,13 +176,13 @@
         <tr>
             <td rowspan="2", style="background-color:LightGray;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
             <td rowspan="2"> Second Mover <br> choice </td>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
+            <td> <input type="radio" name="choice_2nd_Down" value="{{ True }}" class="btn btn-primary btn-large"> </td>
             <td class="hide_left"> A </td>
             <td> 550 tokens </td>
             <td> 50 tokens </td>
         </tr>
         <tr>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
+            <td><input type="radio" name="choice_2nd_Down" value="{{ False }}" class="btn btn-primary btn-large"> </td>
             <td class="hide_left"> B </td>
             <td> 320 tokens </td>
             <td> 200 tokens </td>
@@ -191,7 +191,7 @@
 
     <br>
 
-<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7.1 Assume Second Mover knows First Mover chose A, what do you think is the percent chance that Second Mover would choose A? </p>
+<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7.1 Assume First Mover has chosen A, what do you think is the percent chance that Second Mover would choose A? </p>
 <div style="display: flex">
         {{ for choice in form.f7 }}
         <div style="flex: 1; text-align: center">
@@ -204,7 +204,7 @@
 
 <br>
 
-<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7.2 Assume Second Mover knows First Mover chose B, what do you think is the percent chance that Second Mover would choose A? </p>
+<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7.2 Assume First Mover has chosen B, what do you think is the percent chance that Second Mover would choose A? </p>
 <div style="display: flex">
         {{ for choice in form.f11 }}
         <div style="flex: 1; text-align: center">
@@ -228,13 +228,13 @@
             <td class="hide_top & hide_left & hide_bottom", rowspan="4"> First Mover <br> choice </td>
             <td rowspan="2", style="background-color:LightGoldenrodYellow;"， class="width_bottom"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
             <td rowspan="2"， class="width_bottom"> Second Mover <br> choice </td>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
+            <td> <input type="radio" name="choice_2nd_Top" value="{{ True }}" class="btn btn-primary btn-large"> </td>
             <td class="hide_left"> A </td>
             <td> 400 tokens </td>
             <td> 350 tokens </td>
         </tr>
         <tr>
-            <td class="width_bottom"><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
+            <td class="width_bottom"><input type="radio" name="choice_2nd_Top" value="{{ False }}" class="btn btn-primary btn-large"> </td>
             <td class="hide_left & width_bottom"> B </td>
             <td class="width_bottom"> 150 tokens </td>
             <td class="width_bottom"> 500 tokens </td>
@@ -242,13 +242,13 @@
         <tr>
             <td rowspan="2", style="background-color:LightGray;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
             <td rowspan="2"> Second Mover <br> choice </td>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
+            <td> <input type="radio" name="choice_2nd_Down" value="{{ True }}" class="btn btn-primary btn-large"> </td>
             <td class="hide_left"> A </td>
             <td> 550 tokens </td>
             <td> 50 tokens </td>
         </tr>
         <tr>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
+            <td><input type="radio" name="choice_2nd_Down" value="{{ False }}" class="btn btn-primary btn-large"> </td>
             <td class="hide_left"> B </td>
             <td> 320 tokens </td>
             <td> 380 tokens </td>
@@ -256,7 +256,7 @@
     </table>
     <br>
 
-<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8.1 Assume Second Mover knows First Mover chose A, what do you think is the percent chance that Second Mover would choose A? </p>
+<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8.1 Assume First Mover has chosen A, what do you think is the percent chance that Second Mover would choose A? </p>
 <div style="display: flex">
         {{ for choice in form.f8 }}
         <div style="flex: 1; text-align: center">
@@ -270,7 +270,7 @@
 <br>
 
 
-<p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8.2 Assume Second Mover knows First Mover chose B, what do you think is the percent chance that Second Mover would choose A? </p>
+<p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8.2 Assume First Mover has chosen B, what do you think is the percent chance that Second Mover would choose A? </p>
 <div style="display: flex">
         {{ for choice in form.f12 }}
         <div style="flex: 1; text-align: center">

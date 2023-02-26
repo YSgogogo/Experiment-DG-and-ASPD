@@ -18,7 +18,7 @@ SESSION_CONFIGS = [
 
 
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=0.01, participation_fee=5.00, doc=""
+    real_world_currency_per_point=0.01, participation_fee=8.00, doc=""
 )
 
 PARTICIPANT_FIELDS = []

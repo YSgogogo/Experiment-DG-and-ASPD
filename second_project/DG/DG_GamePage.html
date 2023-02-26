@@ -19,17 +19,38 @@
             <td rowspan="2"> Your choice (First Mover)</td>
             <td><input type="radio" name="choice" value="{{ True }}" class="btn btn-primary btn-large"></td>
             <td class="hide_left"> A </td>
-            <td> {{ L1 }} tokens </td>
-            <td> {{ L2 }} tokens </td>
+            <td id="cell1" >  </td>
+            <td id="cell2" >  </td>
         </tr>
         <tr>
             <td><input type="radio" name="choice" value="{{ False }}" class="btn btn-primary btn-large"></td>
             <td class="hide_left"> B </td>
-            <td> {{ R1 }} tokens </td>
-            <td> {{ R2 }} tokens </td>
+            <td id="cell3" >  </td>
+            <td id="cell4" >  </td>
         </tr>
     </table>
 <br>
+
+   <script>
+        var random = Math.random();
+        if (random < 0.5) {
+            document.getElementById("cell1").innerHTML = "{{ L1 }} tokens";
+            document.getElementById("cell2").innerHTML = "{{ L2 }} tokens";
+            document.getElementById("cell3").innerHTML = "{{ R1 }} tokens";
+            document.getElementById("cell4").innerHTML = "{{ R2 }} tokens";
+            document.getElementsByName("choice")[0].value = "{{ True }}";
+            document.getElementsByName("choice")[1].value = "{{ False }}";
+        } else {
+            document.getElementById("cell1").innerHTML = "{{ R1 }} tokens";
+            document.getElementById("cell2").innerHTML = "{{ R2 }} tokens";
+            document.getElementById("cell3").innerHTML = "{{ L1 }} tokens";
+            document.getElementById("cell4").innerHTML = "{{ L2 }} tokens";
+            document.getElementsByName("choice")[0].value = "{{ False }}";
+            document.getElementsByName("choice")[1].value = "{{ True }}";
+        }
+    </script>
+
+
 
 <div style="text-align: right;">
     {{ next_button }}
