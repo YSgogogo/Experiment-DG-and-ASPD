@@ -58,10 +58,6 @@ class Player(BasePlayer):
     )
 
 
-class Belief_elicitation_Instructions(Page):
-    pass
-
-
 class First_Mover(Page):
     form_model = 'player'
     form_fields = ['f1', 'f2', 'f3', 'f4']
@@ -71,5 +67,5 @@ class Second_Mover(Page):
     form_fields = ['f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12']
 
 
-
-page_sequence = [Belief_elicitation_Instructions, First_Mover, Second_Mover,]
+#page_sequence = [Belief_elicitation_Instructions, First_Mover, Second_Mover,]
+page_sequence = [First_Mover, Second_Mover,]

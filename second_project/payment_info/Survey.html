@@ -1,7 +1,7 @@
 {{ extends 'global/Page.html' }}
    {{ block title }}
  <div style="text-align: center;">
-    Survey
+     <h1>Survey (Cont.)</h1>
  </div>
     {{ endblock }}
 
@@ -14,11 +14,12 @@
             }
         </style>
 
-<div style="style="text-align: justify;" class="card bg-light mb-3">
 
+<div style="text-align: justify;" class="card bg-light mb-3">
+    <div class="card-body">
                 <br>
 <ul>
-  <li>  Before you are finished with today's experiment, we ask that you please answer a few more questions.  </li>
+  <li>  Some further questions.  </li>
 </ul>
 
 <h2> Age </h2>
@@ -46,8 +47,11 @@
 </ul>
 
 <br>
+        <br>
+    </div>
 </div>
-<div style="text-align: right;">
+
+<div style="flush:center; text-align: center;">
     {{ next_button }}
 </div>
 {{ endblock }}

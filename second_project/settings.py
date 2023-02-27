@@ -4,21 +4,15 @@ from os import environ
 SESSION_CONFIGS = [
     dict(
         name='Our_experiment',
-        display_name="Our experiment (2 players)",
+        display_name="Our experiment",
         app_sequence=['DG', 'ASPD', 'Belief_elicitation', 'payment_info'],
         num_demo_participants=2,
-    ),
-    dict(
-        name='Experiment',
-        display_name="Our experiment (4 players)",
-        app_sequence=['DG', 'ASPD', 'Belief_elicitation', 'payment_info'],
-        num_demo_participants=4,
     ),
 ]
 
 
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=0.01, participation_fee=8.00, doc=""
+    real_world_currency_per_point=0.01, participation_fee=5.00, doc=""
 )
 
 PARTICIPANT_FIELDS = []

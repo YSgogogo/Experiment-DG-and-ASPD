@@ -10,13 +10,13 @@ class C(BaseConstants):
     NAME_IN_URL = 'ASPD'
     PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 18
-    payoff_R1 = [400, 400, 400, 400, 400, 400, 400, 400, 400]
-    payoff_S1 = [150, 150, 150, 150, 150, 150, 150, 150, 150]
-    payoff_T1 = [550, 550, 550, 550, 410, 410, 410, 550, 550]
-    payoff_D1 = [320, 320, 320, 320, 320, 160, 320, 160, 160]
-    payoff_R2 = [350, 350, 350, 350, 350, 350, 350, 350, 350]
+    payoff_R1 = [500, 500, 500, 500, 500, 500, 500, 500, 500]
+    payoff_S1 = [250, 250, 250, 250, 250, 250, 250, 250, 250]
+    payoff_T1 = [650, 650, 650, 650, 510, 510, 510, 650, 650]
+    payoff_D1 = [450, 450, 450, 450, 450, 260, 450, 260, 260]
+    payoff_R2 = [400, 400, 400, 400, 400, 400, 400, 400, 400]
     payoff_S2 = [180, 180, 50, 50, 50, 50, 50, 50, 180]
-    payoff_T2 = [500, 500, 500, 500, 500, 500, 500, 500, 500]
+    payoff_T2 = [600, 600, 600, 600, 600, 600, 600, 600, 600]
     payoff_D2 = [200, 380, 200, 380, 380, 200, 200, 200, 200]
 
 class Subsession(BaseSubsession):
@@ -26,8 +26,8 @@ class Group(BaseGroup):
     task1_number = models.IntegerField()
     task2_number = models.IntegerField()
     selected_round = models.IntegerField()
-    selected_task_be = models.IntegerField()
-    selected_round_be = models.IntegerField()
+    #selected_task_be = models.IntegerField()
+    #selected_round_be = models.IntegerField()
 
 class Player(BasePlayer):
     num_failed_attempts = models.IntegerField(initial=0)
@@ -61,8 +61,8 @@ class Player(BasePlayer):
     task1_number = models.IntegerField()
     task2_number = models.IntegerField()
     selected_round = models.IntegerField()
-    selected_task_be = models.IntegerField()
-    selected_round_be = models.IntegerField()
+    #selected_task_be = models.IntegerField()
+    #selected_round_be = models.IntegerField()
 
 def creating_session(subsession: Subsession):
     if subsession.round_number == 1:
@@ -88,17 +88,17 @@ def creating_session(subsession: Subsession):
             for p in g.get_players():
                 p.in_round(18).selected_round = g.in_round(18).selected_round
 
-        for g in subsession.get_groups():
-            task = [0, 1, 2, 3]
-            random_task = random.choice(task)
-            g.in_round(18).selected_task_be = random_task
-            for p in g.get_players():
-                p.in_round(18).selected_task_be = g.in_round(18).selected_task_be
+        #for g in subsession.get_groups():
+        #    task = [0, 1, 2, 3]
+        #    random_task = random.choice(task)
+        #    g.in_round(18).selected_task_be = random_task
+        #    for p in g.get_players():
+        #        p.in_round(18).selected_task_be = g.in_round(18).selected_task_be
 
-            for i in range(1, 10):
-                if g.in_round(i).task1_number == g.in_round(18).selected_task_be:
-                    g.in_round(18).selected_round_be = i
-                    break
+        #    for i in range(1, 10):
+        #        if g.in_round(i).task1_number == g.in_round(18).selected_task_be:
+        #            g.in_round(18).selected_round_be = i
+        #            break
 
 class ASPD_GamePage_1st(Page):
     form_model = 'player'
@@ -186,17 +186,17 @@ class ResultsWaitPage(WaitPage):
     @staticmethod
     def after_all_players_arrive(group: Group):
         selected_round = group.selected_round
-        selected_round_be = group.selected_round_be
-        selected_task = group.selected_task_be
+    #    selected_round_be = group.selected_round_be
+    #    selected_task = group.selected_task_be
         group_in_selected_round = group.in_round(selected_round)
         selected_payment = group_in_selected_round.task1_number
         player_lists = group.get_players()
         player_1 = player_lists[0]
         player_2 = player_lists[1]
-        player_1_in_selected_round_be_1st = player_1.in_round(selected_round_be)
-        player_1_in_selected_round_be_2nd = player_1.in_round(selected_round_be + 9)
-        player_2_in_selected_round_be_1st = player_2.in_round(selected_round_be)
-        player_2_in_selected_round_be_2nd = player_2.in_round(selected_round_be + 9)
+    #    player_1_in_selected_round_be_1st = player_1.in_round(selected_round_be)
+    #    player_1_in_selected_round_be_2nd = player_1.in_round(selected_round_be + 9)
+    #    player_2_in_selected_round_be_1st = player_2.in_round(selected_round_be)
+    #    player_2_in_selected_round_be_2nd = player_2.in_round(selected_round_be + 9)
         player_1_in_selected_round = player_1.in_round(selected_round)
         player_2_in_selected_round = player_2.in_round(selected_round+9)
         if player_1_in_selected_round.choice_1st:
@@ -213,8 +213,10 @@ class ResultsWaitPage(WaitPage):
             else:
                 player_1.payoff = C.payoff_D1[selected_payment]
                 player_2.payoff = C.payoff_D2[selected_payment]
-        player_1.participant.vars[__name__] = [str(player_1.payoff), 'First Mover', str(selected_round), str(player_2_in_selected_round_be_1st.choice_1st), str(player_2_in_selected_round_be_2nd.choice_2nd_Top), str(player_2_in_selected_round_be_2nd.choice_2nd_Down), str(selected_task)]
-        player_2.participant.vars[__name__] = [str(player_2.payoff), 'Second Mover', str(selected_round+9), str(player_1_in_selected_round_be_1st.choice_1st), str(player_1_in_selected_round_be_2nd.choice_2nd_Top), str(player_1_in_selected_round_be_2nd.choice_2nd_Down), str(selected_task)]
+        player_1.participant.vars[__name__] = [str(player_1.payoff), 'First Mover', str(selected_round)]
+        player_2.participant.vars[__name__] = [str(player_2.payoff), 'Second Mover', str(selected_round+9)]
+    #    player_1.participant.vars[__name__] = [str(player_1.payoff), 'First Mover', str(selected_round), str(player_2_in_selected_round_be_1st.choice_1st), str(player_2_in_selected_round_be_2nd.choice_2nd_Top), str(player_2_in_selected_round_be_2nd.choice_2nd_Down), str(selected_task)]
+    #    player_2.participant.vars[__name__] = [str(player_2.payoff), 'Second Mover', str(selected_round+9), str(player_1_in_selected_round_be_1st.choice_1st), str(player_1_in_selected_round_be_2nd.choice_2nd_Top), str(player_1_in_selected_round_be_2nd.choice_2nd_Down), str(selected_task)]
 
 
 

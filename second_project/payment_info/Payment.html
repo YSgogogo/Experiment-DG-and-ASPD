@@ -28,8 +28,8 @@
         <thead>
         <tr>
             <td> block</td>
-            <td> selected  </td>
-            <td> role </td>
+            <td> selected  round</td>
+            <td> selected role </td>
             <td> payment </td>
         </tr>
         </thead>
@@ -40,17 +40,12 @@
             <td class="hide_bottom"> {{ player.points_to_pay1 }} </td>
         </tr>
         <tr>
-            <td class="hide_bottom"> 2 </td>
-            <td class="hide_bottom"> {{ player.round_to_pay2 }} </td>
-            <td class="hide_bottom"> {{ player.role_to_pay2 }} </td>
-            <td class="hide_bottom"> {{ player.points_to_pay2 }} </td>
+            <td> 2 </td>
+            <td> {{ player.round_to_pay2 }} </td>
+            <td> {{ player.role_to_pay2 }} </td>
+            <td> {{ player.points_to_pay2 }} </td>
         </tr>
-        <tr>
-            <td> 3 </td>
-            <td>  </td>
-            <td>  </td>
-            <td> £3 </td>
-        </tr>
+
         <tr>
             <td> show-up </td>
             <td>  </td>
@@ -69,9 +64,9 @@
 
 
 <ul>
-  <li>  Note: 100 tokens = £1. </li>
+    <li>  Note: <b>100 tokens = £1</b>. </li>
   <li>  Your final payment in this experiment is therefore {{participant.payoff_plus_participation_fee()}}. </li>
-  <li>  We are preparing for your payment. Please keep calm, and we will come and pay you.</li>
+  <li>  We are preparing for your payment. Please wait...</li>
 </ul>
 
             </div>
