@@ -178,6 +178,10 @@ class Wait(Page):
     def is_displayed(player:Player):
         return player.round_number==C.NUM_ROUNDS
 
+class ResultsWaitPage1(WaitPage):
+    wait_for_all_groups = True
+    def is_displayed(player:Player):
+        return player.round_number==C.NUM_ROUNDS
 
 class ResultsWaitPage(WaitPage):
     @staticmethod
@@ -223,4 +227,4 @@ class ResultsWaitPage(WaitPage):
 
 
 
-page_sequence = [ASPD_Instructions, ASPD_Comprehension_Test, ASPD_GamePage_1st, ASPD_GamePage_2nd, ResultsWaitPage, Wait]
+page_sequence = [ASPD_Instructions, ASPD_Comprehension_Test, ASPD_GamePage_1st, ASPD_GamePage_2nd, ResultsWaitPage1, ResultsWaitPage]
