@@ -18,13 +18,13 @@
             <td class="hide_top & hide_left & hide_bottom", rowspan="4"> First Mover <br> choice </td>
             <td rowspan="2", style="background-color:LightGoldenrodYellow;"， class="width_bottom"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
             <td rowspan="2"， class="width_bottom"> Your choice <br> (Second Mover) </td>
-            <td> <input type="radio" name="choice_2nd_Top" value="{{ True }}" class="btn btn-primary btn-large"> </td>
+            <td> <input type="radio" name="choice_2nd_Top" value="{{ True }}" class="btn btn-primary btn-large" required> </td>
             <td class="hide_left"> A </td>
             <td id="cell1" > </td>
             <td id="cell2" > </td>
         </tr>
         <tr>
-            <td class="width_bottom"><input type="radio" name="choice_2nd_Top" value="{{ False }}" class="btn btn-primary btn-large"> </td>
+            <td class="width_bottom"><input type="radio" name="choice_2nd_Top" value="{{ False }}" class="btn btn-primary btn-large" required> </td>
             <td class="hide_left & width_bottom"> B </td>
             <td id="cell3" class="width_bottom"> </td>
             <td id="cell4" class="width_bottom"> </td>
@@ -32,18 +32,19 @@
         <tr>
             <td rowspan="2", style="background-color:LightGray;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
             <td rowspan="2"> Your choice <br> (Second Mover) </td>
-            <td> <input type="radio" name="choice_2nd_Down" value="{{ True }}" class="btn btn-primary btn-large"> </td>
+            <td> <input type="radio" name="choice_2nd_Down" value="{{ True }}" class="btn btn-primary btn-large" required> </td>
             <td class="hide_left"> A </td>
             <td id="cell5" > </td>
             <td id="cell6" > </td>
         </tr>
         <tr>
-            <td><input type="radio" name="choice_2nd_Down" value="{{ False }}" class="btn btn-primary btn-large"> </td>
+            <td><input type="radio" name="choice_2nd_Down" value="{{ False }}" class="btn btn-primary btn-large" required> </td>
             <td class="hide_left"> B </td>
             <td id="cell7" > </td>
             <td id="cell8" > </td>
         </tr>
     </table>
+<span class="error-message" style="display: none;">Please make your decision.</span>
 <br>
 
 

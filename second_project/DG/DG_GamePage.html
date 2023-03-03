@@ -17,20 +17,20 @@
         </tr>
         <tr>
             <td rowspan="2"> Your choice (First Mover)</td>
-            <td><input type="radio" name="choice" value="{{ True }}" class="btn btn-primary btn-large"></td>
+            <td><input type="radio" name="choice" value="{{ True }}" class="btn btn-primary btn-large" required></td>
             <td class="hide_left"> A </td>
             <td id="cell1" >  </td>
             <td id="cell2" >  </td>
         </tr>
         <tr>
-            <td><input type="radio" name="choice" value="{{ False }}" class="btn btn-primary btn-large"></td>
+            <td><input type="radio" name="choice" value="{{ False }}" class="btn btn-primary btn-large" required></td>
             <td class="hide_left"> B </td>
             <td id="cell3" >  </td>
             <td id="cell4" >  </td>
         </tr>
     </table>
 <br>
-
+<span class="error-message" style="display: none;">Please make your decision.</span>
    <script>
         var random = Math.random();
         if (random < 0.5) {
