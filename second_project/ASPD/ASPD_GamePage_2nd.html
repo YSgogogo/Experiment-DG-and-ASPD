@@ -18,13 +18,13 @@
             <td class="hide_top & hide_left & hide_bottom", rowspan="4"> First Mover <br> choice </td>
             <td rowspan="2", style="background-color:LightGoldenrodYellow;"， class="width_bottom"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
             <td rowspan="2"， class="width_bottom"> Your choice <br> (Second Mover) </td>
-            <td> <input type="radio" name="choice_2nd_Top" value="{{ True }}" class="btn btn-primary btn-large" required> </td>
+            <td> <input type="radio" name="choice_2nd_coop" value="{{ True }}" class="btn btn-primary btn-large" required> </td>
             <td class="hide_left"> A </td>
             <td id="cell1" > </td>
             <td id="cell2" > </td>
         </tr>
         <tr>
-            <td class="width_bottom"><input type="radio" name="choice_2nd_Top" value="{{ False }}" class="btn btn-primary btn-large" required> </td>
+            <td class="width_bottom"><input type="radio" name="choice_2nd_coop" value="{{ False }}" class="btn btn-primary btn-large" required> </td>
             <td class="hide_left & width_bottom"> B </td>
             <td id="cell3" class="width_bottom"> </td>
             <td id="cell4" class="width_bottom"> </td>
@@ -32,13 +32,13 @@
         <tr>
             <td rowspan="2", style="background-color:LightGray;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
             <td rowspan="2"> Your choice <br> (Second Mover) </td>
-            <td> <input type="radio" name="choice_2nd_Down" value="{{ True }}" class="btn btn-primary btn-large" required> </td>
+            <td> <input type="radio" name="choice_2nd_defect" value="{{ True }}" class="btn btn-primary btn-large" required> </td>
             <td class="hide_left"> A </td>
             <td id="cell5" > </td>
             <td id="cell6" > </td>
         </tr>
         <tr>
-            <td><input type="radio" name="choice_2nd_Down" value="{{ False }}" class="btn btn-primary btn-large" required> </td>
+            <td><input type="radio" name="choice_2nd_defect" value="{{ False }}" class="btn btn-primary btn-large" required> </td>
             <td class="hide_left"> B </td>
             <td id="cell7" > </td>
             <td id="cell8" > </td>
@@ -56,15 +56,15 @@
             document.getElementById("cell2").innerHTML = "{{ R2 }} tokens";
             document.getElementById("cell3").innerHTML = "{{ S1 }} tokens";
             document.getElementById("cell4").innerHTML = "{{ T2 }} tokens";
-            document.getElementsByName("choice_2nd_Top")[0].value = "{{ True }}";
-            document.getElementsByName("choice_2nd_Top")[1].value = "{{ False }}";
+            document.getElementsByName("choice_2nd_coop")[0].value = "{{ True }}";
+            document.getElementsByName("choice_2nd_coop")[1].value = "{{ False }}";
         } else {
             document.getElementById("cell3").innerHTML = "{{ R1 }} tokens";
             document.getElementById("cell4").innerHTML = "{{ R2 }} tokens";
             document.getElementById("cell1").innerHTML = "{{ S1 }} tokens";
             document.getElementById("cell2").innerHTML = "{{ T2 }} tokens";
-            document.getElementsByName("choice_2nd_Top")[0].value = "{{ False }}";
-            document.getElementsByName("choice_2nd_Top")[1].value = "{{ True }}";
+            document.getElementsByName("choice_2nd_coop")[0].value = "{{ False }}";
+            document.getElementsByName("choice_2nd_coop")[1].value = "{{ True }}";
         }
 
         if (random2 < 0.5) {
@@ -72,15 +72,15 @@
             document.getElementById("cell6").innerHTML = "{{ S2 }} tokens";
             document.getElementById("cell7").innerHTML = "{{ D1 }} tokens";
             document.getElementById("cell8").innerHTML = "{{ D2 }} tokens";
-            document.getElementsByName("choice_2nd_Down")[0].value = "{{ True }}";
-            document.getElementsByName("choice_2nd_Down")[1].value = "{{ False }}";
+            document.getElementsByName("choice_2nd_defect")[0].value = "{{ True }}";
+            document.getElementsByName("choice_2nd_defect")[1].value = "{{ False }}";
         } else {
             document.getElementById("cell7").innerHTML = "{{ T1 }} tokens";
             document.getElementById("cell8").innerHTML = "{{ S2 }} tokens";
             document.getElementById("cell5").innerHTML = "{{ D1 }} tokens";
             document.getElementById("cell6").innerHTML = "{{ D2 }} tokens";
-            document.getElementsByName("choice_2nd_Down")[0].value = "{{ False }}";
-            document.getElementsByName("choice_2nd_Down")[1].value = "{{ True }}";
+            document.getElementsByName("choice_2nd_defect")[0].value = "{{ False }}";
+            document.getElementsByName("choice_2nd_defect")[1].value = "{{ True }}";
         }
     </script>
 

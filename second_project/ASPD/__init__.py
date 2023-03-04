@@ -27,8 +27,6 @@ class Group(BaseGroup):
     task1_number = models.IntegerField()
     task2_number = models.IntegerField()
     selected_round = models.IntegerField()
-    #selected_task_be = models.IntegerField()
-    #selected_round_be = models.IntegerField()
 
 class Player(BasePlayer):
     num_failed_attempts = models.IntegerField(initial=0)
@@ -40,30 +38,28 @@ class Player(BasePlayer):
 
     choice_1st =  models.BooleanField(
         choices=[
-           [True, 'Top'],
-           [False, 'Down'],
+           [True, 'coop'],
+           [False, 'defect'],
         ]
     )
 
-    choice_2nd_Top =  models.BooleanField(
+    choice_2nd_coop =  models.BooleanField(
         choices=[
-           [True, 'Left'],
-           [False, 'Right'],
+           [True, 'coop'],
+           [False, 'defect'],
         ]
     )
 
-    choice_2nd_Down =  models.BooleanField(
+    choice_2nd_defect =  models.BooleanField(
         choices=[
-           [True, 'Left'],
-           [False, 'Right'],
+           [True, 'coop'],
+           [False, 'defect'],
         ]
     )
 
     task1_number = models.IntegerField()
     task2_number = models.IntegerField()
     selected_round = models.IntegerField()
-    #selected_task_be = models.IntegerField()
-    #selected_round_be = models.IntegerField()
 
 def creating_session(subsession: Subsession):
     if subsession.round_number == 1:
@@ -89,17 +85,7 @@ def creating_session(subsession: Subsession):
             for p in g.get_players():
                 p.in_round(18).selected_round = g.in_round(18).selected_round
 
-        #for g in subsession.get_groups():
-        #    task = [0, 1, 2, 3]
-        #    random_task = random.choice(task)
-        #    g.in_round(18).selected_task_be = random_task
-        #    for p in g.get_players():
-        #        p.in_round(18).selected_task_be = g.in_round(18).selected_task_be
 
-        #    for i in range(1, 10):
-        #        if g.in_round(i).task1_number == g.in_round(18).selected_task_be:
-        #            g.in_round(18).selected_round_be = i
-        #            break
 
 class ASPD_GamePage_1st(Page):
     form_model = 'player'
@@ -125,7 +111,7 @@ class ASPD_GamePage_1st(Page):
 
 class ASPD_GamePage_2nd(Page):
     form_model = 'player'
-    form_fields = ['choice_2nd_Down', 'choice_2nd_Top']
+    form_fields = ['choice_2nd_defect', 'choice_2nd_coop']
 
     @staticmethod
     def is_displayed(player: Player):
@@ -174,9 +160,7 @@ class Failed(Page):
     def is_displayed(player: Player):
         return player.failed_too_many
 
-class Wait(Page):
-    def is_displayed(player:Player):
-        return player.round_number==C.NUM_ROUNDS
+
 
 class ResultsWaitPage1(WaitPage):
     wait_for_all_groups = True
@@ -191,28 +175,22 @@ class ResultsWaitPage(WaitPage):
     @staticmethod
     def after_all_players_arrive(group: Group):
         selected_round = group.selected_round
-    #    selected_round_be = group.selected_round_be
-    #    selected_task = group.selected_task_be
         group_in_selected_round = group.in_round(selected_round)
         selected_payment = group_in_selected_round.task1_number
         player_lists = group.get_players()
         player_1 = player_lists[0]
         player_2 = player_lists[1]
-    #    player_1_in_selected_round_be_1st = player_1.in_round(selected_round_be)
-    #    player_1_in_selected_round_be_2nd = player_1.in_round(selected_round_be + 9)
-    #    player_2_in_selected_round_be_1st = player_2.in_round(selected_round_be)
-    #    player_2_in_selected_round_be_2nd = player_2.in_round(selected_round_be + 9)
         player_1_in_selected_round = player_1.in_round(selected_round)
         player_2_in_selected_round = player_2.in_round(selected_round+9)
         if player_1_in_selected_round.choice_1st:
-            if player_2_in_selected_round.choice_2nd_Top:
+            if player_2_in_selected_round.choice_2nd_coop:
                 player_1.payoff = C.payoff_R1[selected_payment]
                 player_2.payoff = C.payoff_R2[selected_payment]
             else:
                 player_1.payoff = C.payoff_S1[selected_payment]
                 player_2.payoff = C.payoff_T2[selected_payment]
         else:
-            if player_2_in_selected_round.choice_2nd_Down:
+            if player_2_in_selected_round.choice_2nd_defect:
                 player_1.payoff = C.payoff_T1[selected_payment]
                 player_2.payoff = C.payoff_S2[selected_payment]
             else:
@@ -220,11 +198,6 @@ class ResultsWaitPage(WaitPage):
                 player_2.payoff = C.payoff_D2[selected_payment]
         player_1.participant.vars[__name__] = [str(player_1.payoff), 'First Mover', str(selected_round)]
         player_2.participant.vars[__name__] = [str(player_2.payoff), 'Second Mover', str(selected_round+9)]
-    #    player_1.participant.vars[__name__] = [str(player_1.payoff), 'First Mover', str(selected_round), str(player_2_in_selected_round_be_1st.choice_1st), str(player_2_in_selected_round_be_2nd.choice_2nd_Top), str(player_2_in_selected_round_be_2nd.choice_2nd_Down), str(selected_task)]
-    #    player_2.participant.vars[__name__] = [str(player_2.payoff), 'Second Mover', str(selected_round+9), str(player_1_in_selected_round_be_1st.choice_1st), str(player_1_in_selected_round_be_2nd.choice_2nd_Top), str(player_1_in_selected_round_be_2nd.choice_2nd_Down), str(selected_task)]
-
-
-
 
 
 page_sequence = [ASPD_Instructions, ASPD_Comprehension_Test, ASPD_GamePage_1st, ASPD_GamePage_2nd, ResultsWaitPage1, ResultsWaitPage]

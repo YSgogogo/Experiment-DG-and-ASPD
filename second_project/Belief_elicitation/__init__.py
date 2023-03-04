@@ -67,5 +67,4 @@ class Second_Mover(Page):
     form_fields = ['f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12']
 
 
-#page_sequence = [Belief_elicitation_Instructions, First_Mover, Second_Mover,]
 page_sequence = [First_Mover, Second_Mover,]

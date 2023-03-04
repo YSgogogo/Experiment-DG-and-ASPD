@@ -38,8 +38,8 @@ class Player(BasePlayer):
 
     choice =  models.BooleanField(
         choices=[
-           [True, 'Left'],
-           [False, 'Right'],
+           [True, 'coop'],
+           [False, 'defect'],
         ]
     )
 
