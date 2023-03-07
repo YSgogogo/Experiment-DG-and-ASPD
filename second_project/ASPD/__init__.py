@@ -31,8 +31,8 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     num_failed_attempts = models.IntegerField(initial=0)
     failed_too_many = models.BooleanField(initial=False)
-    quiz1 = models.IntegerField(label='If First Mover chose A, then Seconder Mover knows the choice and decides A. Then First Mover gets:')
-    quiz2 = models.IntegerField(label='If First Mover chose B, then Seconder Mover knows the choice and decides B. Then Second Mover gets:')
+    quiz1 = models.StringField(label='If First Mover chose A, then Seconder Mover knows the choice and decides A. Then First Mover gets:')
+    quiz2 = models.StringField(label='If First Mover chose B, then Seconder Mover knows the choice and decides B. Then Second Mover gets:')
     quiz3 = models.BooleanField(label="Does First Mover know the choice of Second Mover prior to taking her decision?")
     quiz4 = models.BooleanField(label="Does Second Mover know the choice of First Mover prior to taking her decision?")
 
@@ -142,7 +142,7 @@ class ASPD_Comprehension_Test(Page):
 
     @staticmethod
     def error_message(player: Player, values):
-        solutions = dict(quiz1=350, quiz2=200, quiz3=False, quiz4=True)
+        solutions = {"quiz1": '350 tokens', "quiz2": '200 tokens', "quiz3": False, "quiz4": True}
         errors = {name: 'Wrong' for name in solutions if values[name] != solutions[name]}
         if errors:
             player.num_failed_attempts += 1

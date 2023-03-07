@@ -26,8 +26,8 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     num_failed_attempts = models.IntegerField(initial=0)
     failed_too_many = models.BooleanField(initial=False)
-    quiz1 = models.IntegerField(label='If First Mover chose A, then First Mover gets:')
-    quiz2 = models.IntegerField(label='If First Mover chose B, then Second Mover gets:')
+    quiz1 = models.StringField(label='If First Mover chose A, then First Mover gets:')
+    quiz2 = models.StringField(label='If First Mover chose B, then Second Mover gets:')
     quiz3 = models.BooleanField(
         label="Who is able to decide final tokens?",
         choices = [
@@ -98,7 +98,7 @@ class DG_Comprehension_Test(Page):
 
     @staticmethod
     def error_message(player: Player, values):
-        solutions = dict(quiz1=400, quiz2=150, quiz3=True)
+        solutions = {"quiz1": '400 tokens', "quiz2": '150 tokens', "quiz3": True}
         errors = {name: 'Wrong' for name in solutions if values[name] != solutions[name]}
         if errors:
             player.num_failed_attempts += 1

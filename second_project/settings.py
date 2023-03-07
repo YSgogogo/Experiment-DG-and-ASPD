@@ -31,7 +31,7 @@ ROOMS = [
         name='EssexLab',
         display_name='EssexLab',
         participant_label_file='EssexLab.txt',
-        use_secure_urls=True
+        #use_secure_urls=True
     ),
 ]
 
