@@ -10,10 +10,10 @@ class C(BaseConstants):
     NAME_IN_URL = 'DG'
     PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 10
-    payoff_L1 = [600, 200, 200, 200, 0,   0,   0,   200,  200,  200]
-    payoff_L2 = [750, 800, 800, 800, 800, 800, 800, 1100, 1100, 1100]
-    payoff_R1 = [850, 500, 250, 250, 500, 250, 250, 500,  250,  250,]
-    payoff_R2 = [350, 400, 400, 700, 400, 400, 700, 400,  400,  700,]
+    payoff_L1 = [900,  650,  650, 250,  250,  250,  250,  50,   50,  250]
+    payoff_L2 = [900,  650,  650, 1000, 1000, 1000, 1000, 1000, 700, 700]
+    payoff_R1 = [1000, 1000, 700, 300,  300,  600,  600,  300,  300, 300,]
+    payoff_R2 = [250,  250,  50,  300,  600,  300,  600,  300,  300, 300,]
 
 
 class Subsession(BaseSubsession):
@@ -26,14 +26,32 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     num_failed_attempts = models.IntegerField(initial=0)
     failed_too_many = models.BooleanField(initial=False)
-    quiz1 = models.StringField(label='If First Mover chose A, then First Mover gets:')
-    quiz2 = models.StringField(label='If First Mover chose B, then Second Mover gets:')
-    quiz3 = models.BooleanField(
-        label="Who is able to decide final tokens?",
-        choices = [
-            [True, 'First Mover'],
-            [False, 'Second Mover'],
+    quiz1 = models.IntegerField(
+        label="If First Mover chose A, then First Mover gets:",
+        widget=widgets.RadioSelect,
+        choices=[
+            [0, '400 tokens'],
+            [1, '500 tokens'],
+            [2, '150 tokens'],
         ]
+    )
+    quiz2 = models.IntegerField(
+        label="If First Mover chose B, then Second Mover gets:",
+        widget=widgets.RadioSelect,
+        choices=[
+            [0, '350 tokens'],
+            [1, '150 tokens'],
+            [2, '500 tokens'],
+        ]
+    )
+    quiz3 = models.IntegerField(
+        label="Who is able to decide final tokens?",
+        widget = widgets.RadioSelect,
+        choices = [
+            [0, 'First Mover'],
+            [1, 'Second Mover'],
+            [2, 'Both of them'],
+    ]
     )
 
     choice =  models.BooleanField(
@@ -98,7 +116,7 @@ class DG_Comprehension_Test(Page):
 
     @staticmethod
     def error_message(player: Player, values):
-        solutions = {"quiz1": '400 tokens', "quiz2": '150 tokens', "quiz3": True}
+        solutions = {"quiz1": 0, "quiz2": 1, "quiz3": 0}
         errors = {name: 'Wrong' for name in solutions if values[name] != solutions[name]}
         if errors:
             player.num_failed_attempts += 1

@@ -10,15 +10,15 @@ class C(BaseConstants):
     NAME_IN_URL = 'ASPD'
     PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 18
-    payoff_R1 = [750, 750, 750, 750, 750, 750, 750, 750, 750]
-    payoff_R2 = [600, 600, 600, 600, 600, 600, 600, 600, 600]
-    payoff_S1 = [350, 350, 350, 350, 350, 350, 350, 350, 350]
-    payoff_T2 = [850, 850, 850, 850, 850, 850, 850, 850, 850]
+    payoff_R1 = [650,  650,  650,  650,  650,  650,  650,  650, 900]
+    payoff_R2 = [650,  650,  650,  650,  650,  650,  600,  650, 900]
+    payoff_S1 = [250,  250,  250,  250,  250,  250,  250,  50,  250]
+    payoff_T2 = [1000, 1000, 1000, 1000, 1000, 1000, 1000, 700, 1000]
 
-    payoff_T1 = [800, 800, 800, 800, 800, 800, 1110, 1100, 1100]
-    payoff_S2 = [200, 200, 200, 0,   0,   0,   200,  200,  200]
-    payoff_D1 = [400, 400, 700, 400, 400, 700, 400,  400,  700]
-    payoff_D2 = [500, 250, 250, 500, 250, 250, 500,  250,  250]
+    payoff_T1 = [1000, 1000, 1000, 1000, 1000, 700,700, 1000, 1000]
+    payoff_S2 = [250,  250,  250,  250,  50,   50, 250,  250,  250]
+    payoff_D1 = [300,  300,  600,  600,  300, 300, 300,  300,  300]
+    payoff_D2 = [300,  600,  300,  600,  300, 300, 300,  300,  300]
 
 
 class Subsession(BaseSubsession):
@@ -32,8 +32,24 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     num_failed_attempts = models.IntegerField(initial=0)
     failed_too_many = models.BooleanField(initial=False)
-    quiz1 = models.StringField(label='If First Mover chose A, then Seconder Mover knows the choice and decides A. Then First Mover gets:')
-    quiz2 = models.StringField(label='If First Mover chose B, then Seconder Mover knows the choice and decides B. Then Second Mover gets:')
+    quiz1 = models.IntegerField(
+        label="If First Mover chose A, then Seconder Mover knows the choice and decides A. Then First Mover gets:",
+        widget=widgets.RadioSelect,
+        choices=[
+            [0, '400 tokens'],
+            [1, '150 tokens'],
+            [2, '350 tokens'],
+        ]
+    )
+    quiz2 = models.IntegerField(
+        label="If First Mover chose B, then Seconder Mover knows the choice and decides B. Then Second Mover gets:",
+        widget=widgets.RadioSelect,
+        choices=[
+            [0, '200 tokens'],
+            [1, '320 tokens'],
+            [2, '180 tokens'],
+        ]
+    )
     quiz3 = models.BooleanField(label="Does First Mover know the choice of Second Mover prior to taking her decision?")
     quiz4 = models.BooleanField(label="Does Second Mover know the choice of First Mover prior to taking her decision?")
 
@@ -143,7 +159,7 @@ class ASPD_Comprehension_Test(Page):
 
     @staticmethod
     def error_message(player: Player, values):
-        solutions = {"quiz1": '350 tokens', "quiz2": '200 tokens', "quiz3": False, "quiz4": True}
+        solutions = {"quiz1": 2, "quiz2": 0, "quiz3": False, "quiz4": True}
         errors = {name: 'Wrong' for name in solutions if values[name] != solutions[name]}
         if errors:
             player.num_failed_attempts += 1
