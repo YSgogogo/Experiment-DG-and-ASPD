@@ -30,6 +30,7 @@ class Group(BaseGroup):
     selected_round = models.IntegerField()
 
 class Player(BasePlayer):
+    timeSpent = models.FloatField()
     num_failed_attempts = models.IntegerField(initial=0)
     failed_too_many = models.BooleanField(initial=False)
     quiz1 = models.IntegerField(
@@ -106,7 +107,8 @@ def creating_session(subsession: Subsession):
 
 class ASPD_GamePage_1st(Page):
     form_model = 'player'
-    form_fields = ['choice_1st']
+    form_fields = ['choice_1st','timeSpent']
+    timer_text = 'Time remaining:'
 
     @staticmethod
     def is_displayed(player: Player):
@@ -128,7 +130,8 @@ class ASPD_GamePage_1st(Page):
 
 class ASPD_GamePage_2nd(Page):
     form_model = 'player'
-    form_fields = ['choice_2nd_defect', 'choice_2nd_coop']
+    form_fields = ['choice_2nd_defect', 'choice_2nd_coop','timeSpent']
+    timer_text = 'Time remaining:'
 
     @staticmethod
     def is_displayed(player: Player):

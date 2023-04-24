@@ -24,6 +24,7 @@ class Group(BaseGroup):
     selected_round = models.IntegerField()
 
 class Player(BasePlayer):
+    timeSpent = models.FloatField()
     num_failed_attempts = models.IntegerField(initial=0)
     failed_too_many = models.BooleanField(initial=False)
     quiz1 = models.IntegerField(
@@ -84,8 +85,8 @@ def creating_session(subsession: Subsession):
 
 class DG_GamePage(Page):
     form_model = 'player'
-    form_fields = ['choice']
-
+    form_fields = ['choice','timeSpent']
+    timer_text = 'Time remaining:'
     @staticmethod
     def vars_for_template(player):
         task_number = player.task_number
