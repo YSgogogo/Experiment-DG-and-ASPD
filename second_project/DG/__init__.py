@@ -9,11 +9,11 @@ DG
 class C(BaseConstants):
     NAME_IN_URL = 'DG'
     PLAYERS_PER_GROUP = 2
-    NUM_ROUNDS = 10
-    payoff_L1 = [900,  650,  650, 250,  250,  250,  250,  50,   50,  250]
-    payoff_L2 = [900,  650,  650, 1000, 1000, 1000, 1000, 1000, 700, 700]
-    payoff_R1 = [1000, 1000, 700, 300,  300,  600,  600,  300,  300, 300,]
-    payoff_R2 = [250,  250,  50,  300,  600,  300,  600,  300,  300, 300,]
+    NUM_ROUNDS = 14
+    payoff_L1 = [900,  650,  650, 250,  250,  250,  250,  50,   50,  250, 650, 650, 650,  750]
+    payoff_L2 = [900,  650,  650, 1000, 1000, 1000, 1000, 1000, 700, 700, 650, 650, 750,  650]
+    payoff_R1 = [1000, 1000, 700, 300,  300,  600,  600,  300,  300, 300, 800, 700, 1000, 1000]
+    payoff_R2 = [250,  250,  50,  300,  600,  300,  600,  300,  300, 300, 400, 550, 250,  250]
 
 
 class Subsession(BaseSubsession):
@@ -68,7 +68,7 @@ class Player(BasePlayer):
 def creating_session(subsession: Subsession):
     if subsession.round_number == 1:
         for g in subsession.get_groups():
-            game_numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+            game_numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
             random.shuffle(game_numbers)
             k=0
             for i in range(C.NUM_ROUNDS): 
@@ -79,9 +79,9 @@ def creating_session(subsession: Subsession):
 
         for g in subsession.get_groups():
             random_round = random.randint(1, C.NUM_ROUNDS)
-            g.in_round(10).selected_round = random_round
+            g.in_round(14).selected_round = random_round
             for p in g.get_players():
-                p.in_round(10).selected_round = g.in_round(10).selected_round
+                p.in_round(14).selected_round = g.in_round(14).selected_round
 
 class DG_GamePage(Page):
     form_model = 'player'

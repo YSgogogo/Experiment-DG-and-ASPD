@@ -9,16 +9,16 @@ ASPD
 class C(BaseConstants):
     NAME_IN_URL = 'ASPD'
     PLAYERS_PER_GROUP = 2
-    NUM_ROUNDS = 18
-    payoff_R1 = [650,  650,  650,  650,  650,  650,  650,  650, 900]
-    payoff_R2 = [650,  650,  650,  650,  650,  650,  650,  650, 900]
-    payoff_S1 = [250,  250,  250,  250,  250,  250,  250,  50,  250]
-    payoff_T2 = [1000, 1000, 1000, 1000, 1000, 1000, 1000, 700, 1000]
+    NUM_ROUNDS = 26
+    payoff_R1 = [650,  650,  650,  650,  650,  650,  650,  650, 900, 650, 650, 750, 650]
+    payoff_R2 = [650,  650,  650,  650,  650,  650,  650,  650, 900, 650, 650, 650, 750]
+    payoff_S1 = [250,  250,  250,  250,  250,  250,  250,  50,  250, 400, 550, 250, 250]
+    payoff_T2 = [1000, 1000, 1000, 1000, 1000, 1000, 1000, 700, 1000, 800, 700, 1000, 1000]
 
-    payoff_T1 = [1000, 1000, 1000, 1000, 1000, 700,700, 700, 1000]
-    payoff_S2 = [250,  250,  250,  250,  50,   50, 250,  50,  250]
-    payoff_D1 = [300,  300,  600,  600,  300, 300, 300,  300,  300]
-    payoff_D2 = [300,  600,  300,  600,  300, 300, 300,  300,  300]
+    payoff_T1 = [1000, 1000, 1000, 1000, 1000, 700,700, 700,   1000, 1000, 1000, 1000, 1000]
+    payoff_S2 = [250,  250,  250,  250,  50,   50, 250,  50,   250,  250,  250,  250,  250]
+    payoff_D1 = [300,  300,  600,  600,  300, 300, 300,  300,  300,  600,  600,  600,  600]
+    payoff_D2 = [300,  600,  300,  600,  300, 300, 300,  300,  300,  600,  600,  600,  600]
 
 
 class Subsession(BaseSubsession):
@@ -82,26 +82,26 @@ class Player(BasePlayer):
 def creating_session(subsession: Subsession):
     if subsession.round_number == 1:
         for g in subsession.get_groups():
-            game_numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+            game_numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
             random.shuffle(game_numbers)
             k=0
-            for i in range(9):
+            for i in range(13):
                 g.in_round(i+1).task1_number = game_numbers[i]
                 k=k+1
                 for p in g.get_players():
                     p.in_round(i+1).task1_number = g.in_round(i+1).task1_number
-            for i in range(9):
-                g.in_round(i+10).task2_number = game_numbers[i]
+            for i in range(13):
+                g.in_round(i+14).task2_number = game_numbers[i]
                 k=k+1
                 for p in g.get_players():
-                    p.in_round(i+10).task2_number = g.in_round(i+10).task2_number
+                    p.in_round(i+14).task2_number = g.in_round(i+14).task2_number
 
 
         for g in subsession.get_groups():
-            random_round = random.randint(1, 9)
-            g.in_round(18).selected_round = random_round
+            random_round = random.randint(1, 13)
+            g.in_round(26).selected_round = random_round
             for p in g.get_players():
-                p.in_round(18).selected_round = g.in_round(18).selected_round
+                p.in_round(26).selected_round = g.in_round(26).selected_round
 
 
 
@@ -112,7 +112,7 @@ class ASPD_GamePage_1st(Page):
 
     @staticmethod
     def is_displayed(player: Player):
-        return player.round_number <= 9
+        return player.round_number <= 13
 
     @staticmethod
     def vars_for_template(player):
@@ -135,7 +135,7 @@ class ASPD_GamePage_2nd(Page):
 
     @staticmethod
     def is_displayed(player: Player):
-        return player.round_number >= 10
+        return player.round_number >= 14
 
     @staticmethod
     def vars_for_template(player):
@@ -201,7 +201,7 @@ class ResultsWaitPage(WaitPage):
         player_1 = player_lists[0]
         player_2 = player_lists[1]
         player_1_in_selected_round = player_1.in_round(selected_round)
-        player_2_in_selected_round = player_2.in_round(selected_round+9)
+        player_2_in_selected_round = player_2.in_round(selected_round+13)
         if player_1_in_selected_round.choice_1st:
             if player_2_in_selected_round.choice_2nd_coop:
                 player_1.payoff = C.payoff_R1[selected_payment]
@@ -217,7 +217,7 @@ class ResultsWaitPage(WaitPage):
                 player_1.payoff = C.payoff_D1[selected_payment]
                 player_2.payoff = C.payoff_D2[selected_payment]
         player_1.participant.vars[__name__] = [str(player_1.payoff), 'First Mover', str(selected_round)]
-        player_2.participant.vars[__name__] = [str(player_2.payoff), 'Second Mover', str(selected_round+9)]
+        player_2.participant.vars[__name__] = [str(player_2.payoff), 'Second Mover', str(selected_round+13)]
 
 
 page_sequence = [ASPD_Instructions, ASPD_Comprehension_Test, ASPD_GamePage_1st, ASPD_GamePage_2nd, ResultsWaitPage1, ResultsWaitPage]
