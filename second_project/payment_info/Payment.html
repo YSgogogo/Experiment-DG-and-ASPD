@@ -27,23 +27,17 @@
     <table class="mx-auto & styled-table">
         <thead>
         <tr>
-            <td> block</td>
+            <td> selected block</td>
             <td> selected  round</td>
             <td> selected role </td>
             <td> payment </td>
         </tr>
         </thead>
         <tr>
-            <td class="hide_bottom"> 1 </td>
-            <td class="hide_bottom"> {{ player.round_to_pay1 }} </td>
-            <td class="hide_bottom"> {{ player.role_to_pay1 }} </td>
-            <td class="hide_bottom"> {{ player.points_to_pay1 }} </td>
-        </tr>
-        <tr>
-            <td> 2 </td>
-            <td> {{ player.round_to_pay2 }} </td>
-            <td> {{ player.role_to_pay2 }} </td>
-            <td> {{ player.points_to_pay2 }} </td>
+            <td> {{player.block_to_pay}} </td>
+            <td> {{ player.round_to_pay }} </td>
+            <td> {{ player.role_to_pay1 }} </td>
+            <td> {{ player.points_to_pay }} </td>
         </tr>
 
         <tr>
