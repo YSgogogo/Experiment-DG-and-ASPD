@@ -201,7 +201,7 @@ class ResultsWaitPage(WaitPage):
         player_1 = player_lists[0]
         player_2 = player_lists[1]
         player_1_in_selected_round = player_1.in_round(selected_round)
-        player_2_in_selected_round = player_2.in_round(selected_round+14)
+        player_2_in_selected_round = player_2.in_round(selected_round+15)
         if player_1_in_selected_round.choice_1st:
             if player_2_in_selected_round.choice_2nd_coop:
                 player_1.payoff = C.payoff_R1[selected_payment]
@@ -217,7 +217,7 @@ class ResultsWaitPage(WaitPage):
                 player_1.payoff = C.payoff_D1[selected_payment]
                 player_2.payoff = C.payoff_D2[selected_payment]
         player_1.participant.vars[__name__] = [str(player_1.payoff), 'First Mover', str(selected_round)]
-        player_2.participant.vars[__name__] = [str(player_2.payoff), 'Second Mover', str(selected_round+14)]
+        player_2.participant.vars[__name__] = [str(player_2.payoff), 'Second Mover', str(selected_round+15)]
 
 
 page_sequence = [ASPD_Instructions, ASPD_Comprehension_Test, ASPD_GamePage_1st, ASPD_GamePage_2nd, ResultsWaitPage1, ResultsWaitPage]
