@@ -166,14 +166,14 @@
 
 
 
-<input type="hidden" name="timeSpent" id="timeSpent"/>
+<input type="hidden" name="timeSpentm1" id="timeSpentm1"/>
 <script>
 var pageTimeElapsed = 0;
 var pageTimerID = -1;
 
 function pageTick() {
   pageTimeElapsed++
-  document.getElementById("timeSpent").value = pageTimeElapsed;
+  document.getElementById("timeSpentm1").value = pageTimeElapsed;
 }
 window.onload = function() {
   if(pageTimerID == -1){
