@@ -49,7 +49,9 @@ def creating_session(subsession: Subsession):
 
 
 class BE_Instructions(Page):
-    pass
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.round_number == 1
 
 class Beliefs(Page):
     form_model = 'player'
