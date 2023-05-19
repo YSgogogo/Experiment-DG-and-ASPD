@@ -1,7 +1,7 @@
 {{ extends 'global/Page.html' }}
    {{ block title }}
  <div style="text-align: center;">
-     <h1>Survey (Cont.)</h1>
+     <h1>Survey</h1>
  </div>
     {{ endblock }}
 
@@ -19,8 +19,10 @@
     <div class="card-body">
 <br>
 <br>
-        <p> In this page, you need to <b>guess Second Mover's choice after knowing First Mover's decision: &nbsp &nbsp  <span style="font-size: 20px;">A</span>   or  <span style="font-size: 20px;">B</span>  </b> </p>
-        <p> The difference between games are labeled with <span style="color: red;">red</span> color.</p>
+
+        <p> In this page, you need to <b>guess Second Mover's choice after knowing First Mover's decision: &nbsp &nbsp  <span style="font-size: 20px;">A</span>  or  <span style="font-size: 20px;">B</span> </b> </p>
+<br>
+<br>
 <br>
 <br>
         <table class="mx-auto">
@@ -32,39 +34,38 @@
         <tr>
             <td class="hide_top & hide_left & hide_bottom", rowspan="4"> First Mover <br> choice </td>
             <td rowspan="2", style="background-color:LightGoldenrodYellow;"， class="width_bottom"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
-            <td rowspan="2"， class="width_bottom"> Second Mover <br> choice </td>
+            <td rowspan="2"， class="width_bottom"> Your choice <br> (Second Mover) </td>
             <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
             <td class="hide_left"> A </td>
-            <td> 650 tokens </td>
-            <td> 650 tokens </td>
+            <td> {{R1}} tokens </td>
+            <td> {{R2}} tokens </td>
         </tr>
         <tr>
             <td class="width_bottom"><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
             <td class="hide_left & width_bottom"> B </td>
-            <td class="width_bottom"> 200 tokens </td>
-            <td class="width_bottom"> 900 tokens </td>
+            <td class="width_bottom"> {{S2}} tokens </td>
+            <td class="width_bottom"> {{T2}} tokens </td>
         </tr>
         <tr>
             <td rowspan="2", style="background-color:LightGray;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
-            <td rowspan="2">  Second Mover <br> choice  </td>
+            <td rowspan="2"> Your choice <br> (Second Mover) </td>
             <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
             <td class="hide_left"> A </td>
-            <td> 900 tokens </td>
-            <td> 200 tokens </td>
+            <td> {{T1}} tokens </td>
+            <td> {{S2}} tokens </td>
         </tr>
         <tr>
             <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
             <td class="hide_left"> B </td>
-            <td> 250 tokens </td>
-            <td> <span style="color: red;">250 tokens</span> </td>
+            <td> {{D1}} tokens </td>
+            <td> {{D2}} tokens </td>
         </tr>
     </table>
-
     <br>
 
 <p> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 1. Assume Second Mover knows First Mover chose A, what do you think is the percent chance that Second Mover would choose A? </p>
 <div style="display: flex">
-        {{ for choice in form.f9 }}
+        {{ for choice in form.cc }}
         <div style="flex: 1; text-align: center">
             {{ choice }}
             <br>
@@ -77,7 +78,7 @@
 
 <p> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 2. Assume Second Mover knows First Mover chose B, what do you think is the percent chance that Second Mover would choose A? </p>
 <div style="display: flex">
-        {{ for choice in form.f10 }}
+        {{ for choice in form.dc }}
         <div style="flex: 1; text-align: center">
             {{ choice }}
             <br>
@@ -88,70 +89,6 @@
 
 <br>
 
-        <table class="mx-auto">
-        <tr>
-            <td class="hide_top & hide_left", colspan="5"> </td>
-            <td> First Mover  payment </td>
-            <td> Your payment </td>
-        </tr>
-        <tr>
-            <td class="hide_top & hide_left & hide_bottom", rowspan="4"> First Mover <br> choice </td>
-            <td rowspan="2", style="background-color:LightGoldenrodYellow;"， class="width_bottom"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
-            <td rowspan="2"， class="width_bottom"> Second Mover <br> choice </td>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
-            <td class="hide_left"> A </td>
-            <td> 650 tokens </td>
-            <td> 650 tokens </td>
-        </tr>
-        <tr>
-            <td class="width_bottom"><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
-            <td class="hide_left & width_bottom"> B </td>
-            <td class="width_bottom"> 200 tokens </td>
-            <td class="width_bottom"> 900 tokens </td>
-        </tr>
-        <tr>
-            <td rowspan="2", style="background-color:LightGray;"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
-            <td rowspan="2"> Second Mover <br> choice </td>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
-            <td class="hide_left"> A </td>
-            <td> 900 tokens </td>
-            <td> 200 tokens </td>
-        </tr>
-        <tr>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
-            <td class="hide_left"> B </td>
-            <td> 250 tokens </td>
-            <td> <span style="color: red;">600 tokens</span> </td>
-        </tr>
-    </table>
-    <br>
-
-<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. Assume Second Mover knows First Mover chose A, what do you think is the percent chance that Second Mover would choose A? </p>
-<div style="display: flex">
-        {{ for choice in form.f11 }}
-        <div style="flex: 1; text-align: center">
-            {{ choice }}
-            <br>
-            <span style="text-align: center">{{ choice.label }}</span>
-        </div>
-        {{ endfor }}
-</div>
-
-    <br>
-
-<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4. Assume Second Mover knows First Mover chose B, what do you think is the percent chance that Second Mover would choose A? </p>
-<div style="display: flex">
-        {{ for choice in form.f12}}
-        <div style="flex: 1; text-align: center">
-            {{ choice }}
-            <br>
-            <span style="text-align: center">{{ choice.label }}</span>
-        </div>
-        {{ endfor }}
-</div>
-
-
-
 {# todo: radio buttons laid out individually, no loop (by index) #}
         <br>
     </div>
@@ -159,14 +96,14 @@
 
 
 
-<input type="hidden" name="timeSpentr1" id="timeSpentr1"/>
+<input type="hidden" name="timeSpent" id="timeSpent"/>
 <script>
 var pageTimeElapsed = 0;
 var pageTimerID = -1;
 
 function pageTick() {
   pageTimeElapsed++
-  document.getElementById("timeSpentr1").value = pageTimeElapsed;
+  document.getElementById("timeSpent").value = pageTimeElapsed;
 }
 window.onload = function() {
   if(pageTimerID == -1){

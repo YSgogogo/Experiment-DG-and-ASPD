@@ -1,96 +1,74 @@
 from otree.api import *
 import random
-from random import choice
 
 doc = """
-player's beliefs
+Belief_elicitation
 """
 
 class C(BaseConstants):
     NAME_IN_URL = 'Belief_elicitation'
     PLAYERS_PER_GROUP = 2
-    NUM_ROUNDS = 1
+    NUM_ROUNDS = 5
+    payoff_R1 = [650,  650,  650,  650,  650 ]
+    payoff_R2 = [650,  650,  650,  650,  650 ]
+    payoff_S1 = [200,  200,  200,  200,  50  ]
+    payoff_T2 = [900,  900,  900,  900,  750 ]
+
+    payoff_T1 = [900,  900,  900,  900,  750 ]
+    payoff_S2 = [200,  200,  200,  200,  50  ]
+    payoff_D1 = [250,  250,  600,  600,  600 ]
+    payoff_D2 = [250,  600,  250,  600,  600 ]
+
 
 class Subsession(BaseSubsession):
     pass
 
 class Group(BaseGroup):
-    pass
+    task_number = models.IntegerField()
 
 class Player(BasePlayer):
-
-    timeSpentm1 = models.FloatField()
-    timeSpentm2 = models.FloatField()
-    timeSpentr1 = models.FloatField()
-    timeSpentr2 = models.FloatField()
-    f1 = models.IntegerField(
+    timeSpent = models.FloatField()
+    task_number = models.IntegerField()
+    cc = models.IntegerField(
         widget=widgets.RadioSelect, choices=[(0, "0%-20%"), (1, "21%-40%"), (2, "41%-60%"), (3, "61%-80%"),(4, "81%-100%")],
     )
-    f2 = models.IntegerField(
+    dc = models.IntegerField(
         widget=widgets.RadioSelect, choices=[(0, "0%-20%"), (1, "21%-40%"), (2, "41%-60%"), (3, "61%-80%"),(4, "81%-100%")],
     )
-    f3 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%-20%"), (1, "21%-40%"), (2, "41%-60%"), (3, "61%-80%"),(4, "81%-100%")],
-    )
-    f4 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%-20%"), (1, "21%-40%"), (2, "41%-60%"), (3, "61%-80%"),(4, "81%-100%")],
-    )
-    f5 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%-20%"), (1, "21%-40%"), (2, "41%-60%"), (3, "61%-80%"),(4, "81%-100%")],
-    )
-    f6 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%-20%"), (1, "21%-40%"), (2, "41%-60%"), (3, "61%-80%"),(4, "81%-100%")],
-    )
-    f7 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%-20%"), (1, "21%-40%"), (2, "41%-60%"), (3, "61%-80%"),(4, "81%-100%")],
-    )
-    f8 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%-20%"), (1, "21%-40%"), (2, "41%-60%"), (3, "61%-80%"),(4, "81%-100%")],
-    )
-    f9 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%-20%"), (1, "21%-40%"), (2, "41%-60%"), (3, "61%-80%"),(4, "81%-100%")],
-    )
-    f10 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%-20%"), (1, "21%-40%"), (2, "41%-60%"), (3, "61%-80%"),(4, "81%-100%")],
-    )
-    f11 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%-20%"), (1, "21%-40%"), (2, "41%-60%"), (3, "61%-80%"),(4, "81%-100%")],
-    )
-    f12 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%-20%"), (1, "21%-40%"), (2, "41%-60%"), (3, "61%-80%"),(4, "81%-100%")],
-    )
-    f13 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%-20%"), (1, "21%-40%"), (2, "41%-60%"), (3, "61%-80%"),(4, "81%-100%")],
-    )
-    f14 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%-20%"), (1, "21%-40%"), (2, "41%-60%"), (3, "61%-80%"),(4, "81%-100%")],
-    )
-    f15 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%-20%"), (1, "21%-40%"), (2, "41%-60%"), (3, "61%-80%"),(4, "81%-100%")],
-    )
-    f16 = models.IntegerField(
-        widget=widgets.RadioSelect, choices=[(0, "0%-20%"), (1, "21%-40%"), (2, "41%-60%"), (3, "61%-80%"),(4, "81%-100%")],
-    )
+def creating_session(subsession: Subsession):
+    if subsession.round_number == 1:
+        for g in subsession.get_groups():
+            game_numbers = [0, 1, 2, 3, 4]
+            random.shuffle(game_numbers)
+            k=0
+            for i in range(5):
+                g.in_round(i+1).task_number = game_numbers[i]
+                k=k+1
+                for p in g.get_players():
+                    p.in_round(i+1).task_number = g.in_round(i+1).task_number
 
 
-class monotone1(Page):
+class BE_Instructions(Page):
+    pass
+
+class Beliefs(Page):
     form_model = 'player'
-    form_fields = ['f1', 'f2', 'f3', 'f4', 'timeSpentm1']
+    form_fields = ['cc','dc', 'timeSpent']
     timer_text = 'Time remaining:'
 
-class monotone2(Page):
-    form_model = 'player'
-    form_fields = ['f5', 'f6', 'f7', 'f8', 'timeSpentm2']
-    timer_text = 'Time remaining:'
+    @staticmethod
+    def vars_for_template(player):
+        task_number = player.task_number
+        return dict(
+            R1 = C.payoff_R1[task_number],
+            S1 = C.payoff_S1[task_number],
+            T1 = C.payoff_T1[task_number],
+            D1 = C.payoff_D1[task_number],
+            R2 = C.payoff_R2[task_number],
+            S2 = C.payoff_S2[task_number],
+            T2 = C.payoff_T2[task_number],
+            D2 = C.payoff_D2[task_number]
+            )
 
-class reciprocal1(Page):
-    form_model = 'player'
-    form_fields = ['f9', 'f10', 'f11', 'f12', 'timeSpentr1']
-    timer_text = 'Time remaining:'
 
-class reciprocal2(Page):
-    form_model = 'player'
-    form_fields = ['f13', 'f14', 'f15', 'f16', 'timeSpentr2']
-    timer_text = 'Time remaining:'
-
-page_sequence = [monotone1, monotone2, reciprocal1, reciprocal2]
+page_sequence = [BE_Instructions, Beliefs]
