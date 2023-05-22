@@ -9,15 +9,15 @@ class C(BaseConstants):
     NAME_IN_URL = 'Belief_elicitation'
     PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 5
-    payoff_R1 = [650,  650,  650,  650,  650 ]
-    payoff_R2 = [650,  650,  650,  650,  650 ]
-    payoff_S1 = [200,  200,  200,  200,  50  ]
-    payoff_T2 = [900,  900,  900,  900,  750 ]
+    payoff_R1 = [850,  850,  850,  850,  1200]
+    payoff_R2 = [850,  850,  850,  850,  1200]
+    payoff_S1 = [400,  400,  400,  400,  400  ]
+    payoff_T2 = [1250, 1250, 1250, 900,  1250 ]
 
-    payoff_T1 = [900,  900,  900,  900,  750 ]
-    payoff_S2 = [200,  200,  200,  200,  50  ]
-    payoff_D1 = [250,  250,  600,  600,  600 ]
-    payoff_D2 = [250,  600,  250,  600,  600 ]
+    payoff_T1 = [1250, 1250, 1250, 1250, 1250 ]
+    payoff_S2 = [400,  400,  50,   400,  400 ]
+    payoff_D1 = [450,  450,  450,  450,  450 ]
+    payoff_D2 = [450,  800,  450,  450,  450 ]
 
 
 class Subsession(BaseSubsession):
