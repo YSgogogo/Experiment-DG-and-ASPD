@@ -8,16 +8,16 @@ Belief_elicitation
 class C(BaseConstants):
     NAME_IN_URL = 'Belief_elicitation'
     PLAYERS_PER_GROUP = 2
-    NUM_ROUNDS = 6
-    payoff_R1 = [850,  850,  850,  850,  1200, 850 ]
-    payoff_R2 = [850,  850,  850,  850,  1200, 1200]
-    payoff_S1 = [400,  400,  400,  400,  400 , 400 ]
-    payoff_T2 = [1250, 1250, 1250, 900,  1250, 1250]
+    NUM_ROUNDS = 7
+    payoff_R1 = [850,  850,  850, 850, 850,  1200, 850 ]
+    payoff_R2 = [850,  850,  850, 850, 850,  1200, 1200]
+    payoff_S1 = [400,  400,  400, 400, 400,  400 , 400 ]
+    payoff_T2 = [1250, 1250, 1250,1250,900,  1250, 1250]
 
-    payoff_T1 = [1250, 1250, 1250, 1250, 1250, 1250]
-    payoff_S2 = [400,  400,  50,   400,  400 , 400]
-    payoff_D1 = [450,  450,  450,  450,  450 , 450]
-    payoff_D2 = [450,  800,  450,  450,  450 , 450]
+    payoff_T1 = [1250, 1250, 1250,900, 1250, 1250, 1250]
+    payoff_S2 = [400,  400,  50,  50,  400,  400 , 400]
+    payoff_D1 = [450,  450,  450, 450, 450,  450 , 450]
+    payoff_D2 = [450,  800,  450, 450, 450,  450 , 450]
 
 
 class Subsession(BaseSubsession):
@@ -38,10 +38,10 @@ class Player(BasePlayer):
 def creating_session(subsession: Subsession):
     if subsession.round_number == 1:
         for g in subsession.get_groups():
-            game_numbers = [0, 1, 2, 3, 4, 5]
+            game_numbers = [0, 1, 2, 3, 4, 5, 6]
             random.shuffle(game_numbers)
             k=0
-            for i in range(6):
+            for i in range(7):
                 g.in_round(i+1).task_number = game_numbers[i]
                 k=k+1
                 for p in g.get_players():
