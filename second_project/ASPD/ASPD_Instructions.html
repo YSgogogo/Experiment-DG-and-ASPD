@@ -52,37 +52,34 @@
     <li> The table below provides an example of the payoff structure depending on the decisions of First Mover and Second Mover: </li>
 </ul>
     <br>
-    <table class="mx-auto">
+        <table class="mx-auto">
         <tr>
-            <td class="hide_top & hide_left", colspan="4", rowspan="3"> </td>
-            <td class="hide_top & hide_left & hide_right", colspan="4"> Second Mover choice  </td>
-        </tr>
-        <tr>
-            <td colspan="2"> A </td>
-            <td colspan="2"> B </td>
-        </tr>
-        <tr>
-            <td>First Mover payment</td>
-            <td> Second Mover payment </td>
-            <td>First Mover payment</td>
+            <td class="hide_top & hide_left", colspan="4"> </td>
+            <td> First Mover  payment </td>
             <td> Second Mover payment </td>
         </tr>
         <tr>
-            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> First Mover choice </td>
-            <td class="hide_right">  </td>
-            <td> A </td>
-            <td class="hide_left">   </td>
+            <td class="hide_top & hide_left & hide_bottom", rowspan="4"> First Mover <br> choice  </td>
+            <td rowspan="2", class="width_bottom">  &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; </td>
+            <td rowspan="2"， class="width_bottom"> Second Mover <br> choice </td>
+            <td>  &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; </td>
             <td> 350 tokens </td>
             <td> 400 tokens </td>
-            <td> 150 tokens </td>
-            <td> 500 tokens </td>
         </tr>
         <tr>
-            <td class="hide_right">  </td>
-            <td> B </td>
-            <td class="hide_left">   </td>
+            <td class="width_bottom">  &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; </td>
+            <td class="width_bottom"> 150 tokens </td>
+            <td class="width_bottom"> 500 tokens </td>
+        </tr>
+        <tr>
+            <td rowspan="2", >  &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; </td>
+            <td rowspan="2"> Second Mover <br> choice </td>
+            <td>  &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; </td>
             <td> 550 tokens </td>
             <td> 180 tokens </td>
+        </tr>
+        <tr>
+            <td>  &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; </td>
             <td> 320 tokens </td>
             <td> 200 tokens </td>
         </tr>
@@ -115,35 +112,36 @@
 </ul>
 
     <br>
-    <table class="mx-auto">
+        <table class="mx-auto">
         <tr>
-            <td class="hide_top & hide_left", colspan="3", rowspan="3"> </td>
-            <td class="hide_top & hide_left & hide_right", colspan="4"> Second Mover choice </td>
-        </tr>
-        <tr>
-            <td colspan="2">  A </td>
-            <td colspan="2">  B </td>
-        </tr>
-        <tr>
-            <td>Your payment</td>
-            <td> Second Mover payment </td>
-            <td>Your payment</td>
+            <td class="hide_top & hide_left", colspan="5"> </td>
+            <td> Your  payment </td>
             <td> Second Mover payment </td>
         </tr>
         <tr>
-            <td class="hide_top & hide_left & hide_bottom", rowspan="2"> Your choice <br> (First Mover) </td>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
-            <td class="hide_left"> A </td>
+            <td class="hide_top & hide_left & hide_bottom", rowspan="4"> Your choice <br> (First Mover)  </td>
+            <td class="hide_right & width_bottom", rowspan="2"><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
+            <td rowspan="2", class="width_bottom">A &nbsp;&nbsp;&nbsp;&nbsp; </td>
+            <td rowspan="2"， class="width_bottom"> Second Mover <br> choice </td>
+            <td>  &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; </td>
             <td> 350 tokens </td>
             <td> 400 tokens </td>
-            <td> 150 tokens </td>
-            <td> 500 tokens </td>
         </tr>
         <tr>
-            <td><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
-            <td class="hide_left"> B </td>
+            <td class="width_bottom">  &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; </td>
+            <td class="width_bottom"> 150 tokens </td>
+            <td class="width_bottom"> 500 tokens </td>
+        </tr>
+        <tr>
+            <td class="hide_right", rowspan="2"><input type="radio" name="myButton" value="theValue" disabled onclick="alert('Sorry, this option is not available!')"></td>
+            <td rowspan="2", > B &nbsp;&nbsp;&nbsp;&nbsp; </td>
+            <td rowspan="2"> Second Mover <br> choice </td>
+            <td>  &nbsp;&nbsp;&nbsp;&nbsp; A &nbsp;&nbsp;&nbsp;&nbsp; </td>
             <td> 550 tokens </td>
             <td> 180 tokens </td>
+        </tr>
+        <tr>
+            <td>  &nbsp;&nbsp;&nbsp;&nbsp; B &nbsp;&nbsp;&nbsp;&nbsp; </td>
             <td> 320 tokens </td>
             <td> 200 tokens </td>
         </tr>
